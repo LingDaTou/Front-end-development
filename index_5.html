@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-if</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="myapp5">
+		<button @click="error=!error">error</button>
+		<button @click="success=!success">success</button>
+		<!-- v-if -->
+<!-- 		<p v-if="error">失败的情况</p>
+		<p v-else-if="success">成功的情况</p> -->
+		<!-- v-show -->
+		<p v-show="error">失败的情况</p>
+		<p v-show="success">成功的情况</p>
+	</div>
+	<script type="text/javascript" src="app_5.js"></script>
+</body>
+</html>

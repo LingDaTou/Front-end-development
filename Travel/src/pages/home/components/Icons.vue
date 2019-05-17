@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper >
+        <swiper :options="swiperOption">
             <swiper-slide v-for="(page,index) of pages" :key="index">
                 <div class="icon" 
                 v-for="item of page" :key="item.id" >
@@ -17,45 +17,14 @@
 <script>
 export default {
     name:"HomeIcons",
-    data(){
+    props:{
+        iconList:Array
+    },
+    data (){
         return{
-            iconList:[{
-                id:"0001",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"景点门票"
-            },{
-                id:"0002",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-                desc:"一日游"
-            },{
-                id:"0003",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"文化古迹"
-            },{
-                id:"0004",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"文化古迹"
-            },{
-                id:"0005",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"牛首山"
-            },{
-                id:"0006",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png",
-                desc:"一日游"
-            },{
-                id:"0007",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"文化古迹"
-            },{
-                id:"0008",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"文化古迹"
-            },{
-                id:"0009",
-                iconUrl:"http://img1.qunarzz.com/piao/fusion/1803/20/831d62d2e1c7be02.png",
-                desc:"文化古迹"
-            }]
+            swiperOption: {
+                autoplay:false
+            }
         }
     },
     computed:{

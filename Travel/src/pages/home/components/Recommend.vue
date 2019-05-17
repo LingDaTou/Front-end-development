@@ -17,30 +17,8 @@
 <script>
 export default {
     name:"HomeRecommend",
-    data() {
-        return {
-            recommendList:[{
-                id:"0001",
-                imgUrl:"http://img1.qunarzz.com/sight/p0/1511/ea/eaf1bdc38aed9e6690.img.jpg_250x250_f6a6d22b.jpg",
-                title:"银杏湖乐园",
-                desc:"让小朋友能够体验互动的快乐"
-            },{
-                id:"0002",
-                imgUrl:"http://img1.qunarzz.com/sight/p0/1805/9b/9b3cbcf2624bf8cea3.img.jpg_200x200_075bc9ef.jpg",
-                title:"弘阳未来世界主题乐园",
-                desc:"让小朋友能够体验互动的快乐"
-            },{
-                id:"0003",
-                imgUrl:"http://img1.qunarzz.com/sight/p0/1601/d4/d4f1a62140b9d93590.img.jpg_200x200_a1ff6094.jpg",
-                title:"牛首山文化旅游区",
-                desc:"让小朋友能够体验互动的快乐"
-            },{
-                id:"0004",
-                imgUrl:"http://img1.qunarzz.com/sight/p0/1511/ea/eaf1bdc38aed9e6690.img.jpg_250x250_f6a6d22b.jpg",
-                title:"银杏湖乐园",
-                desc:"让小朋友能够体验互动的快乐"
-            }]
-        }
+    props:{
+        recommendList:Array
     }
 }
 </script>

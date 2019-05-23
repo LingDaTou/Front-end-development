@@ -27,7 +27,6 @@ export default {
     },
     methods:{
         handleScroll(){
-            console.log("scroll")
             const top=document.documentElement.scrollTop
             if(top > 60){
                 let opacity=top/140
@@ -42,9 +41,9 @@ export default {
     created () {
         window.addEventListener("scroll",this.handleScroll)
     },
-    deactivated() {
-        window.removeEventListener("scroll",this.handleScroll)
-    }
+    // deactivated() {
+    //     window.removeEventListener("scroll",this.handleScroll)
+    // }
 }
 </script>
 
@@ -65,6 +64,7 @@ export default {
         color :#fff
 
 .header-fixed
+    z-index:99
     position :fixed
     top:0
     left :0

@@ -74,10 +74,11 @@ export default {
     position :absolute
     bottom :0
     right :0.3rem
-    top:4rem
+    top:4rem 
     width :.8rem
     .item
         line-height :1.2rem
         text-align:center
+        font-family : Apple Braille
         color:#00bcd4
 </style>

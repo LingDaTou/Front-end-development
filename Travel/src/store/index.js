@@ -7,11 +7,11 @@ import Vuex from "vuex"
      state:{
          city:"南京"
      },
-     actions:{
-         changeCity (ctx,city) {
-             ctx.commit("changeCity",city)
-         }
-     },
+    //  actions:{
+    //      changeCity (ctx,city) {
+    //          ctx.commit("changeCity",city)
+    //      }
+    //  },
      mutations:{
          changeCity (state,city) {
             state.city=city

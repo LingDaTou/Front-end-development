@@ -1,17 +1,16 @@
 <template>
     <div>
         <div class="banner" @click="handleBannerClick">
-            <img src="https://img1.qunarzz.com/sight/p0/1805/9b/9b3cbcf2624bf8cea3.img.jpg_600x330_23987222.jpg"
-            class="banner-img"
+            <img :src="bannerImg" class="banner-img"
             >
             <div class="bannner-info">
-                <div class="banner-title">弘阳未来世界主题乐园</div>
+                <div class="banner-title">{{sightName}}</div>
                 <div class="banner-number">
                     <span class="iconfont banner-icon">&#xe674;</span>39
                 </div>
             </div>
         </div>
-        <common-gallary :imgs="imgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+        <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
     </div>
 </template>
 
@@ -22,11 +21,16 @@ import CommonGallary from 'common/gallary/Gallary'
 
 export default {
     name:"DetailBanner",
+    props:{
+        sightName:String,
+        bannerImg:String,
+        gallaryImgs:Array
+    },
     data() {
         return {
-            imgs:["http://img1.qunarzz.com/sight/p0/1805/87/874da7d4673db500a3.img.jpg_r_800x800_674c6354.jpg",
-                "http://img1.qunarzz.com/sight/p0/1805/a4/a49faaf0e6fa35b1a3.img.jpg_r_800x800_a2b0157c.jpg"
-                ],
+            // imgs:["http://img1.qunarzz.com/sight/p0/1805/87/874da7d4673db500a3.img.jpg_r_800x800_674c6354.jpg",
+            //     "http://img1.qunarzz.com/sight/p0/1805/a4/a49faaf0e6fa35b1a3.img.jpg_r_800x800_a2b0157c.jpg"
+            //     ],
             showGallary:false
         }
     },

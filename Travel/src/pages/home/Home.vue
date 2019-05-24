@@ -44,6 +44,7 @@ import axios from 'axios'
 					// this.city=res.data.city
 					this.swiperList=res.data.swiperList
 					this.iconList=res.data.iconList
+					console.log(res.data.iconList)
 					this.recommendList=res.data.recommendList
 					this.weekendList=res.data.weekendList
 				}

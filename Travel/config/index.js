@@ -17,6 +17,8 @@ module.exports = {
         pathRewrite:{
           '^/api':'/static/mock'
         }
+        //联调服务器，接本地localhost或者ip/域名地址
+        // target:"http://localhost:80"
       }
     },
 
@@ -51,7 +53,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/project',
 
     /**
      * Source Maps

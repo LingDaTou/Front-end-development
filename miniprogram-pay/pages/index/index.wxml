@@ -10,6 +10,7 @@
       </view>
     </view>
 </view>
+
 <view class='main-menu'>
   <view class='main'>
     <image src='images/扫一扫.png'></image>
@@ -28,6 +29,7 @@
     <text>卡包</text>
   </view>
 </view>
+
 <view class='iconList'>
   <view class='icons'>
     <image src='images/转账.png'></image>
@@ -78,7 +80,9 @@
     <text>更多</text>
   </view>
 </view>
+
 <view class='bg'>
+ <!-- 中间层 -->
 <view class='message'>
   <view class='msg-icon'>
     <image src='images/客服.png'></image>
@@ -91,6 +95,7 @@
     <image src='images/箭头.png'></image>
   </view>
 </view>
+<!-- 惠支付 -->
 <view class='cheap-pay'>
   <text>惠支付</text>
   <view class='payList'>
@@ -104,6 +109,7 @@
     </view>
   </view>
 </view>
+<!-- 生活服务 -->
 <view class='cheap-pay'>
   <text>生活服务</text>
   <view class='payList'>

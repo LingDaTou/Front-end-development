@@ -83,12 +83,13 @@
 }
 .bg{
   background: rgb(241, 241, 241);
+  padding-top: 20rpx;
 }
 .message{
-  padding-top: 20rpx;
   display: flex;
   justify-content: space-around;
   background:#fff;
+  padding: 20rpx;
 }
 .msg-info{
   display: flex;

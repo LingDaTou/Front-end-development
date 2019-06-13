@@ -21,6 +21,8 @@
   padding: 0 5rpx;
   font-size: 24rpx;
   color:#fff;
+  min-height: 60rpx;
+  height: 60rpx;
 }
 .placeholder-input{
   color:#fff;

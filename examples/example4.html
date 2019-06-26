@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KTV字幕效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width:900px;
+            margin: 100px auto;
+            line-height: 34px;
+            font-size: 30px;
+            border: 1px solid #000;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-color: red;
+            background-image: url("../imgs/test_bg.jpeg");
+            background-size: 900px 34px;
+            background-position: -890px 0;
+            background-repeat: no-repeat;
+            animation: sing 10s linear 0s infinite normal;
+        }
+        @keyframes sing {
+            from{background-position: -890px 0;}
+            to{background-position: 0 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        我曾经失落失望失掉所有方向 ，直到看见平凡才是唯一的答案
+    </div>
+</body>
+</html>

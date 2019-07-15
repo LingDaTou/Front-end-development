@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选、全部取消、反选</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 400px;
+            height: 400px;
+            margin: 100px auto;
+            box-shadow: 0 0 5px #000;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        h2{
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            line-height: 60px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            line-height: 30px;
+            border-bottom: 1px solid #ccc;
+        }
+        ul>li>input{
+            margin-right: 5px;
+        }
+        .btn{
+            text-align: center;
+            width: 100%;
+        }
+        button{
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>歌曲排行版</h2>
+        <ul>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+            <li><input type="checkbox">这是一首歌</li>
+        </ul>
+        <div class="btn">
+            <button class="allSelect">全选</button>
+            <button class="cancelSelect">取消全选</button>
+            <button class="reverseSelect">反选</button>
+        </div>
+    </div>
+
+    <script>
+        let inputItems=document.querySelectorAll("input");
+        let allSelect=document.querySelector(".allSelect");
+        let cancelSelect=document.querySelector(".cancelSelect");
+        let reverseSelect=document.querySelector(".reverseSelect");
+
+        allSelect.onclick=function () {
+            inputItems.forEach(function (item) {
+                item.checked=true;
+            })
+        };
+        cancelSelect.onclick=function () {
+            inputItems.forEach(function (item) {
+                item.checked=false;
+            })
+        };
+        reverseSelect.onclick=function () {
+            inputItems.forEach(function (item) {
+                item.checked=!item.checked;
+            })
+        }
+    </script>
+</body>
+</html>

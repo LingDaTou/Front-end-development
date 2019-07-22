@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            width: 670px;
+            position: relative;
+            margin: 100px auto;
+        }
+        div>img{
+            vertical-align: bottom;
+        }
+        p{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+        p>span{
+            font-size: 40px;
+            color:#fff;
+            display: inline-block;
+            width: 40px;
+            height: 60px;
+            background: rgba(6,6,6,0.3);
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="../images/ad1.jpg" alt="">
+    <p>
+        <span id="pre">&lt;</span>
+        <span id="next">&gt;</span>
+    </p>
+</div>
+
+<script>
+    let images=[
+        "images/ad1.jpg",
+        "images/ad2.jpg",
+        "images/ad3.jpg",
+        "images/ad4.jpg",
+        "images/ad5.jpg"
+    ];
+
+    let imgUrl=document.querySelector("div>img");
+    let preBtn=document.querySelector("#pre");
+    let nextBtn=document.querySelector("#next");
+    let maxIndex=images.length-1;
+    let currentIndex=0;
+    nextBtn.onclick=function(){
+        currentIndex++;
+        if(currentIndex > maxIndex){
+            currentIndex=0;
+        }
+        imgUrl.src=images[currentIndex];
+    };
+    preBtn.onclick=function(){
+        currentIndex--;
+        if(currentIndex < 0){
+            currentIndex=maxIndex;
+        }
+        imgUrl.src=images[currentIndex];
+    };
+
+</script>
+</body>
+</html>

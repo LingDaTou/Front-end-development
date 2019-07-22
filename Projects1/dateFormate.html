@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>日期格式化</title>
+</head>
+<body>
+    <script>
+        function dateFormate(fmt, date) {
+            // 获取年
+            let yearPattern = new RegExp("y+");
+            let year = date.getFullYear()+"";
+            let yearResult = fmt.match(yearPattern);
+            if(yearResult){
+                yearResult = yearResult[0];
+                year = year.substr(4 - yearResult.length);
+                fmt = fmt.replace(yearResult,year);
+            }
+
+            // 获取其他
+            let obj={
+                "M+": date.getMonth()+1,
+                "d+": date.getDate(),
+                "h+": date.getHours(),
+                "m+": date.getMonth(),
+                "s+": date.getSeconds()
+            };
+            for(let key in obj){
+                let pattern = new RegExp(key);
+                let result = fmt.match(pattern);
+                if(result){
+                    result = result[0];
+                    // 获取一位
+                    if(result.length===1){
+                        fmt = fmt.replace(result,obj[key]);
+                    }
+                    else {
+                        // 获取两位
+                        let time = "00"+obj[key];
+                        time = time.substr((obj[key]+"").length);
+                        fmt = fmt.replace(result,time);
+                    }
+                }
+            }
+            return fmt;
+        }
+
+
+        let currentTime =new  Date();
+        console.log(dateFormate("yyyy-MM-dd hh:mm:ss", currentTime));;
+    </script>
+</body>
+</html>

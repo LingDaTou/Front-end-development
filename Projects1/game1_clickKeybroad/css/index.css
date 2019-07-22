@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background: url("./../images/bg.jpg") no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+}
+img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.ghost{
+    width: 200px;
+    height: 200px;
+    background: url("./../images/yy.png") no-repeat center center ;
+    background-size: 200px 200px;
+    position: absolute;
+    top: 800px;
+}
+.ghost span {
+    position: absolute;
+    left: 80px;
+    top: 150px;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px #3d4170;
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promiss_手撕</title>
+    <script>
+
+
+        const PENDING ="pending";
+        const FULLFILLED = "resolved";
+        const REJECTED = "rejected";
+        class myProcess{
+            constructor(handle){
+                this.status = "pending";
+                this.value = undefined;
+                this.reason =undefined;
+                // 保存数据
+                // this.resolvedCallBack = null;
+                // this.rejectedCallBack = null;
+                this.resolvedCallBacks = [];
+                this.rejectedCallBacks = [];
+                if(!this._isFunction(handle)){
+                    throw new Error("请输入一个函数");
+                }
+                handle(this._isResolved.bind(this),this._isRejected.bind(this));
+
+            }
+            // then方法
+            then(onResolved,onRejected){
+                return new myProcess((nextResolved,nextRejected) => {
+                    // 成功
+                    if(this._isFunction(onResolved)){
+                        if(this.status===FULLFILLED){
+                            try {
+                                let result = onResolved(this.value);
+                                if(result instanceof myProcess){
+                                    result.then(nextResolved,nextRejected);
+                                }
+                                else{
+                                    nextResolved(result);
+                                }
+                            }catch (e) {
+                                nextRejected(e);
+                            }
+                        }
+                    }
+                    // 失败
+                    // if(this._isFunction(onRejected)){
+                        if(this.status===REJECTED){
+                            try {
+                                let result = onRejected(this.reason);
+                                if(result instanceof myProcess){
+                                    result.then(nextResolved,nextRejected);
+                                }
+                                else if(result !== undefined){
+                                    nextResolved(result);
+                                }
+                                else{
+                                    nextRejected();
+                                }
+                            }catch (e) {
+                                nextRejected(e);
+                            }
+                        }
+                    // }
+                    // 看状态是否是默认状态，保存数据(setTimeout中使用resolve、reject)
+                    if(this.status===PENDING){
+                        if(this._isFunction(onResolved)){
+                            // this.resolvedCallBack = onResolved;
+                            this.resolvedCallBacks.push(() =>{
+                                try {
+                                    let result = onResolved(this.value);
+                                    if(result instanceof myProcess){
+                                        result.then(nextResolved,nextRejected);
+                                    }
+                                    else if(result !== undefined){
+                                        nextResolved(result);
+                                    }
+                                    else{
+                                        nextRejected();
+                                    }
+                                }
+                                catch (e) {
+                                    nextRejected(e);
+                                }
+                            })
+                        }
+                        // if(this._isFunction(onRejected)){
+                            // this.rejectedCallBack = onRejected;
+                            this.rejectedCallBacks.push(()=> {
+                                try {
+                                    let result = onRejected(this.reason);
+                                    if(result instanceof myProcess){
+                                        result.then(nextResolved,nextRejected);
+                                    }
+                                    else{
+                                        nextResolved(result);
+                                    }
+                                }catch (e) {
+                                    nextRejected(e);
+                                }
+                            });
+                        }
+                    // }
+                })
+            }
+            // catch方法
+            catch(onRejected){
+                return this.then(undefined,onRejected);
+            }
+            // 是否是成功操作
+            _isResolved(value){
+                if(this.status===PENDING){
+                    this.status = FULLFILLED;
+                    this.value = value;
+                    // this.resolvedCallBack(this.value);
+                    this.rejectedCallBacks.forEach(fn=>fn(this.value));
+                }
+            }
+            // 是否是失败操作
+            _isRejected(reason){
+                if(this.status===PENDING){
+                    this.status=REJECTED;
+                    this.reason = reason;
+                    // this.rejectedCallBack(this.reason);
+                    this.rejectedCallBacks.forEach(fn=>fn(this.reason));
+                }
+            }
+            // 判断是否是函数
+            _isFunction(func){
+                return func.constructor.name==="Function";
+            }
+            // all方法
+            static all(list){
+                let arr= [];
+                var count=0;
+                return new Promise(function (resolve, reject) {
+                    for(let i=0;i<list.length;i++){
+                        let p = list[i];
+                        p.then(function (data) {
+                            arr.push(data);
+                            count++;
+                            if(list.length===count){
+                                resolve(arr);
+                            }
+                        }).catch(function (err) {
+                            reject(err);
+                        })
+                    }
+                })
+            }
+            // race方法
+            static race(list){
+                return new myProcess(function (resolve, reject) {
+                    for(let i of list){
+                        let p = list[i];
+                        p.then(function (value) {
+                            resolve(value);
+                        }).catch(function (err) {
+                            reject(err);
+                        })
+                    }
+                })
+            }
+        }
+
+        // 测试
+        let promiss = new myProcess(function (resolve,reject) {
+            resolve("成功数据");
+            // reject("失败数据");
+
+            // setTimeout(function () {
+            //     resolve("setTimeout");
+            // },2000)
+        });
+
+        let newPro = new myProcess(function (resolve,reject) {
+            resolve("第二个promiss");
+        });
+
+        let p = promiss.then(function (data) {
+            console.log("成功1",data);
+            // return "成功22222";
+            return newPro;
+        },function (data) {
+            console.log("失败1",data);
+            return "失败333333";
+        });
+
+        p.then(function (data) {
+            console.log("成功的",data);
+        },function (data) {
+            console.log("失败的",data);
+        })
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

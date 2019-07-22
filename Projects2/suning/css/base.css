@@ -1,0 +1,25 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix{
+    /*兼容IE6*/
+    *zoom:1;
+}
+.color-f60{
+    color: #f60 !important;
+}
+.div-in{
+    width: 1190px;
+    height: 100%;
+    margin: 0 auto;
+}

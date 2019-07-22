@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fetch</title>
+    <script>
+        // get请求
+        // fetch("http://127.0.0.1/JSONP/fetch/fetch.php?teacher=ling&age=20",{
+        //     method:"get"
+        // }).then(function (msg) {
+        //     return msg.text();
+        // }).then(function (data) {
+        //     console.log(JSON.parse(data));
+        // }).catch(function (e) {
+        //     console.log(e);
+        // });
+
+        // post请求
+        fetch("http://127.0.0.1/JSONP/fetch/fetch.php",{
+            method:"post",
+            body:JSON.stringify({teacher:"liu",age:20})
+        }).then(function (msg) {
+            console.log(msg.json());
+        }).then(function (data) {
+            console.log(data);
+        }).catch(function (e) {
+            console.log(e);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

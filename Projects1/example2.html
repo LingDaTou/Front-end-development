@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳动的心</title>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            box-sizing: border-box;
+            margin: 100px auto;
+            position: relative;
+            animation: move 1s linear 0s infinite;
+        }
+        @keyframes move {
+            20%{transform: scale(1)}
+            40%{transform: scale(1.1)}
+            60%{transform: scale(1.2)}
+            80%{transform: scale(1.1)}
+            100%{transform: scale(1)}
+        }
+        .left{
+            width: 250px;
+            height: 250px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            box-shadow: -5px -5px 10px 10px red;
+        }
+        .right{
+            width: 250px;
+            height: 250px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            box-shadow: 5px -5px 10px 10px red;
+        }
+        .bottom{
+            width: 240px;
+            height: 240px;
+            background: red;
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            box-sizing: border-box;
+            transform: translateX(-50%) rotateZ(45deg);
+            box-shadow: 5px 5px 10px 10px red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 670px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+        }
+        ul>li{
+            width: 100%;
+        }
+        p{
+            position: absolute;
+            color: #fff;
+            font-size: 25px;
+            width: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            justify-content: space-between;
+        }
+        p>span{
+            display: inline-block;
+            height: 50px;
+            line-height: 50px;
+            width: 20px;
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+        }
+    </style>
+    <script src="js/imageAnimation.js"></script>
+</head>
+<body>
+        <div class="box">
+            <ul>
+                <li><img src="images/ad1.jpg" alt=""></li>
+                <li><img src="images/ad2.jpg" alt=""></li>
+                <li><img src="images/ad3.jpg" alt=""></li>
+                <li><img src="images/ad1.jpg" alt=""></li>
+            </ul>
+            <p>
+                <span class="left">&lt;</span>
+                <span class="right">&gt;</span>
+            </p>
+        </div>
+    <script>
+        let oDiv = document.querySelector(".box");
+        let leftBtn = document.querySelector(".left");
+        let rightBtn = document.querySelector(".right");
+        let oItems = document.querySelectorAll("li");
+        let oItemWidth = parseInt(getComputedStyle(oItems[0]).width);
+        let oUl = document.querySelector("ul");
+        let currentIndex = 0;
+        let timerId= null;
+
+        rightBtn.onclick = function () {
+            currentIndex++;
+            if(currentIndex > oItems.length-1){
+                currentIndex = 0;
+                oUl.style.marginLeft = -currentIndex * oItemWidth+"px";
+                currentIndex++;
+            }
+            easeAnimation(oUl,{marginLeft:-currentIndex * oItemWidth});
+
+        };
+        leftBtn.onclick=function () {
+            currentIndex--;
+            if(currentIndex < 0){
+                currentIndex = oItems.length-1;
+                oUl.style.marginLeft =-currentIndex * oItemWidth +"px";
+                currentIndex--;
+            }
+            easeAnimation(oUl,{marginLeft:-currentIndex * oItemWidth});
+
+        };
+
+        // 无限轮播
+        timerId = setInterval(function () {
+            rightBtn.onclick();
+        },3000);
+
+        oDiv.onmouseenter =function () {
+            clearInterval(timerId);
+        };
+        oDiv.onmouseleave=function () {
+            timerId = setInterval(function () {
+                rightBtn.onclick();
+            },3000);
+        }
+
+        // function linearAnimation(ele, distance) {
+        //     clearInterval(timer);
+        //     timer = setInterval(function () {
+        //         let begin = parseInt(ele.style.marginLeft) || 0;
+        //
+        //         let step = distance-begin > 0 ? 13 :-13;
+        //         begin += step;
+        //         if(Math.abs(distance - begin) < Math.abs(step)){
+        //             begin = distance;
+        //             clearInterval(timer);
+        //         }
+        //         ele.style.marginLeft = begin + "px";
+        //     },20)
+        // }
+        // function easeAnimation(ele, distance) {
+        //     clearInterval(timer);
+        //     timer = setInterval(function () {
+        //         let begin = parseInt(ele.style.marginLeft) || 0;
+        //
+        //         let step = (distance - begin) * 0.3;
+        //         begin += step;
+        //         if(Math.abs(Math.floor(step)) <= 1){
+        //             begin = distance;
+        //             clearInterval(timer);
+        //         }
+        //         ele.style.marginLeft = begin + "px";
+        //     },100)
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/SnackMap.js"></script>
+    <script src="js/SnackFood.js"></script>
+    <script src="js/Snack.js"></script>
+</head>
+<body>
+    <!--<div class="map"></div>-->
+    <script>
+        let snackMap=new SnackMap();
+        let snackFood=new SnackFood(100,100,"images/body.png",snackMap);
+        snackFood.render(snackMap);
+        let obj={
+            width:100,
+            height:100,
+            headerImg:"images/head.png",
+            bodyImg:"images/body.png",
+            snackMap:snackMap
+        };
+        let snack=new Snack(obj);
+        snack.render();
+        snack.update(snackFood)
+    </script>
+</body>
+</html>

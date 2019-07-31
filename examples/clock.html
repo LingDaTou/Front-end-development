@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟效果</title>
+    <style>
+        .click{
+            margin: 0 auto;
+            width: 300px;
+            height: 600px;
+            background: url("images/clock.png") no-repeat;
+            position: relative;
+        }
+        .click>img{
+            position: absolute;
+            top: 260px;
+            left: 50%;
+            transform: translate(-50%) ;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="click">
+        <img src="images/hour.png" alt="" class="hours">
+        <img src="images/minute.png" alt="" class="minutes">
+        <img src="images/second.png" alt="" class="seconds">
+    </div>
+    <script>
+        let oHours=document.querySelector(".hours");
+        let oMinutes=document.querySelector(".minutes");
+        let oSeconds=document.querySelector('.seconds');
+
+        setTime();
+        setInterval(function () {
+            setTime();
+        },1000);
+
+        function setTime() {
+            let date=new Date();
+            oHours.style.transform= `rotate(${date.getHours() * 30}deg)`;
+            oMinutes.style.transform= `rotate(${date.getMonth() * 6}deg)`;
+            oSeconds.style.transform= `rotate(${date.getSeconds() * 6}deg)`;
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css超链接</title>
+    <style>
+        /*a:link{color:red;background-color: antiquewhite}*/
+        /*a:visited{color: aquamarine}*/
+        /*a:hover{color: khaki;text-decoration: line-through;background-color: brown}*/
+        /*a:active{color: chartreuse}*/
+
+        /*a.alink:link{background-color: brown;text-decoration: none}*/
+        /*a.alink:visited{text-decoration: none}*/
+        /*a.alink:hover{font-size: large;text-decoration: none}*/
+        /*a.alink:active{color: chartreuse;font-style: italic;text-decoration: underline}*/
+
+        /*例子1*/
+        a.formlink:link,a.formlink:visited{
+            display: block;
+            background-color:cornflowerblue;
+            width: 120px;
+            text-decoration: none;
+            text-align: center;
+            color: aliceblue;
+        }
+        a.formlink:hover,a.formlink:active{
+            background-color: cadetblue;
+            color: antiquewhite;
+        }
+        /*例子2*/
+        .link_frame{
+            display: block;
+            background-color: dodgerblue;
+            text-decoration: none;
+            color:white;
+            width: 60px;
+            padding: 4px;
+        }
+        .link_frame:hover{
+            background-color: gray;
+        }
+
+    </style>
+</head>
+<body>
+    <a href="" >链接</a>
+    <a href="" class="alink">超链接</a>
+    <a href="" class="formlink">这是一个链接框</a><br>
+    <a href="" class="link_frame">链接框</a>
+</body>
+</html>

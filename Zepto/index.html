@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <script src="zepto.js"></script>
+    <script src="fx.js"></script>
+    <script src="touch.js"></script>
+    <script src="selector.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+        div{
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        div>ul{
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            width: 500%;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        div>ul>li{
+            flex: 1;
+        }
+        div>ul>li>img{
+            width: 100%;
+        }
+        div>p{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+        }
+        p>span{
+            display: inline-block;
+            width: 30px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            line-height: 50px;
+            background: rgba(0,0,0,0.3);
+            pointer-events: auto;
+        }
+        ol{
+            list-style: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            display: flex;
+        }
+        ol>li{
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
+        .active{
+            background: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img3.jpg" alt=""></li>
+            <li><img src="images/img4.jpg" alt=""></li>
+            <li><img src="images/img1.jpg" alt=""></li>
+        </ul>
+        <p>
+            <span class="leftBtn">&lt;</span>
+            <span class="rightBtn">&gt;</span>
+        </p>
+        <ol>
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </div>
+    <script>
+        ;(function($){
+            $.extend($.fn, {
+                isAnimation: function(){
+                    let time = $("ul").css("transition-duration");
+                    time = parseFloat(time);
+                    return time!=0;
+                }
+            })
+        })(Zepto)
+    </script>
+    <script>
+        let timer = null;
+
+        var itemWidth = $("ul>li").width();
+        var currentIndex = 0;
+        var maxIndex = $("ul>li").length -1;
+        $(".rightBtn").click(function () {
+            clearInterval(timer);
+            if($(this).isAnimation()) return;
+            currentIndex++;
+            if(currentIndex >maxIndex){
+                $("ul").css({left: 0+"px"});
+                currentIndex=1;
+            }
+            $('ul').animate({left : -currentIndex *itemWidth +"px"},500,function () {
+                autoPlay();
+            });
+            let index = currentIndex===4? 0: currentIndex;
+            $("ol>li").eq(index).addClass("active").siblings().removeClass();
+        });
+
+        $(".leftBtn").click(function () {
+            clearInterval(timer);
+            if($(this).isAnimation()) return;
+            currentIndex--;
+            if(currentIndex < 0){
+                $("ul").css({left: -maxIndex *itemWidth+"px"});
+                currentIndex = maxIndex-1;
+            }
+            $("ul").animate({left: -currentIndex *itemWidth+"px"},500,function () {
+                autoPlay();
+            });
+            $("ol>li").eq(currentIndex).addClass("active").siblings().removeClass();
+        });
+
+        autoPlay();
+        function autoPlay() {
+            timer = setInterval(function () {
+                $(".rightBtn").click();
+            },2000)
+        }
+        $("ul").get(0).ontouchstart = function () {
+            clearInterval(timer);
+        };
+        $("ul").get(0).ontouchend = function () {
+            autoPlay();
+        }
+        $("ul").swipeLeft = function () {
+            $(".leftBtn").click();
+        };
+        $("ul").swipeRight = function () {
+            $(".rightBtn").click();
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 动画</title>
+    <style>
+        @-webkit-keyframes mykeyframes {
+            from{background-color: yellow}
+            to{background-color: blue}
+        }
+        @keyframes mykeyframes1 {
+            from{background-color: #4CAF50;
+            }
+            to{
+                background-color: yellow;
+            }
+        }
+        @-webkit-keyframes mykeyframes2{
+            0% {background-color: red;left: 0px;top: 0px}
+            25% {background-color: yellow;left: 200px;top:0px}
+            50% {background-color: blue;left: 200px;top: 200px}
+            75% {background-color: pink;left: 0px;top:200px}
+            100% {background-color: green;left: 0px;top: 0px}
+        }
+        .div1{
+            position: relative;
+            width: 120px;
+            height: 120px;
+            animation: mykeyframes2 5s infinite alternate;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">这是有颜色变换的动画</div>
+</body>
+</html>

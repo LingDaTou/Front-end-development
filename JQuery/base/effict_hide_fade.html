@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 效果</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        .div1{
+            width: 200px;
+            height: 120px;
+            background-color: cadetblue;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        $(document).ready(function () {
+            // 隐藏和显示
+            $('.b1').click(function () {
+                $('.p1').hide(1000);
+            });
+            $('.b2').click(function () {
+                $('.p1').show(500);
+            });
+            // 使用回调函数
+            $('.b3').click(function () {
+                $('.div1').hide(1000,'linear',function () {
+                    alert('hide方法已完成')
+                })
+            });
+            // toggle()方法
+            $('.b4').click(function () {
+                $('.p2').toggle(2000);
+            });
+            // fadeIn:淡入
+            $('.b5').dblclick(function () {
+                $('.div2').fadeIn();
+                $('.div3').fadeIn(1000);
+                $('.div4').fadeIn('fast');
+            });
+            // 淡出
+            $('.b6').click(function () {
+                $('.div5').fadeOut('slow');
+                $('.div6').fadeOut(500);
+                $('.div7').fadeOut();
+            })
+            // 淡入+淡出：fadetoggle（）
+            $('.button1').click(function () {
+                $('.div8').fadeToggle(500);
+            })
+            // 透明度
+            $('.button2').click(function () {
+                $('.div9').fadeTo('fast',0.5)
+            })
+        });
+
+    </script>
+    <p class="p1">这是第一段话</p>
+    <p class="p1">这是第二段话</p>
+    <button class="b1">隐藏</button>
+    <button class="b2">显示</button>
+    <hr>
+    <button class="b3">点击</button>
+    <div class="div1">使用了回调函数</div>
+    <hr>
+    <button class="b4">显示/隐藏</button>
+    <p class="p2">显示或隐藏方法</p>
+    <hr>
+    <button class="b5">淡入(双击)</button>
+    <div class="div2" style="width: 120px;height: 120px;background-color: #cae8ca;margin: 20px;display: none"></div>
+    <div class="div3" style="width: 120px;height: 120px;background-color: blue;margin: 20px;display: none"></div>
+    <div class="div4" style="width: 120px;height: 120px;background-color: red;margin: 20px;display: none"></div>
+    <hr>
+    <button class="b6">淡出</button>
+    <div class="div5" style="width: 120px;height: 120px;background-color: #cae8ca;margin: 20px;"></div>
+    <div class="div6" style="width: 120px;height: 120px;background-color: gray;margin: 20px;"></div>
+    <div class="div7" style="width: 120px;height: 120px;background-color: pink;margin: 20px;"></div>
+    <hr>
+    <input type="button" class="button1" value="淡入/淡出">
+    <div class="div8" style="width: 100px;height: 80px;background-color: cornflowerblue"></div>
+    <hr>
+    <input type="button" class="button2" value="点击颜色透明">
+    <div class="div9" style="width: 100px;height: 90px;background-color: #cae8ca"></div>
+</body>
+</html>

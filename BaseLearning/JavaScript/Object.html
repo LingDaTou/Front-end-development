@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+</head>
+<body>
+
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <button id="b1">点击获取日期</button>
+    <p id="p3"></p>
+    <button id="b2">点击修改时间</button>
+    <p id="p4">时间将被修改</p>
+    <button id="b3">点击获取星期</button>
+    <p id="p5"></p>
+    <button id="b4">按下按钮</button>
+    <p id="p6"></p>
+    <button id="b5">提示</button>
+    <p id="p7"></p>
+    <script>
+        //创建直接的实例
+        var person=new Object();
+        person.name='mike';
+        person.age=10;
+        document.getElementById('p1').innerHTML=person.name;
+        //使用对象构造器
+        function school(stu, tea, num) {
+            this.studentname=stu;
+            this.teachername=tea;
+            this.number=num;
+        }
+        var mySchool=new school('nancy','jerry',10);
+        document.getElementById('p2').innerHTML=mySchool.teachername;
+        // date对象
+        // getFullYear:获得年份
+        document.getElementById('b1').addEventListener('click',gettime);
+        function gettime() {
+            var time=new Date();
+            var content=document.getElementById('p3');
+            content.innerHTML=time.getFullYear();
+        }
+        // setFullYear：设置时间，0-11月
+        document.getElementById('b2').addEventListener('click',function () {
+            var time=new Date();
+            time.setFullYear(2019,1,10);
+            var x =document.getElementById('p4');
+            x.innerHTML = time;
+        });
+        // getDay:获得星期（数字形式）
+        document.getElementById('b3').addEventListener('click',function () {
+            var time=new Date();
+            var x=document.getElementById('p5');
+            x.innerHTML=time.getDay();
+        });
+        //数组
+        var myArray=new Array();
+        myArray[0]=1;
+        myArray[1]=2;
+        for(var i=0;i<myArray.length;i++)
+        {
+            document.write(myArray[i]+'<br/>');
+        }
+
+        var list1=[1,2,3];
+        var list2=[1,2,3];
+        var combinelist=list1.concat(list2)
+        document.write(combinelist)
+
+        var list3=['mike','jerry','jkp'];
+        list3.splice(0,1,'nancy','ling');
+        document.write(list3)
+
+    </script>
+</body>
+</html>

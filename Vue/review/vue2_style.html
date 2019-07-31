@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>style / class</title>
+    <script src="vue.js"></script>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div :style="[styleObj,styleObj2]">hello</div>
+        <button @click="handleClick">点击</button>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                styleObj:{
+                    color: "pink"
+                },
+                styleObj2:{
+                    fontSize : '30px'
+                }
+            },
+            methods:{
+                handleClick(){
+                    this.styleObj.color = this.styleObj.color=="pink" ? "red": "pink";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

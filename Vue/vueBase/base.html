@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue基础</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <p id="p1">{{message}}</p>
+    <hr>
+    <div id="d1">
+        <p>name:{{name}}</p>
+        <p>age:{{age}}</p>
+        <p>details:{{details()}}</p>
+    </div>
+    <hr>
+    <div id="d2">
+        <h1>{{name1}}</h1>
+        <h1>{{sex}}</h1>
+        <h1>{{details2()}}</h1>
+    </div>
+    <hr>
+    <div id="d3">
+        <div v-html="mymessage"></div>
+    </div>
+    <hr>
+    <input type="text" value="name">
+    <script>
+        new Vue({
+            el:"#p1",
+            data:{
+                message:"hello Vue.js"
+            }
+        });
+        // 方法一
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                name:"mike",
+                age:20
+            },
+            methods:{
+                details:function () {
+                    return this.name+" "+"vue基础"
+                }
+            }
+        });
+        // 方法二
+        obj={
+            name1:"nancy",
+            sex:"female"
+        };
+        var vm1=new Vue({
+            el:"#d2",
+            data:obj,
+            methods: {
+                details2: function () {
+                    return this.name1 + " " + "vue基础教程方法二"
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

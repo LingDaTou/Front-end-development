@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件语句</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--v-if、v-else-if、v-else -->
+    <div id="d1">
+        <p v-if="flag=='A'">This is A</p>
+        <p v-else-if="flag=='B'">This is B</p>
+        <p v-else>Nothing</p>
+    </div>
+    <div id="show" v-show="ok">
+        show my project
+    </div>
+    <script>
+        var vm1=new Vue({
+            el:"#d1",
+            data:{
+                flag:"B"
+            }
+        });
+         var vm2=new Vue({
+             el:"#show",
+             data:{
+                ok:true
+
+             }
+         })
+    </script>
+</body>
+</html>

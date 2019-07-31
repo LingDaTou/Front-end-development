@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas基础</title>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+    <script>
+        let oCanvas = document.querySelector("canvas");
+
+        oCanvas.style.background ="red";
+        let oCtx = oCanvas.getContext("2d");
+        // oCtx.moveTo(50,50);
+        // oCtx.lineTo(100,50);
+        // oCtx.lineWidth = 20;
+        // oCtx.strokeStyle = 'pink';
+        // oCtx.stroke();
+        //
+        // oCtx.beginPath();
+        // oCtx.moveTo(50,100);
+        // oCtx.lineTo(100,100);
+        // oCtx.lineWidth = 10;
+        // oCtx.strokeStyle = 'blue';
+        // oCtx.stroke();
+
+        // 三角形
+        oCtx.moveTo(50,50);
+        oCtx.lineTo(200,50);
+        oCtx.lineTo(200,200);
+        oCtx.closePath();
+        oCtx.lineWidth = 10;
+        oCtx.lineJoin ="round";
+        oCtx.strokeStyle = "blue";
+        oCtx.stroke();
+    </script>
+</body>
+</html>

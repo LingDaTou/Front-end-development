@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>橱窗展示</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 800px;
+            height: 200px;
+            margin: 100px auto;
+            border: 1px solid #666;
+            position: relative;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+            left: 0;
+        }
+        ul>li{
+            float: left;
+        }
+        img{
+
+        }
+        .processBox{
+            width: 100%;
+            height:20px;
+            background: #ccc;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .process{
+            width: 100px;
+            height: 100%;
+            background: plum;
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img3.jpg" alt=""></li>
+            <li><img src="images/img4.jpg" alt=""></li>
+            <li><img src="images/img5.jpg" alt=""></li>
+            <li><img src="images/img6.jpg" alt=""></li>
+            <li><img src="images/img7.jpg" alt=""></li>
+            <li><img src="images/img8.jpg" alt=""></li>
+            <li><img src="images/img9.jpg" alt=""></li>
+            <li><img src="images/img10.jpg" alt=""></li>
+        </ul>
+        <div class="processBox">
+            <div class="process"></div>
+        </div>
+    </div>
+
+<script>
+        let oDiv = document.querySelector(".box");
+        let oUl = document.querySelector("ul");
+        let oItems =document.querySelectorAll("li");
+        let oProcess = document.querySelector(".process");
+        let oProcessBox  = document.querySelector(".processBox");
+        let DivWidth= oDiv.offsetWidth;
+        let processBoxWidth = oProcessBox.offsetWidth;
+        // 修改ul宽
+        oUl.style.width = oItems[0].offsetWidth * oItems.length + "px";
+        let oUlWidth =oUl.offsetWidth;
+        // 设置滚动条的宽
+        oProcess.style.width = DivWidth / oUlWidth * processBoxWidth +"px";
+        let processWidth = oProcess.offsetWidth;
+        // 滚动条最大移动距离
+        let maxOffsetX = processBoxWidth - processWidth;
+        // 图片最大滚动范围
+        let maxImgX = DivWidth - oUlWidth;
+        // 注册事件
+        oProcess.onmousedown =function (event) {
+            event = event || window.event;
+            let begin = parseInt(this.style.left) || 0;
+            let mouseDownX = event.pageX - oDiv.offsetLeft;
+            oProcess.onmousemove =function (event) {
+                let mouseDownX2 = event.pageX - oDiv.offsetLeft;
+                let mouseX= mouseDownX2 - mouseDownX +begin;
+
+                // 滚动条检测边界
+                mouseX = mouseX < 0 ? 0 :mouseX;
+                mouseX =mouseX >maxOffsetX ? maxOffsetX : mouseX;
+                oProcess.style.left = mouseX+"px";
+
+                // 图片移动
+                let imgOffsetX = mouseX / maxOffsetX * maxImgX;
+                oUl.style.left = imgOffsetX + "px";
+            }
+        };
+
+        document.onmouseup =function () {
+            oProcess.onmousemove = null;
+        }
+</script>
+</body>
+</html>

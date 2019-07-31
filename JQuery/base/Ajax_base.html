@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQery Ajax</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            //load
+            $('.button1').click(function () {
+                $('.div1').load('ajax/ajax_test.txt #p1')
+            });
+            $('.b1').click(function () {
+                $('.div2').load('ajax/ajax_test.txt',function (responseTxt, statusTxt, xhr) {
+                    // if(statusTxt=='success'){
+                    //     alert('页面加载成功')
+                    // }
+                    // else {
+                    //     alert('加载失败')
+                    // }
+                    alert(responseTxt)
+                });
+            });
+            //get
+            $('.b2').click(function () {
+                $.get('ajax/ajax_test.txt',function (data,status) {
+                    alert('数据:'+data+' ; '+"状态:"+status)
+                })
+            });
+            //post
+            $('.b3').click(function () {
+                $.post('ajax/post_test.php',{
+                    name:'liuling',
+                    url:'www.hjsof.com'
+                },function (data,status) {
+                    alert('数据：\n'+data+'状态:'+status)
+                })
+            });
+            //serialize
+            $('.b4').click(function () {
+                $('.p1').html($('.form1').serialize());
+            });
+            //serializeArray
+            $('.b5').click(function () {
+               var x =$('.form2').serializeArray();
+               $.each(x,function (index,elements) {
+                   $('.p2').html(elements.name+':'+elements.value+' ')
+               })
+            })
+        })
+    </script>
+
+    <div class="div1">
+        <h2>使用ajax</h2>
+    </div>
+    <button class="button1">按下</button>
+    <hr>
+    <div class="div2" style="height: 200px;width: 200px;border: 1px black solid">
+        测试加载方法
+    </div>
+     <button class="b1">点击加载</button>
+    <hr>
+    <button class="b2">get获得数据</button>
+    <hr>
+    <button class="b3">post提交数据后并获取</button>
+    <hr>
+    <form action="" class="form1">
+        <input type="text" name="firstname" value="ling"><br>
+        <input type="text" name="lastname" value="liu">
+    </form>
+    <button class="b4">序列化表单</button>
+    <span>序列化表单后的值为：</span>
+    <p class="p1"></p>
+    <hr>
+    <form action="" class="form2">
+        <input type="text" name="Firstname" value="hello"><br>
+        <input type="text" name="Lastname" value="world">
+    </form>
+    <button class="b5">序列化表单</button>
+    <span>序列化表单后的值为：</span>
+    <p class="p2"></p>
+
+</body>
+</html>

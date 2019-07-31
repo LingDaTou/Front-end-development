@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 弹性盒子</title>
+    <style>
+        .container{
+            /*direction: rtl;*/
+            flex-direction: row-reverse;
+            display: flex;
+            width: 400px;
+            height: 190px;
+            background-color: #4CAF50;
+        }
+        .flex-item{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /*margin: 20px;*/
+        }
+        .container1{
+            justify-content: space-around;
+            display: flex;
+            width: 400px;
+            height: 190px;
+            background-color: #4CAF50;
+        }
+        .flex-item1{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 10px;
+        }
+        .container2{
+            align-items: flex-start;
+            display: flex;
+            width: 400px;
+            height: 190px;
+            background-color: #4CAF50;
+        }
+        .flex-item2{
+            width: 100px;
+            /*height: 100px;*/
+            background-color: blue;
+            /*margin: 10px;*/
+        }
+        .container3{
+            flex-wrap: wrap;
+            display: flex;
+            width: 410px;
+            height: 210px;
+            background-color: #4CAF50;
+        }
+        .flex-item3{
+            width: 200px;
+            height: 100px;
+            background-color: blue;
+        }
+        .first{
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <!--仅display:flex-->
+    <div class="container">
+        <div class="flex-item">flex item1</div>
+        <div class="flex-item">flex item2</div>
+        <div class="flex-item">flex item3</div>
+    </div>
+    <hr>
+    <!--justify-content-->
+    <div class="container1">
+        <div class="flex-item1">flex item1</div>
+        <div class="flex-item1">flex item2</div>
+        <div class="flex-item1">flex item3</div>
+    </div>
+    <hr>
+    <!--align-items-->
+    <div class="container2">
+        <div class="flex-item2">flex item1</div>
+        <div class="flex-item2">flex item2</div>
+        <div class="flex-item2">flex item3</div>
+    </div>
+    <hr>
+    <!--flex-wrap-->
+    <div class="container3">
+        <div class="flex-item3">flex item1</div>
+        <div class="flex-item3 first">flex item2</div>
+        <div class="flex-item3">flex item3</div>
+    </div>
+</body>
+</html>

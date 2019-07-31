@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式绑定</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <style>
+        .active{
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+        }
+        .active1{
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+        }
+        .backgroundColor1{
+            background-color: chocolate;
+        }
+        .base{
+            width: 100px;
+            height: 100px;
+            background-color: #cae8ca;
+        }
+        .active2{
+            background: gold;
+        }
+        .backgroundColor2{
+            background: dimgray;
+        }
+        .active3{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .error1{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <div v-bind:class="{active:isActive}"></div>
+    </div>
+    <hr>
+    <div id="d2">
+        <div v-bind:class="classObject">
+        </div>
+    </div>
+    <hr>
+    <div id="d3">
+        <div v-bind:class="classObject1"></div>
+    </div>
+    <hr>
+    <div id="d4">
+        <div v-bind:class="[activeClass,errorClass]"></div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                isActive:true
+            }
+        });
+        // 利用对象classObject
+        var vm1=new Vue({
+           el:"#d2",
+           data: {
+               classObject:{
+                   active1:true,
+                   backgroundColor1:true
+               }
+           }
+        });
+        //绑定返回对象的计算属性
+        var vm3=new Vue({
+            el:"#d3",
+            data:{
+                isActive:true,
+                error:{
+                    value:true,
+                    type:'fatal'
+                }
+            },
+            computed:{
+                classObject1: function () {
+                    return {
+                        base:true,
+                        active2:this.isActive && this.error.value,
+                        backgroundColor2:this.error.value && this.error.type==='fatal'
+                    }
+                }
+            }
+        });
+        var vm4=new Vue({
+            el:"#d4",
+            data:{
+                activeClass:'active3',
+                errorClass:'error1',
+            }
+        })
+    </script>
+</body>
+</html>

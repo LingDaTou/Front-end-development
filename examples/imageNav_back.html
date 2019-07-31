@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>吸顶和返回顶部</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            vertical-align: bottom;
+        }
+        span{
+            /*display: inline-block;*/
+            width: 70px;
+            height: 70px;
+            color: #fff;
+            text-align: center;
+            line-height: 70px;
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            background: red;
+            display: none;
+        }
+    </style>
+    <script src="js/tools.js"></script>
+</head>
+<body>
+<img src="images/nba-top.jpg" alt="" class="top">
+<img src="images/nba-nav.jpg" alt="" class="nav">
+<img src="images/nba-body.jpg" alt="">
+<span>回到顶部</span>
+<script>
+    let oTop = document.querySelector(".nav");
+    let topH = document.querySelector(".top");
+    let distance = topH.offsetHeight;
+    let oSpan = document.querySelector("span");
+    let timer = null;
+    window.onscroll =function () {
+        let scrollTop = getPageScroll().y;
+        if(scrollTop >= distance){
+            oTop.style.position = "fixed";
+            oTop.style.top = "0px";
+            oTop.style.left = "0px"
+        }
+        else{
+            oTop.style.position = "";
+        }
+        if(scrollTop > 500){
+            oSpan.style.display = "block";
+        }
+        else{
+            oSpan.style.display = "none";
+        }
+    };
+
+    oSpan.onclick = function () {
+        timer=setInterval(function () {
+            clearInterval(timer);
+            let begin = getPageScroll().y;
+            let end = 0;
+            let step = (end - begin) * 0.3;
+            begin += step;
+            if(Math.abs(Math.floor(step)) <= 1){
+                window.scrollTo(0,0);
+                clearInterval(timer);
+                return;
+            }
+            window.scrollTo(0,begin);
+        },50)
+    }
+
+
+</script>
+</body>
+</html>

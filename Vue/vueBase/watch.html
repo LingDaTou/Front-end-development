@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监听</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!--对一个参数监听-->
+    <div id="d1">
+        <p>计数器:{{counter}}</p>
+       <button @click="counter++">点击</button>
+    </div>
+    <hr>
+    <!--对两个参数监听-->
+    <div id="d2">
+        <label for="in1">千米</label><input type="text" id="in1" v-model="kilometers">
+        <label for="in2">米</label><input type="text" id="in2" v-model="meters">
+        <p id="p2"></p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                counter:1
+            },
+        });
+        vm.$watch('counter',function (nval, oval) {
+            alert("计数器的变化:"+oval+"变成了："+nval)
+        });
+        var vm2=new Vue({
+            el:"#d2",
+            data: {
+                kilometers:0,
+                meters:0
+            },
+            watch:{
+                kilometers:function (val) {
+                    this.kilometers=val;
+                    this.meters=this.kilometers*1000
+                },
+                meters:function (val) {
+                    this.kilometers=val/1000;
+                    this.meters=val;
+                }
+            }
+        });
+        vm2.$watch('kilometers',function (newV, oldV) {
+            document.getElementById('p2').innerHTML='修改前：'+oldV+' '+"修改后："+newV
+        })
+    </script>
+</body>
+</html>

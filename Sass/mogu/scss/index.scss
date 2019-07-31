@@ -1,0 +1,194 @@
+/*工具类*/
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.clearfix::after{
+  /*设置添加的子元素的内容为空*/
+  content: "";
+  /*设置添加的子元素为块级元素*/
+  display: block;
+  /*设置添加的子元素的高度为0*/
+  height: 0;
+  /*设置添加的子元素看不见*/
+  visibility: hidden;
+  /*给添加的子元素设置clear: both;*/
+  clear: both;
+}
+.clearfix{
+  /*兼容IE6*/
+  *zoom:1;
+}
+/*全局配置*/
+body{
+  font: 12px/1.6 tahoma,arial,sans-serif;
+  color: #333;
+  background: #f7f7f7;
+}
+
+.nav{
+  width: 100%;
+  height: 100%;
+  .nav-in{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  .nav-top{
+    width: 100%;
+    height: 33px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    ul{
+      height: 100%;
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      li{
+        color: #999;
+        margin-right: 10px;
+        a{
+          text-decoration: none;
+          color: #ccc;
+          i{
+            font-size: 15px;
+            display: inline-block;
+            margin-right: 3px;
+            color: deeppink;
+          }
+        }
+        &:last-child{
+          i{
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+  .nav-bottom{
+    width: 100%;
+    height: 100px;
+    .nav-in{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .logo{
+        img{
+          vertical-align: bottom;
+        }
+      }
+      .menu{
+        margin-left: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i{
+          font-size: 30px;
+          vertical-align: bottom;
+        }
+      }
+      .search{
+        display: flex;
+        justify-content: flex-start;
+        input{
+          border: none;
+          outline: none;
+        }
+        input[type=text]{
+          width: 400px;
+          height: 50px;
+          padding-left: 20px;
+          box-sizing: border-box;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+        input[type=submit]{
+          width: 58px;
+          height: 48px;
+          background: url("./../images/search-btn.png") no-repeat;
+        }
+      }
+      .list{
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        li{
+          margin-right: 20px;
+          i{
+            font-size: 30px;
+          }
+        }
+      }
+      .login{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        img{
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+.nav2{
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: -100px;
+  transition: all 0.5s linear 0s;
+  .menu{
+    visibility: hidden;
+  }
+}
+
+.main{
+  background: #f7f7f7;
+  .main-in{
+    width: 1200px;
+    margin: 0 auto;
+    .item{
+      border-radius: 10px;
+      overflow: hidden;
+      width: 220px;
+      background: #fff;
+      .item-top{
+        position: relative;
+        img{
+          width: 100%;
+        }
+        .play{
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          img{
+            width: 30px;
+            height: 30px;
+          }
+        }
+        .title{
+          position: absolute;
+          left: 10px;
+          bottom: 10px;
+          color: #fff;
+          img{
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+      .item-bottom{
+        a{
+          color: #000;
+          img{
+            width: 15px;
+            vertical-align: bottom;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form表单</title>
+</head>
+<body>
+    <form action="test.html">
+        测试<input>
+        name:<input type="=text" value="name"><br>
+        password:<input type="password" value="password"><br>
+        单选按钮：<input type="radio">male <input type="radio">female<br>
+        复选框：<input type="checkbox">hobby <input type="checkbox" checked="checked">age（预选)）<br>
+        提交按钮：information:<input type="text"><input type="submit" value="确定"><br>
+        按钮：<button type="submit">button</button><br>
+        文件：<input type="file"><br/>
+        下拉列表:<select>
+                    <option value="flat">下拉1</option>
+                    <option value="flat2" selected>下拉2(预选)</option>
+                </select>
+    </form>
+    <textarea cols="20" rows="10">这是一个文本框</textarea>
+    <form>
+        <fieldset>
+            <legend>带边框的表单</legend>
+            文本<input type="text" ><br/>
+            单选按钮1:<input type="radio" size="20" checked="checked">age(预选)
+            单选按钮2:<input type="radio">score
+        </fieldset>
+    </form>
+
+    <form action="18260031809@163.com" method="post" enctype="text/plain">
+        <fieldset>
+            <legend>带边框的表单2（发送邮件）</legend>
+            用户名：<input type="text" size="10"><br/>
+            密码：<input type="password" size="20"><br/>
+            发送内容：<input type="text">
+            <input type="submit" size="50" value="发送">
+            <input type="reset" value="重置">
+        </fieldset>
+    </form>
+
+    <hr>
+    <a href="" title="连接">连接</a>
+</body>
+</html>

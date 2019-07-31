@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 视频</title>
+</head>
+<body>
+    <video width="320" height="240" id="v1">
+        <source src="video/movie.mp4" type="video/mp4">
+    </video>
+    <input type="button" value="播放/暂停" id="b1" onclick="playPause()">
+    <input type="button" value="缩小" id="b2" onclick="makeSmall()">
+
+    <script>
+        var x = document.getElementById('v1');
+        function playPause() {
+            if(x.paused){
+                x.play()
+            }
+            else{
+                x.pause()
+            }
+        }
+        function makeSmall() {
+            x.width=220;
+        }
+    </script>
+</body>
+</html>

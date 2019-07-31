@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background: #eeeeee;
+}
+body{
+    min-width: 320px;
+    max-width: 750px;
+    margin: 0 auto;
+    background: #fff;
+
+}
+/*头部开始*/
+.header{
+    background: rebeccapurple;
+}
+.header img{
+    width: 100%;
+    vertical-align: bottom;
+}
+/*主要部分：酒店*/
+.main{
+    color: #fff;
+}
+.section{
+    display: flex;
+    height: 100px;
+    margin:2px 4px;
+}
+.section>.col{
+    /*flex-grow: 1;*/
+    /*flex-shrink: 1;*/
+    /*flex-basis: 0%;*/
+    flex: 1;
+    border-left: 1px solid #fff ;
+    box-sizing: border-box;
+    background: #ed615c;
+    text-align: center;
+}
+.section>.col:first-child{
+    border-left: none;
+}
+.section>.col:last-child{
+    border-bottom: none;
+}
+.section>.para>p{
+    margin: 15px 0;
+}
+.section>.col:first-child>img{
+    width: 42px;
+    height: 46px;
+}
+.section>.col>div{
+    text-align: center;
+    line-height: 50px;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+}
+.section:nth-child(2)>.col{
+    background: #45a6f0;
+}
+.section:nth-child(3)>.col {
+    background: #8ab549;
+}
+.section:nth-child(4)>.col{
+    background: #f29d38;
+}
+.section:nth-child(4){
+    height: 50px;
+    line-height: 50px;
+}
+/*底部导航*/
+.nav{
+    background: #eeeeee;
+    padding: 10px 0;
+}
+.nav ul{
+    display: flex;
+    list-style: none;
+}
+.nav ul li{
+    height: 70px;
+    flex:1;
+    text-align: center;
+    background: #fff;
+}
+.nav ul li i{
+    margin-top: 10px;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+    background: url("../images/entrances.png") no-repeat -35px -12px;
+    background-size: 374px 130px;
+}
+.nav ul li p{
+    color:#333;
+    font-size: 12px;
+}
+/*指引区域*/
+.guide{
+    display: flex;
+    height: 80px;
+    background: #fff;
+}
+.guide>div{
+    flex: 1;
+    text-align: center;
+}
+.guide>div>i{
+    margin-top: 10px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    font-size: 24px;
+}
+.guide>div>p{
+    color: #666;
+    font-size: 12px;
+}
+/*底部*/
+.footer{
+    height: 50px;
+    line-height: 50px;
+    background: #eeeeee;
+}
+.footer>p{
+    float: left;
+    font-size: 12px;
+    margin-left: 10px;
+    color: #aaa;
+}
+.footer>p:last-child{
+    margin-left: 50px;
+}
+.footer>p>a{
+    text-decoration: none;
+    color:#333;
+}

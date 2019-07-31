@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理器</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <button v-on:click="great">点击</button>
+    </div>
+    <hr>
+    <div id="d2">
+        <button @click="myfunc1('hello world')">click</button>
+        <p id="p1"></p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                name:'hello vue.js'
+            },
+            methods:{
+              great:function (event) {
+                  alert(this.name);
+                  if(event){
+                      alert(event.target.tagName)
+                  }
+              }
+            }
+        });
+        //函数传递参数
+        var vm2=new Vue({
+            el:"#d2",
+            data:{
+
+            },
+            methods:{
+                myfunc1:function (args) {
+                 var x= document.getElementById('p1');
+                 x.innerHTML=args;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

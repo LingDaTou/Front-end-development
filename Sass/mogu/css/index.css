@@ -1,0 +1,195 @@
+@charset "UTF-8";
+/*工具类*/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix::after {
+    /*设置添加的子元素的内容为空*/
+    content: "";
+    /*设置添加的子元素为块级元素*/
+    display: block;
+    /*设置添加的子元素的高度为0*/
+    height: 0;
+    /*设置添加的子元素看不见*/
+    visibility: hidden;
+    /*给添加的子元素设置clear: both;*/
+    clear: both;
+}
+
+.clearfix {
+    /*兼容IE6*/
+    *zoom: 1;
+}
+
+/*全局配置*/
+body {
+    font: 12px/1.6 tahoma, arial, sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+.nav {
+    width: 100%;
+}
+.nav .nav-in {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+}
+.nav .nav-top {
+    width: 100%;
+    height: 33px;
+    border-top: 1px solid #f7f7f7;
+    border-bottom: 1px solid #f7f7f7;
+    box-sizing: border-box;
+}
+.nav .nav-top ul {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.nav .nav-top ul li {
+    color: #999;
+    margin-right: 10px;
+}
+.nav .nav-top ul li a {
+    text-decoration: none;
+    color: #ccc;
+}
+.nav .nav-top ul li a i {
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 3px;
+    color: deeppink;
+}
+.nav .nav-top ul li:last-child i {
+    color: #999;
+    font-size: 5px;
+}
+.nav .nav-bottom {
+    width: 100%;
+    height: 100px;
+}
+.nav .nav-bottom .nav-in {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav .nav-bottom .nav-in .logo img {
+    vertical-align: bottom;
+}
+.nav .nav-bottom .nav-in .menu {
+    margin-left: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav .nav-bottom .nav-in .menu i {
+    font-size: 30px;
+    vertical-align: bottom;
+}
+.nav .nav-bottom .nav-in .search {
+    display: flex;
+    justify-content: flex-start;
+}
+.nav .nav-bottom .nav-in .search input {
+    border: none;
+    outline: none;
+}
+.nav .nav-bottom .nav-in .search input[type=text] {
+    width: 400px;
+    height: 50px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #f7f7f7;
+}
+.nav .nav-bottom .nav-in .search input[type=submit] {
+    width: 58px;
+    height: 48px;
+    background: url("./../images/search-btn.png") no-repeat;
+}
+.nav .nav-bottom .nav-in .list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.nav .nav-bottom .nav-in .list li {
+    margin-right: 20px;
+}
+.nav .nav-bottom .nav-in .list li i {
+    font-size: 30px;
+}
+.nav .nav-bottom .nav-in .login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav .nav-bottom .nav-in .login img {
+    margin-right: 5px;
+}
+.nav2 {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: -100px;
+    transition: all 0.5s linear 0s;
+    background: #fff;
+}
+.nav2 .menu {
+    visibility: hidden;
+}
+
+.main{
+    background: #f7f7f7;
+}
+.main .main-in {
+    width: 1200px;
+    margin: 0 auto;
+}
+.main .main-in .item {
+    border-radius: 10px;
+    overflow: hidden;
+    width: 220px;
+    background: #FFFFFF;
+}
+.main .main-in .item .item-top {
+    position: relative;
+}
+.main .main-in .item .item-top img {
+    width: 100%;
+}
+.main .main-in .item .item-top .play {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.main .main-in .item .item-top .play img {
+    width: 30px;
+    height: 30px;
+}
+.main .main-in .item .item-top .title {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    color: #fff;
+}
+.main .main-in .item .item-top .title img {
+    width: 15px;
+    height: 15px;
+}
+.main .main-in .item .item-bottom a {
+    color: #000;
+}
+.main .main-in .item .item-bottom a img {
+    width: 20px;
+    vertical-align: bottom;
+}

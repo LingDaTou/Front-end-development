@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    overflow: hidden;
+}
+.box{
+    float: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    background: red;
+}
+.box>img{
+    width: 200px;
+    border: 10px solid #fff;
+    vertical-align: bottom;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todoList</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            margin-left: 100px;
+        }
+        input[type=text]{
+            outline: none;
+        }
+        ul{
+            list-style: none;
+            border: 1px solid #ccc;
+        }
+        li{
+            border-bottom: 1px solid #ccc;
+            position: relative;
+        }
+        li:last-child{
+            border: none;
+        }
+        span{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <ul>
+            <!--<li>测试<span>x</span></li>-->
+        </ul>
+        <div class="show">
+
+        </div>
+    </div>
+
+
+
+    <script>
+        window.onload= function () {
+
+
+            // let oLi = document.querySelector("li");
+            var oUl =document.querySelector("ul");
+            var oInput = document.querySelector("input");
+            oUl.style.width = getComputedStyle(oInput).width;
+
+
+            oInput.onkeyup =  function(e){
+                    let data = e.target.value;
+                    if(data.length > 0 && e.key==="Enter"){
+                        createNodes(data,this);
+                        this.value = "";
+                        removeNodes();
+                    }
+            };
+
+
+            function createNodes(data,node) {
+                let oli = document.createElement("li");
+                let oSpan = document.createElement("span");
+                oSpan.innerHTML= '&times;';
+                oli.innerHTML= data;
+                oli.style.width = getComputedStyle(node).width;
+                oli.appendChild(oSpan);
+                oUl.appendChild(oli);
+            }
+            function removeNodes() {
+                let oli = document.querySelectorAll("li");
+                let ospan = document.querySelectorAll('span');
+                for(let i=0 ;i<oli.length;i++){
+                    let item = oli[i];
+                    let itemSpan = ospan[i];
+                    itemSpan.onclick = function () {
+                        this.parentNode.parentNode.removeChild(item);
+                    }
+                }
+            }
+
+            searchitem();
+
+            function searchitem() {
+                oInput.addEventListener("keyup",function (e) {
+                    var oItems= document.querySelectorAll("li");
+                    let data = e.target.value;
+                    for(let i=0;i<oItems.length;i++){
+                        if(oItems[i].innerText.indexOf(data) ===-1){
+                            oItems[i].style.display = "none";
+                        }
+                        else{
+
+                            oItems[i].style.display = "block";
+                        }
+                    }
+                })
+
+            }
+
+        }
+    </script>
+</body>
+</html>

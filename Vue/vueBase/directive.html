@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <input v-focus>
+    </div>
+    <hr>
+    <div id="d2">
+        <input v-focus>
+    </div>
+    <hr>
+    <div id="d3">
+        <div v-mydirection="{color:'pink',txt:'hello vue.js'}"></div>
+    </div>
+    <script>
+        // 全局自定义
+        Vue.directive('focus',{
+            inserted:function (el) {
+                el.focus()
+            }
+        });
+        new Vue({
+            el:"#d1",
+        });
+        // 局部自定义
+        new Vue({
+            el:"#d2",
+            directives:{
+                inserted:function (el) {
+                    el.focus()
+                }
+            }
+        });
+        // 可接收所有js表达式
+        Vue.directive('mydirection',function (el, binding) {
+            el.innerHTML=binding.value.txt;
+            el.style.backgroundColor=binding.value.color;
+        });
+        new Vue({
+            el:"#d3"
+        })
+    </script>
+</body>
+</html>

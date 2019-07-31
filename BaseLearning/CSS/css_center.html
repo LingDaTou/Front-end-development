@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css垂直、水平对齐</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .d1{
+            border: 1px solid black;
+            width: 50%;
+            background-color: #cae8ca;
+            margin:auto;
+            text-align: center;
+        }
+        .container{
+            margin-top: 10px;
+            position: relative;
+            width: 100%;
+        }
+        .d2{
+            background-color: dimgray;
+            width: 200px;
+            position: absolute;
+            right: 0px;
+        }
+
+        .clearfix{
+            margin-top: 100px;
+            border: 1px solid black;
+            overflow: auto;
+        }
+        .img{
+            float: right;
+        }
+        .d3{
+            border: 1px solid blue;
+            margin-top: 100px;
+            padding: 30px 0;
+        }
+        .d4{
+            border: #4CAF50 solid 1px;
+            margin-top: 100px;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .d5{
+            float: right;
+        }
+
+        .d6{
+            border: 1px red solid;
+            text-align: center;
+            /*padding: 2px 0;*/
+        }
+        .d6 p{
+            border: 1px red solid;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="d1">
+        <p>这是div和div中文字的居中对齐</p>
+    </div>
+
+    <div class="container">
+        <div class="d2">
+            <p>利用position改变位置</p>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <img src="images/2.jpg" alt="yman2" height="100px" width="100px" class="img">
+        子元素大于父元素的高度，使用overflow
+    </div>
+
+    <div class="d3">
+        <p>使用padding垂直居中对齐</p>
+    </div>
+
+    <div class="d4">
+        <p>使用padding和text-align在水平垂直都居中</p>
+    </div>
+
+    <div class="d5">
+        改变位置
+    </div>
+
+    <div class="d6">
+        <p>文字呀</p>
+    </div>
+</body>
+</html>

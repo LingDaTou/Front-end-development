@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css下拉菜单</title>
+    <link rel="stylesheet" href="menu_down.css" type="text/css">
+    <style>
+        .d1{
+            background-color: gray;
+            position: relative;
+            display: inline-block;
+        }
+        .d2{
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            width:100%;
+            /*min-width: 160px;*/
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+        }
+        .d1:hover .d2{
+            display: block;
+            background-color: #cae8ca;
+        }
+
+        .dropdown{
+            position: relative;
+            display: inline-block;
+        }
+        .button_menu{
+            background-color: #4CAF50;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .dropdown_content{
+            position: absolute;
+            display: none;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .dropdown:hover .dropdown_content{
+            display: block;
+        }
+        .dropdown:hover .button_menu{
+            background-color: darkgray;
+        }
+        .dropdown_content a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            padding: 5px ;
+        }
+        a:hover{
+            background-color: cadetblue;
+        }
+
+        .menu_down{
+            display: inline-block;
+            position: relative;
+
+        }
+        .menu_text{
+            color: black;
+            font-size: 16px;
+        }
+        .menu_down_div{
+            display: none;
+            position: absolute;
+            background-color: darkgray;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+        .menu_down:hover .menu_down_div{
+            display: block;
+        }
+        .menu_down_div a{
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="d1">-->
+        <!--<span>指定元素</span>-->
+        <!--<div class="d2">-->
+            <!--<p>下拉1</p>-->
+            <!--<p>下拉2</p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<hr>-->
+    <!--<div class="dropdown">-->
+        <!--<button class="button_menu">下拉菜单</button>-->
+        <!--<div class="dropdown_content">-->
+            <!--<a href="">下拉1</a>-->
+            <!--<a href="">下拉2</a>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div class="menu_down">
+        <p class="menu_text">下拉</p>
+        <div class="menu_down_div">
+            <p><a href="">下拉菜单1</a></p>
+            <p><a href="">下拉菜单2</a></p>
+        </div>
+    </div>
+</body>
+</html>
+

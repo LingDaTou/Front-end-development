@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片-面向对象</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 0 auto;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400"></canvas>
+    <script>
+        let oCanvas = document.querySelector("canvas");
+
+        class Person{
+            constructor(canvas,x,y){
+                this.canvas = canvas;
+                this.x = x;
+                this.y = y;
+                this.ctx = this.canvas.getContext("2d");
+                this.timer = null;
+                this.index =1;
+                // 0: 下  1: 左  2:右  3:上
+                this.direction = 0;
+            }
+            render(){
+                let oImg = new Image();
+                oImg.onload =  () =>{
+                    var personWidth = oImg.width/4;
+                    var personHeight = oImg.height/4;
+
+                    this.ctx.drawImage(oImg,0,this.direction*personHeight,personWidth,personHeight,this.x,this.y,personWidth,personHeight);
+
+                    this.oImg = oImg;
+                    this.personWidth = personWidth;
+                    this.personHeight = personHeight;
+                };
+                oImg.src = "images/person.png";
+            }
+            run(stepX,stepY){
+                let canvasWidth = this.canvas.width;
+                let canvasHeight = this.canvas.height;
+                clearInterval(this.timer);
+                this.timer = setInterval(()=>{
+                    if(stepX !== 0 ){
+                        this.x += stepX;
+                    }
+                    if(stepY !== 0 ){
+                        this.y += stepY;
+                    }
+                    this.ctx.clearRect(0,0,canvasWidth,canvasHeight);
+                    this.ctx.drawImage(this.oImg,this.index*this.personWidth,this.direction*this.personHeight,this.personWidth,this.personHeight,this.x,this.y,this.personWidth,this.personHeight);
+                    this.index++;
+                    if(this.index >3){
+                        this.index=0;
+                    }
+                },300)
+            }
+            stop(){
+                clearInterval(this.timer);
+            }
+            runDown(){
+                this.direction = 0;
+                this.run(0,5)
+            }
+            runUp(){
+                this.direction = 3;
+                this.run(0,-5)
+            }
+            runLeft(){
+                this.direction = 1;
+                this.run(-5,0)
+            }
+            runRight(){
+                this.direction = 2;
+                this.run(5,0)
+            }
+        }
+        let per = new Person(oCanvas,100,100);
+        per.render();
+        per.runRight();
+
+        // 监听键盘按下事件
+        window.onkeydown = function (event) {
+            event = event || window.event;
+            let key = event.key;
+            switch (key) {
+                case "w": per.runUp();
+                    break;
+                case "s": per.runDown();
+                    break;
+                case "a": per.runLeft();
+                    break;
+                case "d": per.runRight();
+                    break;
+            }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue transition</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="../animate.css">
+    <style>
+        .fade-enter,.fade-leave-to{
+            opacity: 0;
+        }
+        .fade-enter-active,.fade-leave-active{
+            transition: all 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!--<transition name="fade" @before-enter="handleBeforeEnter" @enter="handleEnter" @after-enter="handleAfterEnter">-->
+        <transition name="fade" mode="out-in">
+            <!--<div v-if="show">hello world</div>-->
+            <!--<child-one v-if="show"></child-one>-->
+            <!--<child-two v-else></child-two>-->
+
+            <!--动态组件-->
+            <componet :is="type"></componet>
+        </transition>
+        <button @click="handClick">click</button>
+    </div>
+    <script>
+
+        Vue.component("child-one",{
+            template:`<div>child-one</div>`
+        });
+        Vue.component("child-two",{
+            template:`<div>child-two</div>`
+        });
+
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                show: true,
+                type:"child-one"
+            },
+            methods:{
+                handClick(){
+                    // this.show = !this.show;
+                    this.type= this.type==="child-one" ? "child-two" : "child-one";
+                },
+                handleBeforeEnter(el){
+                    el.style.color="red";
+                },
+                handleEnter(el,done){
+                    setTimeout(function () {
+                        el.style.color="blue";
+                    },2000)
+                    setTimeout(function () {
+                        // done()
+                    },4000)
+                },
+                handleAfterEnter(el){
+                    el.style.color="pink";
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基础</title>
+    <script>
+        function displayDate() {
+            document.getElementById('p1').innerHTML=Date()
+        }
+    </script>
+</head>
+<body>
+    <p id="p1">这是一个段落</p>
+    <button onclick="displayDate()">点击显示日期</button>
+    <script>
+        document.write('<h1>段落</h1>')
+        // 改变html内容
+        function myfunc() {
+            x=document.getElementById('p2')
+            x.innerHTML='hello world'
+        }
+        // 改变html内容2
+        function myfunc2() {
+            document.getElementById('p22').innerHTML='这样也可以改变内容'
+        }
+        // 改变样式
+        function changestyle() {
+            x=document.getElementById('p3')
+            x.style.color='red'
+        }
+        // 判断输入是否为数字
+        function judgenum() {
+            var x=document.getElementById('input1').value;
+            if(x=='' || isNaN(x))
+            {
+                alert('不是数字')
+            }
+        }
+    </script>
+
+    <button onclick="alert('欢迎')">点击</button>
+
+    <p id="p2">改变html内容</p>
+    <button onclick="myfunc()">点我改变</button>
+
+    <p id="p22">改变html内容2</p>
+    <button onclick="myfunc2()">点我改变2</button>
+
+    <p id="p3">改变样式</p>
+    <button onclick="changestyle()">点我改变样式</button>
+    <br>
+
+    <input type="text" id="input1" placeholder="输入数字">
+    <button onclick="judgenum()">判断是否数字</button>
+</body>
+</html>

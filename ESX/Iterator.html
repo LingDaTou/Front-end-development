@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterator</title>
+    <script>
+        var obj={
+            name: "ling",
+            age: 20,
+            gender:"female",
+            [Symbol.iterator](){
+                var _this =this;
+                var keys = Object.keys(this);
+                var index = 0;
+                return {
+                    next(){
+                        if(index < keys.length){
+                            return {value:_this[keys[index++]], done: false}
+                        }else{
+                            return {value:undefined, done: true}
+                        }
+                    }
+                }
+            }
+        };
+
+        let it = obj[Symbol.iterator]();
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+        console.log(it.next());
+
+        var arr=[1,2,4,6,8];
+        let it1= arr[Symbol.iterator]();
+        console.log(it1.next());
+        console.log(it1.next());
+        console.log(it1.next());
+        console.log(it1.next());
+        console.log(it1.next());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

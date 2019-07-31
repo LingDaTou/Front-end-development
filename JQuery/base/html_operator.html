@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQery HTML</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            //捕获：text()或者html()方法
+            $('.button1').click(function () {
+                //重新设置值
+                $('.p1').text('改变文字')
+                // alert($('.p1').html());
+            });
+            //val()方法
+            $('.button2').click(function () {
+                alert($('.input1').val())
+            });
+            $('.button3').click(function () {
+                alert($('.a1').attr('target'))
+            });
+            //attr重新设置值，并修改链接名称
+            $('.button5').click(function () {
+                $('.a2').attr({
+                    'href':'http://www.163.com',
+                    'title':'网易'
+                });
+                title=$('.a2').attr('title');
+                $('.a2').html(title);
+            });
+            //回调函数
+            $('.button4').click(function () {
+                $('.p2').text(function (i, origText) {
+                    return '旧值：'+origText+';'+'新值：显示新值'+'index:'+i;
+                })
+            });
+            //添加元素
+            $('.button6').click(function () {
+                //append/prepend
+                // $('ol').append('<li>list item4</li>')
+                //prepend
+                $('ol').prepend('list item5')
+                //after/before
+                // $('.l1').before('<b>在元素后添加的内容</b>')
+            });
+            //删除元素
+            $('.button7').click(function () {
+                //remove/empty
+                // $('.d1').remove();
+                //remove('被过滤的元素')
+                $('p').remove('#p33')
+            });
+            //offset
+            $('.myb1').click(function () {
+                var x= $('.myp1').offset();
+                alert('X:'+x.top+';'+'Y:'+x.left)
+            });
+            //position
+            $('.myb2').click(function () {
+                var x =$('.myp1').position();
+                alert(x.top+";"+x.left)
+            });
+            //prop
+            $('.mybutton1').click(function () {
+                var x =$('.myp2');
+                x.prop('color','red');
+                x.append('添加的属性值:'+x.prop('color'))
+            });
+            //scrollLeft
+            $('.mybutton2').click(function () {
+                var x= $('.div1');
+                x.scrollLeft(20);
+                alert($('.div1').scrollLeft())
+            })
+        })
+    </script>
+
+    <button class="button1">点击</button>
+    <p class="p1">这是<b>一段</b>文字</p>
+    <hr>
+    <input type="button" class="button2" value="获取值">
+    <input type="text" value="输入文字" class="input1">
+    <hr>
+    <button class="button3">获取属性值</button>
+    <a href="www.baidu.com" class="a1" target="_self">链接</a>
+    <hr>
+    <a href="http://www.baidu.com" title="链接" class="a2">百度</a>
+    <button class="button5">修改href的值</button>
+    <hr>
+    <button class="button4">显示新/旧值</button>
+    <p class="p2">原始值</p>
+    <hr>
+    <input type="button" class="button6" value="添加至尾部">
+    <ol>
+        <li class="l1">list item1</li>
+        <li>list item2</li>
+        <li>list item3</li>
+    </ol>
+    <hr>
+    <div class="d1" style="background-color: #cae8ca;height: 120px;width: 200px">
+        <p id="p33">文字1</p>
+        <p>文字2</p>
+    </div>
+    <button class="button7">按下删除元素</button>
+    <hr>
+    <div class="myd2" style="width: 200px;height: 200px;border: 1px solid black;">
+        <button class="mybutton1">prop方法</button>
+        <p class="myp2">这是一段话</p>
+    </div>
+    <hr>
+    <div class="div1" style="width: 100px;height: 120px;border: 1px solid black;overflow: auto">
+        The longest word in the english dictionary is: pneumonoultramicroscopicsilicovolcanoconiosis.
+    </div>
+    <button class="mybutton2">获取滚动条位置</button>
+    <hr>
+    <div class="myd1" style="width: 200px;height: 200px;border: 1px solid black;position: relative;top: 100px">
+        <button class="myb1">点击显示偏移</button>
+        <button class="myb2">点击显示偏移量</button>
+        <p class="myp1">offset返回偏移量</p>
+    </div>
+
+</body>
+</html>

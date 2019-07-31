@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <case></case>
+    </div>
+    <hr>
+    <div id="d2">
+        <case2></case2>
+    </div>
+    <hr>
+    <div id="d3">
+        <child2 message="hello vue.js"></child2>
+    </div>
+    <hr>
+    <div id="d4">
+        <input  v-model="parentMsg"><br>
+        <child3 v-bind:msg="parentMsg"></child3>
+    </div>
+    <hr>
+    <div id="app">
+        <ol>
+        <todo-item v-for="site in sites" v-bind:todo="site"></todo-item>
+        </ol>
+    </div>
+    <script>
+        //全局：自定义组件:case
+        Vue.component('case',{
+            template:'<h1>自定义组件</h1>'
+        });
+        new Vue({
+            el:"#d1"
+        });
+        // 局部
+        var child={
+            template: '<h1>自定义组件2</h1>'
+        };
+        new Vue({
+            el:"#d2",
+            components:{
+                'case2':child
+            }
+        });
+        // 传递自定义属性
+        Vue.component('child2',{
+            props:['message'],
+            template:'<span>{{message}}</span>'
+        });
+        new Vue({
+            el:"#d3"
+        });
+        // v-bind动态绑定
+        Vue.component('child3',{
+            props:['msg'],
+            template:'<h2>{{msg}}</h2>'
+        });
+        new Vue({
+            el:"#d4",
+            data:{
+                parentMsg:'父组件'
+            }
+        });
+        // 传递至每个重复的组件
+        Vue.component('todo-item',{
+            props:['todo'],
+            template:'<li>{{todo.text}}</li>'
+        });
+        new Vue({
+            el:"#app",
+            data:{
+                sites:[
+                    {text:"baidu"},
+                    {text:"google"},
+                    {text:"runoot"}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

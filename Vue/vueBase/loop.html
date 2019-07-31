@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环语句</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div>jkl</div>
+    <div id="d1">
+        <p v-for="li in list">{{li}}</p>
+    </div>
+    <div id="d2">
+        <template v-for="site in sites">
+            {{site.name}}
+        </template>
+    </div>
+    <div id="d3">
+        <template v-for="(value,key,index) in sites">
+            {{index}}: {{key}}的索引为: {{value}}
+        </template>
+    </div>
+    <div id="d4">
+        <ul>
+            <li v-for="n in 10">{{n}}</li>
+        </ul>
+    </div>
+    <script>
+        var vm1=new Vue({
+            el:"#d1",
+            data:{
+                list:[
+                    1,2,3,4,5
+                ]
+            }
+        });
+        var vm2=new Vue({
+            el:"#d2",
+            data:{
+                sites:[
+                    {name:"mike"},
+                    {name:"nancy"},
+                    {name:"ok"}
+                ]
+            }
+        });
+        var vm2=new Vue({
+            el:"#d3",
+            data:{
+                sites:{
+                    name:"nihao",
+                    age:20,
+                    sex:"female"
+                }
+            }
+        });
+        var vm3=new Vue({
+            el:"#d4"
+            }
+        )
+    </script>
+</body>
+</html>

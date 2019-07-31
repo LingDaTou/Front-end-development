@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js语句</title>
+</head>
+<body>
+
+    <button onclick="myfunc1()">点击获得</button>
+    <p id="p1"></p>
+
+    <button onclick="myfunc2()">判断星期</button>
+    <p id="p2"></p>
+
+    <button onclick="myfunc3()">点击</button>
+    <p id="p3"></p>
+
+    <button onclick="myfunc4()">点击1</button>
+    <p id="p4"></p>
+
+    <script>
+        function myfunc1() {
+            var x='';
+            var time=new Date().getDate();
+            if(time>20)
+            {
+                x='美好的一天';
+            }
+            else
+            {
+                x='美好的一天过去了';
+            }
+            document.getElementById('p1').innerHTML =x;
+        };
+
+        // switch
+        function myfunc2() {
+            var x='';
+            var time=new Date().getDay();
+            switch (time) {
+                case 0:x='周日';break;
+                case 1:x='周一';break;
+                case 2:x='周二';break;
+                case 3:x='周三';break;
+                case 4:x='周四';break;
+                //case 5:x='周五';break;
+                case 6:x='周六';break;
+                default:x='不存在';
+            };
+            document.getElementById('p2').innerHTML=x;
+        };
+
+        // for(,,)
+        // cars=["BMW","Volvo","Saab","Ford"];
+        // document.write(cars.length)
+        // for (var i=0;i<cars.length;i++){
+        //     document.write(cars[i] + "<br>");
+        // }
+        // for x in
+        function myfunc3() {
+            var txt='';
+            var person={fname:'mike',fage:20,sex:'male' };
+            for( var x in person)
+            {
+                txt=txt+' '+person[x];
+            }
+            document.getElementById('p3').innerHTML=txt;
+        }
+
+        //break
+        function myfunc4() {
+            var x='';
+            for(var i=0;i<10;i++)
+            {
+                if(i==3)
+                // {
+                    // break;
+                    continue;
+                // }
+                x= x+i;
+            }
+            document.getElementById('p4').innerHTML=x;
+        }
+
+        // 给代码块取名list
+        cars=["BMW","Volvo","Saab","Ford"];
+        list:
+        {
+            document.write(cars[0] + "");
+            document.write(cars[1] + "");
+            document.write(cars[2] + "");
+            break list;
+            document.write(cars[3] + "");
+            document.write(cars[4] + "");
+            document.write(cars[5] + "");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制文字</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 0 auto;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400"></canvas>
+    <script>
+        let oCanvas = document.querySelector("canvas");
+        let ctx = oCanvas.getContext("2d");
+        let str="你好";
+        ctx.font ="30px 微软雅黑";
+        ctx.textBaseline= "top";
+        ctx.textAlign = "center";
+        ctx.fillText(str,ctx.canvas.width/2,ctx.canvas.height/2);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>css浮动</title>
+    <style>
+        .img{
+            width: 100px;
+            height:80px;
+            float:left;
+        }
+        .p1{
+            clear: both;
+        }
+        .img2{
+            width: 100px;
+            height:80px;
+            float: right;
+            margin: 0px 2px 0px 1px;
+        }
+        .p3{
+            clear: both;
+        }
+        .p2{
+
+        }
+    </style>
+</head>
+<body>
+
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <!--清除两边浮动-->
+        <p class="p1">第二行</p>
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <img src="images/1.jpg" class="img">
+        <p class="p3"></p>
+
+        <img src="images/2.jpg" class="img2">
+        <p class="p2">
+            This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text.
+            This is some text. This is some text. This is some text.
+        </p>
+</body>
+</html>

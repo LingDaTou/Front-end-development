@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 2D/3D转换及过渡效果</title>
+    <style>
+        .div1{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            padding: 30px;
+            transform: rotate(30deg);
+            /*transform: scale(2,3);*/
+        }
+        #div2{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+            padding: 30px;
+            transform: skew(30deg,20deg);
+        }
+        #div3 {
+            width: 120px;
+            height: 60px;
+            background-color: #4CAF50;
+            transform: rotateY(80deg);
+        }
+        .div4{
+            width: 120px;
+            height: 60px;
+            background-color: blue;
+            transition: width 1s;
+            /*transition: width 2s,transform 2s;*/
+            /*transition-delay: 1s;*/
+        }
+        .div4:hover{
+            /*width: 180px;*/
+            /*height: 120px;*/
+            /*transform: rotate(180deg);*/
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">这是个2d转换的图形</div>
+    <hr>
+    <div id="div2">这是个2d转换的图形2</div>
+    <hr>
+    <div id="div3">3D旋转</div>
+    <hr>
+    <div class="div4">使用了过渡的效果</div>
+</body>
+</html>

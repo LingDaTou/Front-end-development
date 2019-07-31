@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css伪类、伪元素</title>
+    <style>
+        /*p:first-child{*/
+            /*color: red;*/
+        /*}*/
+        div>p:first-child{
+            color: red;
+        }
+        div+p{
+            quotes: "~" "-";
+        }
+        input:focus{
+            background-color: #4CAF50;
+        }
+        .p1:first-line{
+            color: red;
+            font-variant:small-caps;
+        }
+        .p2:first-letter{
+            color: red;
+            font-size: xx-large;
+        }
+        .p3:before{
+            content: "插入的话:";
+        }
+        .p3:after{
+            content: "，之后插入的话";
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>第一个标签</p>
+        <p>第二个标签</p>
+        <p>第三个标签</p>
+    </div>
+
+    <p>定义引号类型<q lang="no">这是文本</q>定义引号类型</p>
+
+    <form action="css_center.html" method="get">
+        用户名：<input type="text" name="name"><br/>
+        密码  ：<input type="password" name="password"><br/>
+        <input type="submit" value="提交">
+    </form>
+
+    <p class="p1">你可以使用 "first-line" 伪元素向文本的首行设置特殊样式</p>
+    <p class="p2">你可以使用 "first-letter" 伪元素向文本的首字母设置特殊样式：</p>
+
+    <p class="p3">在这里插入一段话</p>
+</body>
+
+</html>

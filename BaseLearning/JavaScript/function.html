@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js函数</title>
+</head>
+<body>
+    <p id="p1">try</p>
+    <button onclick="myfunc()">点击</button>
+
+    <p id="p2"></p>
+    <button onclick="myfunc2('hello','world')">点击2</button>
+
+    <p id="p3"></p>
+    <button onclick="getElementById('p3').innerHTML='插入一条信息'">点击3</button>
+    <br>
+    <button onclick="this.innerHTML=Date()">点击显示时间</button>
+    <br>
+    <input  id='input1' type="text" value="17">
+    <button onclick="judge_age()">点击判断年龄</button>
+    <p id="p4"></p>
+
+    <script>
+        function myfunc() {
+            window.alert('hello');
+        }
+
+        // 带参数的函数
+        function myfunc2(params1,params2) {
+            document.getElementById('p2').innerHTML=params1+' '+params2;
+        }
+        //计算长度
+        var s='abcd'
+        document.write('<p>'+s.length+'</p>')
+
+        function judge_age() {
+            var age,judge;
+            age=document.getElementById('input1').value;
+            judge=(age < 18)?'年龄太小':'年龄已到';
+            document.getElementById('p4').innerHTML=judge;
+
+        }
+
+    </script>
+</body>
+</html>

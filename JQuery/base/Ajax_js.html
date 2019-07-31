@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+</head>
+<body>
+    <button id="b1" onclick="loadXMLDoc()">get方法获取数据</button>
+    <div id="d1"></div>
+    <script>
+        function loadXMLDoc() {
+            var xmlhttp;
+            if(window.XMLHttpRequest){
+                xmlhttp=new XMLHttpRequest();
+            }
+            else {
+                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")
+            }
+            xmlhttp.onreadystatechange=function () {
+                if(xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById('d1').innerHTML=xmlhttp.responseText;
+                }
+            };
+            xmlhttp.open("GET","ajax/ajax_get.txt",true);
+            xmlhttp.send();
+        }
+    </script>
+</body>
+</html>

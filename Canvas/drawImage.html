@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制图片</title>
+    <style>
+        canvas{
+            background: pink;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400"></canvas>
+
+    <script>
+        let oCanvas = document.querySelector("canvas");
+        let ctx = oCanvas.getContext("2d");
+
+        let oImg = new Image();
+
+        oImg.onload = function () {
+            let canvasWidth = ctx.canvas.width;
+            let canvasHeight = ctx.canvas.height;
+            let imgWidth = oImg.width/4;
+            let imgHeight = oImg.height/4;
+            let originX = canvasWidth/2-imgWidth/2;
+            let originY = canvasHeight/2-imgHeight/2;
+            ctx.drawImage(oImg,0,2*imgHeight,imgWidth,imgHeight,originX,originY,imgWidth,imgHeight);
+
+            let index = 1;
+            setInterval(function () {
+                ctx.clearRect(0,0,canvasWidth,canvasHeight);
+                ctx.drawImage(oImg,index*imgWidth,2*imgHeight,imgWidth,imgHeight,originX,originY,imgWidth,imgHeight);
+                index++;
+
+                if(index >3){
+                    index=0;
+                }
+            },1000);
+        };
+
+        oImg.src = "images/person.png";
+    </script>
+</body>
+</html>

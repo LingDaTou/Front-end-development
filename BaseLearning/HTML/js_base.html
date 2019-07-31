@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js基础</title>
+</head>
+<body>
+    <p id="demo">js触发事件</p>
+<script>
+    document.write('hello world')
+    document.write('<h1>在js中添加段落</h1>')
+    function myfunc(){
+        document.getElementById("demo").innerHTML="success";
+    }
+    function myfunc1() {
+        x=document.getElementById('demo')
+        x.style.color="red";
+    }
+</script>
+    <button onclick="myfunc()">点击</button>
+    <button onclick="myfunc1()">更换样式</button>
+    <noscript>浏览器不支持脚本</noscript>
+    <input type="text">
+</body>
+</html>

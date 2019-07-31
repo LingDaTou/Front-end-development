@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM</title>
+</head>
+<body>
+    <button id="b1">按钮</button>
+    <p id="p1"></p>
+    <button id="b2">获得提示</button>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <button id="b3">开始</button>
+    <button id="b4">停止</button>
+    <button id="b5">关闭弹窗</button>
+    <br>
+    <button id="timeCrol" onclick="doTimer()">计时</button>
+    <input type="button" value="停止计时" onclick="stopTimer()">
+    <input type="text" id="input1">
+    <script>
+        //BOM,window方法
+        var w=window.innerHeight;
+        var h=window.innerWidth;
+        document.write('</br>'+'浏览器宽度：'+w+';'+'高度：'+h)
+
+        document.getElementById('b1').addEventListener('click',function () {
+            var x;
+            var r=confirm('请选择');
+            if(r==true)
+            {
+                x='你按了确定'
+            }
+            else
+            {
+                x='你取消了'
+            }
+            document.getElementById('p1').innerHTML=x;
+        })
+
+        document.getElementById('b2').addEventListener('click',function () {
+            var x;
+            var person=prompt('请输入你的名字','如liuling');
+            if(person!=null && person!='')
+            {
+                x='你好 '+person;
+            }
+            document.getElementById('p2').innerHTML=x;
+        })
+        //计时事件
+        //setInterval()
+        var setTime=setInterval(function () {
+            myTimer()
+        },1000)
+        function myTimer() {
+            var time=new Date();
+            var mytime=time.toLocaleTimeString();
+            document.getElementById('p3').innerHTML=mytime;
+        }
+        document.getElementById('b4').addEventListener('click',function () {
+            clearInterval(setTime);
+        })
+        //setTimeout()
+        var time1=setTimeout('timeout1()',2000)
+        function timeout1() {
+            alert('这是一个弹窗')
+        }
+        document.getElementById('b5').addEventListener('click',function () {
+            clearTimeout(time1)
+        })
+        //setTimeout():无限计时
+        var time_is_on=0;
+        var count=0;
+        var timer;
+        function timerCounter() {
+           document.getElementById('input1').value=count;
+           count+=1;
+           timer=setTimeout('timerCounter()',1000)
+        }
+        function doTimer() {
+            if(!time_is_on)
+            {
+                time_is_on=1;
+                timerCounter();
+            }
+        }
+        function stopTimer() {
+            clearTimeout(timer);
+            time_is_on=0;
+        }
+        //cookie
+
+    </script>
+</body>
+</html>

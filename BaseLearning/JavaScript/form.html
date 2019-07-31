@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js表单</title>
+</head>
+<body>
+    <form action="" name="myform" method="post" onsubmit="myfunc()">
+        <input type="text" name="fname">
+        <input type="submit" value="提交">
+    </form>
+
+    <script>
+        function myfunc() {
+            var x=document.forms['myform']['fname'].value;
+            if(x=='' || x==null)
+            {
+                alert('输入名字')
+                return false
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 图片</title>
+    <style>
+        .img1{
+            border: 1px solid grey;
+            padding: 5px;
+            border-radius: 8px;
+            display: block;
+        }
+        a{
+            display: inline-block;
+            border: 1px solid gray;
+            padding: 5px;
+        }
+        a:hover{
+            box-shadow: 0 0 2px 1px green;
+        }
+        .img3{
+            max-width: 100%;
+            height: auto;
+        }
+        .div1{
+            position: relative;
+        }
+        .img4{
+            max-width: 100%;
+            height: auto;
+            opacity: 0.3;
+        }
+        .div2{
+            position: absolute;
+            left:20px;
+            top:30px;
+        }
+        .img5{
+            width: 100%;
+        }
+        .div3{
+            box-shadow: 4px 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        .div4{
+            text-align: center;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/yman.jpg" alt="yman" class="img1">
+    <hr>
+    <a href="images/yman.jpg" target="_blank">
+        <img src="images/yman.jpg" alt="yman" class="img2">
+    </a>
+    <hr>
+    <!--自适应窗口大小-->
+    <img src="http://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" alt="" class="img3">
+    <hr>
+    <!--图片文本-->
+    <div class="div1">
+        <img src="http://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" alt="" class="img4">
+        <div class="div2">
+            左上角
+        </div>
+    </div>
+    <hr>
+    <!--卡片式图片-->
+    <div class="div3">
+        <img src="http://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" alt="" class="img5">
+        <div class="div4">
+            This is some text
+        </div>
+    </div>
+
+</body>
+</html>

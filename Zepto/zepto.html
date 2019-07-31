@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>zepto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="zepto.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        let oDiv = document.querySelector("div");
+        let statrX = 0;
+        let startY = 0;
+        let flag = false;
+        oDiv.ontouchstart = function (e) {
+            if(flag) return;
+            flag = true;
+            statrX = e.targetTouches[0].clientX;
+            startY = e.targetTouches[0].clientY;
+        };
+        oDiv.ontouchmove =function (e) {
+            let moveX = e.targetTouches[0].clientX;
+            let moveY = e.targetTouches[0].clientY;
+            let offsetX = moveX - statrX;
+            let offsetY = moveY - startY;
+            oDiv.style.transform = `translate(${offsetX}px,${offsetY}px)`;
+        };
+    </script>
+</body>
+</html>

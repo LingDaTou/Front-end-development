@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swiper</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            touch-action: none;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+        }
+        .box .top{
+            width: 100%;
+            height: 50px;
+        }
+        .top>ul{
+            width: 100%;
+            display: flex;
+            list-style: none;
+        }
+        .top>ul>li{
+            flex-grow: 1;
+            line-height: 50px;
+            text-align: center;
+            background: #7e8c8d;
+        }
+        .top>ul>.active{
+            color: #f40;
+            background: #cccccc;
+        }
+        .top .line{
+            width: 50%;
+            height: 3px;
+            background: #f40;
+            position: relative;
+            left: 0;
+        }
+        .bottom{
+            margin-top: 20px;
+            width: 200%;
+            display: flex;
+            position: relative;
+            left: 0;
+        }
+        .bottom ul{
+            flex-grow: 1;
+            list-style: none;
+        }
+        .bottom ul>li{
+            padding-left: 10px;
+            line-height: 30px;
+        }
+    </style>
+    <script src="zepto.js"></script>
+    <script src="touch.js"></script>
+    <script src="fx.js"></script>
+    <script src="selector.js"></script>
+
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <ul>
+                <li class="active">这是新闻1</li>
+                <li>这是新闻2</li>
+            </ul>
+            <p class="line"></p>
+        </div>
+        <div class="bottom">
+            <ul class="list1">
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+            </ul>
+            <ul class="list2">
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+                <li>这是新闻内容</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(".top li").on("myClick",function () {
+            $(this).addClass("active").siblings().removeClass();
+            var currentIndex = $(this).index();
+            $(".line").animate({left:currentIndex * $(this).width()+"px"},500);
+            $(".bottom").animate({left: -currentIndex * $(".bottom ul").width()+"px"},500);
+        });
+        $(".top li").click(function () {
+            $(this).trigger("myClick");
+        });
+        $(".bottom").swipeLeft(function () {
+            $(".top li:last").trigger("myClick");
+        });
+        $(".bottom").swipeRight(function () {
+            $(".top li:first").trigger("myClick");
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js 函数2</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
+    <p id="p10"></p>
+    <p id="p11"></p>
+
+    <button onclick="myfunc4()">计数</button>
+    <p id="p12"></p>
+    <script>
+        var x=function (a,b) {
+            return a+b;
+        };
+        document.getElementById('p1').innerHTML=x(1,2);
+
+        //js内置构造函数,类似于上面的定义方式
+        var myfunc1=new Function("a","b","return a*b");
+        document.getElementById('p2').innerHTML=myfunc1(3,4);
+
+        // //自调用函数
+        // (function () {
+        //     document.getElementById("p3").innerHTML = "Hello! 我是自己调用的";
+        // })();
+
+        //箭头函数
+        const x1 = (x,y)=>x*y;
+        document.getElementById('p4').innerHTML=x1(2,3);
+
+        //带有默认参数的函数
+        function myfunc(a, b = 2) {
+            return a+b;
+        }
+        document.getElementById('p5').innerHTML=myfunc(2,5);
+        document.getElementById('p6').innerHTML=myfunc(1);
+
+        //Arguments对象
+        var x2=findMax(1,5,7,21,54,90,53);
+        function findMax() {
+            var i,max=arguments[0];
+            if(arguments.length<2)
+            {
+                return max;
+            }
+            for(i=0;i<arguments.length;i++)
+            {
+                if(arguments[i]>max)
+                {
+                    max=arguments[i];
+                }
+            }
+            return max;
+        }
+        document.getElementById('p7').innerHTML=x2;
+        //函数作为方法调用
+        var obj={
+            firstname:'mike',
+            lastname:'doe',
+            fullname:function () {
+                return this.firstname+''+this.lastname;
+            }
+        };
+        document.getElementById('p8').innerHTML=obj.fullname();
+
+        //使用构造函数调用函数
+        function myfunc2(args1, args2) {
+            this.firstname=args1;
+            this.lastname=args2;
+        }
+        var obj2=new myfunc2('nancy','yman');
+        document.getElementById('p9').innerHTML=obj2.firstname;
+
+        //作为函数方法调用函数
+        function myfunc3(a,b) {
+            return a+b;
+        }
+        var obj3=myfunc3.call(obj3,10,3,3);
+        document.getElementById('p10').innerHTML=obj3;
+
+        var myArray=[20,5];
+        var obj4=myfunc3.apply(this,myArray);
+        document.getElementById('p11').innerHTML=obj4;
+
+        //闭包
+        var add =(function(){
+            var counter = 0;
+            // function plus() {counter += 1;}
+            // plus();
+            return function () {
+                return counter+=1;
+            }
+        })();
+        function myfunc4() {
+            document.getElementById('p12').innerHTML=add();
+        }
+
+    </script>
+</body>
+</html>

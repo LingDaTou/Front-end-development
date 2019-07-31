@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator</title>
+</head>
+<body>
+<script>
+    function* func() {
+        console.log("aaa");
+        let res =  yield "代码块1";
+        console.log(res);
+        console.log("bbb");
+        yield "代码块2";
+    }
+
+    let ret = func();
+    console.log(ret.next());
+    // console.log(ret.next("传递给上一个yield"));
+
+    // 应用场景2
+    var obj= {
+        name: "ling",
+        age: 20,
+        gender: "female",
+    };
+    // 1. 定义一个Generator函数
+    function* gen() {
+        let keys = Object.keys(obj);
+        for(let i=0;i<keys.length;i++){
+            yield obj[keys[i]];
+        }
+    }
+    // 2. obj绑定一个[Symbol.iterator]方法
+        obj[Symbol.iterator] = gen;
+        let g =  obj[Symbol.iterator]();
+        // console.log(g.next());
+        // console.log(g.next());
+        // console.log(g.next());
+        // console.log(g.next());
+</script>
+</body>
+</html>

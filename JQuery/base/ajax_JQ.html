@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Ajax</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            //.ajax
+            $('.b1').click(function () {
+                $.ajax({url:"ajax/ajax_test.txt",success:function (result) {
+                        $('.p1').html(result)
+                    }})
+            });
+            //ajaxSetup
+            $('.b2').click(function () {
+                $.ajaxSetup({
+                    url:"ajax/ajax_test.txt",
+                    success:function (result) {
+                        $('.p2').html(result)
+                    }
+                });
+                $.ajax();
+            });
+            //getJSON
+            $('.b3').click(function () {
+                $.getJSON('ajax/ajax_demo.js',function (result) {
+                    $.each(result,function (i, field) {
+                        $('.p3').append(field+"")
+                    })
+                })
+            });
+            //getScript
+            $(".b4").click(function () {
+                $.getScript("ajax/ajax_demo.js",function (response) {
+                    $('p4').html(response)
+                })
+            });
+
+        })
+    </script>
+    <button class="b1">加载ajax1</button>
+    <p class="p1">此处显示ajax加载项</p>
+    <hr>
+    <button class="b2">加载ajax2</button>
+    <p class="p2">显示ajax加载项</p>
+    <hr>
+    <button class="b3">加载ajax3</button>
+    <p class="p3">显示ajax加载的json数据:</p>
+    <hr>
+    <button class="b4">加载ajax3</button>
+    <p class="p4">显示ajax加载的script数据:</p>
+</body>
+</html>

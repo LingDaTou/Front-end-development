@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 基础</title>
+</head>
+<body>
+    <p class="p1">教程</p>
+    <p class="p2">网址</p>
+
+    <img src="images/1.jpg" alt="yman" id="img1">
+    <input type="text" id="in1">
+
+    <h1 id="h11">标题</h1>
+    <h2 id="h22">小标题</h2>
+    <button onclick="myfunc()">点击</button>
+    <p onclick="myfunc1(this)">DOM事件</p>
+
+    <button id="button1">点这里</button>
+    <p id="p3"></p>
+    <!--onchange-->
+    <input type="text" id="fname" onchange="myfunc2()">
+    <!--mouse-->
+    <p onmouseover="mover(this)" onmouseout="mout(this)">mouse事件</p>
+
+    <input type="text" onfocus="style.background='yellow'">
+    <script>
+        // var x=document.getElementsByTagName('p');
+        // document.write('输出的文字为：'+x[0].innerHTML);
+        var y=document.getElementsByClassName('p2');
+        document.write('文字输出:'+y[0].innerHTML);
+        //改变属性
+        document.getElementById('img1').src='images/2.jpg';
+        document.getElementById('in1').type='submit';
+        //改变样式
+        document.getElementById('h11').style.color='red';
+
+        //事件
+        function myfunc() {
+            document.getElementById('h22').style.color='blue';
+        }
+        function myfunc1(id) {
+            id.innerHTML='改变DOM';
+        }
+        //分配事件
+        function displayDate() {
+            document.getElementById('p3').innerHTML=Date();
+        }
+        document.getElementById('button1').onclick=function () {displayDate()};
+        //onchange
+        function myfunc2() {
+            var x= document.getElementById('fname');
+            x.value=x.value.toUpperCase();
+        }
+        //onmouseover
+        function mover(id) {
+            id.innerHTML='Thank you'
+        }
+        //onmouseout
+        function mout(id) {
+            id.innerHTML='mouse out'
+        }
+    </script>
+</body>
+</html>

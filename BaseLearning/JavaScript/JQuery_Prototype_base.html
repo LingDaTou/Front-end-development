@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Prototype</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script
+            src="http://apps.bdimg.com/libs/prototype/1.7.1.0/prototype.js">
+    </script>
+    <script>
+        function jsfunc() {
+            document.getElementById('p2').innerHTML='hello js'
+        }
+        onload=jsfunc;
+        //JQuery
+        function myfunc() {
+            $('#p1').attr('style','color:red').html('hello jquery')
+        }
+        $(document).ready(myfunc);
+
+        //Prototype
+        function myFunction()
+        {
+            $("#p3").writeAttribute('style','color:blue').insert("Hello Prototype!");
+        }
+        Event.observe(window,"load",myFunction);
+
+
+    </script>
+</head>
+<body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+</body>
+</html>

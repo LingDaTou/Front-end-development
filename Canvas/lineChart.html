@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折线图+柱状图-面向对象</title>
+</head>
+<body>
+    <script>
+        class lineChart{
+            constructor(width=500,height=500){
+                let canvas = document.createElement("canvas");
+                canvas.style.display="block";
+                canvas.style.background = "royalblue";
+                canvas.style.margin="0 auto";
+                this.ctx = canvas.getContext("2d");
+                this.ctx.canvas.width = width;
+                this.ctx.canvas.height = height;
+                document.body.appendChild(canvas);
+            }
+            drawGrid(gridSize=50){
+                let ctx = this.ctx;
+                let canvasWidth = ctx.canvas.width;
+                let canvasHeight = ctx.canvas.height;
+                let rols = Math.floor(canvasHeight / gridSize);
+                let cols = Math.floor(canvasWidth / gridSize);
+
+                for(let i=0; i<rols;i++){
+                    ctx.beginPath();
+                    ctx.moveTo(0,i*gridSize-0.5);
+                    ctx.lineTo(canvasWidth,i*gridSize-0.5);
+                    ctx.strokeStyle = '#fff';
+                    ctx.stroke();
+                }
+
+                for(let i=0; i < cols ; i++){
+                    ctx.beginPath();
+                    ctx.moveTo(i*gridSize-0.5,0);
+                    ctx.lineTo(i*gridSize-0.5,canvasHeight);
+                    ctx.strokeStyle = '#fff';
+                    ctx.stroke();
+                }
+            }
+            drawCoor(gridSize=50){
+                let ctx = this.ctx;
+                let canvasWidth = ctx.canvas.width;
+                let canvasHeight = ctx.canvas.height;
+                // 绘制x轴
+                let originX = gridSize-0.5;
+                let originY = canvasHeight - gridSize-0.5;
+                let endX = canvasWidth - gridSize - 0.5;
+                ctx.beginPath();
+                ctx.moveTo(originX,originY);
+                ctx.lineTo(endX,originY);
+                ctx.strokeStyle = '#000';
+                ctx.stroke();
+                // 绘制坐标箭头
+                ctx.moveTo(endX - 10,originY + 5);
+                ctx.lineTo(endX -10 , originY -5);
+                ctx.lineTo(endX,originY);
+                ctx.closePath();
+                ctx.fill();
+
+                // 绘制y轴
+                let endY = gridSize + 0.5;
+                ctx.beginPath();
+                ctx.moveTo(originX,originY);
+                ctx.lineTo(originX,endY);
+                ctx.strokeStyle = '#000';
+                ctx.stroke();
+                ctx.moveTo(originX,endY);
+                ctx.lineTo(originX-5,endY+10);
+                ctx.lineTo(originX+5,endY+10);
+                ctx.fill();
+            }
+            drawDot(list,dotSize=20){
+                let ctx= this.ctx;
+                // 绘制点
+                let middleSize = dotSize/2;
+                for(let i=0;i<list.length;i++){
+                    ctx.beginPath();
+                    ctx.moveTo(list[i].x-middleSize,list[i].y-middleSize);
+                    ctx.lineTo(list[i].x +dotSize-middleSize,list[i].y-middleSize);
+                    ctx.lineTo(list[i].x+dotSize-middleSize,list[i].y+dotSize-middleSize);
+                    ctx.lineTo(list[i].x-middleSize,list[i].y+dotSize-middleSize);
+                    ctx.strokeStyle ="#000";
+                    ctx.fill();
+                }
+
+            }
+            drawLine(list){
+                let ctx = this.ctx;
+                // 连接所有点
+                ctx.beginPath();
+                for(let i = 0;i<list.length;i++){
+                    if(i===0){
+                        ctx.moveTo(list[i].x,list[i].y);
+                    }
+                    else{
+                        ctx.lineTo(list[i].x,list[i].y);
+                    }
+                }
+                ctx.stroke();
+            }
+            drawRect(list,gridSize=50){
+                let ctx = this.ctx;
+                // 绘制柱状图
+                for(let i=0;i<list.length;i++){
+                    let rectHeight = ctx.canvas.height- gridSize-0.5-list[i].y;
+                    ctx.fillRect(list[i].x,list[i].y,gridSize,rectHeight);
+                }
+            }
+        }
+
+        let list = [
+            {
+                x: 100,
+                y: 300
+            },
+            {
+                x: 200,
+                y: 200
+            },
+            {
+                x: 300,
+                y: 250
+            },
+            {
+                x: 400,
+                y: 100
+            },
+        ];
+        let list1 = [
+            {
+                x: 100,
+                y: 300
+            },
+            {
+                x: 200,
+                y: 200
+            },
+            {
+                x: 300,
+                y: 250
+            },
+        ];
+        let canvas = new lineChart();
+        canvas.drawGrid();
+        canvas.drawCoor();
+        canvas.drawDot(list);
+        canvas.drawLine(list);
+        canvas.drawRect(list1)
+    </script>
+</body>
+</html>

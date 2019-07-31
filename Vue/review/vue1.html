@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue">
+        <input type="submit" value="提交" @click="addItem">
+        <ul>
+            <!--<li v-for="(item,index) of list">{{item}}</li>-->
+            <todo-item :content="item" :index="index" @change="handleDelete" v-for="(item,index) of list" :key="index"></todo-item>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                inputValue:"",
+                list:[]
+            },
+            methods:{
+                addItem(){
+                    this.list.push(this.inputValue);
+                    this.inputValue = "";
+                },
+                handleDelete(index){
+                    this.list.splice(index,1);
+                }
+            },
+            components:{
+                TodoItem: {
+                    props:['content',"index"],
+                    template : `<li @click="deleteItem">{{content}}</li>`,
+                    methods:{
+                        deleteItem(){
+                            this.$emit("change",this.index);
+                        }
+                    }
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 2</title>
+    <style>
+        div{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <button id="b1">点击</button>
+    <br>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <button id="b2">点击2</button>
+    <p id="p3"></p>
+    <button id="b3">点击查看传递参数</button>
+    <p id="p4"></p>
+    <!--冒泡与捕获-->
+    <div id="d1">
+        <p id="p11">点击段落，我是冒泡</p>
+    </div>
+    <div id="d2">
+        <p id="p22">点击段落，我是捕获</p>
+    </div>
+    <!--移除监听-->
+    <p id="p5">鼠标移动至此，显示随机数</p>
+    <p id="p51">1</p>
+    <button id="b4" onclick="remove()">点击移除</button>
+    <script>
+        var x = document.getElementById('b1');
+        // 添加不同的句柄
+        x.addEventListener('click',myfunc);
+        x.addEventListener('mouseover',myfunc3);
+        x.addEventListener('mouseout',myfunc4);
+        // x.addEventListener('click',myfunc2);
+        function myfunc() {
+            document.getElementById('p2').innerHTML=Date();
+            // alert('函数执行');
+        }
+        function myfunc2() {
+            alert('函数执行第二次');
+        }
+        function myfunc3(){
+            document.getElementById('p2').innerHTML='mouseover';
+        }
+        function myfunc4(){
+            document.getElementById('p2').innerHTML='mouseout';
+        }
+        // 在监听中直接写函数
+        document.getElementById('b2').addEventListener('click',function () {
+                document.getElementById('p1').innerHTML=Date();
+            }
+        );
+        // 重置浏览器的窗口触发
+        window.addEventListener("resize", function(){
+            document.getElementById("p3").innerHTML = Math.random();
+        });
+        // 使用匿名函数传递参数
+        function myfunc5(a,b) {
+            var result=a+b;
+            document.getElementById('p4').innerHTML=result;
+        }
+        document.getElementById('b3').addEventListener('click',function () {
+            myfunc5(4,5);
+        });
+        //冒泡
+        document.getElementById('p11').addEventListener('click',function () {
+            alert('你点击了p')
+        },false);
+        document.getElementById('d1').addEventListener('click',function () {
+            alert('你点击了div')
+        },false);
+        //捕获
+        document.getElementById('p22').addEventListener('click',function () {
+            alert('你点击了p')
+        },true);
+        document.getElementById('d2').addEventListener('click',function () {
+            alert('你点击了div')
+        },true);
+        // remove监听
+        document.getElementById('p5').addEventListener('mousemove',myfunction1);
+        function myfunction1() {
+            document.getElementById('p51').innerHTML=Math.random();
+        }
+        function remove() {
+            document.getElementById('p5').removeEventListener('mousemove',myfunction1)
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内联样式</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <div :style="{backgroundColor:activeColor,width:myWidth+'px',height:myHeight+'px'}"></div>
+    </div>
+    <hr>
+    <div id="d2">
+        <div :style="classObject"></div>
+    </div>
+    <hr>
+    <div id="d3">
+        <div :style="[baseStyle,overridingStyle]">hello</div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                activeColor:'green',
+                myWidth:100,
+                myHeight:100
+            }
+        });
+        // 绑定对象
+        var vm2=new Vue({
+            el:"#d2",
+            data: {
+                classObject:{
+                    backgroundColor:'pink',
+                    width:100+'px',
+                    height:100+'px'
+                }
+            }
+        });
+        // 数组
+        var vm3=new Vue({
+            el:"#d3",
+            data:{
+                baseStyle:{
+                    backgroundColor: 'grey',
+                    width:100+'px',
+                    height:100+'px'
+                },
+                overridingStyle:{
+                    color:'white',
+                    textAlign:'center'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

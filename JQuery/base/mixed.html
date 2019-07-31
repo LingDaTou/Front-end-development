@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQery 杂项</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <style>
+        .div2{
+            position: relative;
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .p4:after{
+            content: '';
+            position: absolute;
+            /*top: 0px;*/
+            /*right: 0px;*/
+            border: 5px solid;
+            border-color: transparent transparent transparent black;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            //data
+            $('.b1').click(function () {
+                $('div:first').data('greet','helloworld')
+            });
+            $('.b2').click(function () {
+                alert($('.div1').data('greet'))
+            });
+            //removeData
+            $('.b3').click(function () {
+                $('div:first').removeData('greet')
+            });
+            //get
+            $('.b4').click(function () {
+                var x=$('p').get(0);
+                $('.p3').text(x.innerHTML);
+            });
+            //index
+            $('li').click(function () {
+                alert($(this).index())
+            });
+            //toArray
+            $('.b5').click(function () {
+                var x =$('li').toArray();
+                for(var i=0;i<x.length;i++){
+                  alert(x[i].innerHTML)
+                };
+                //each
+                // $('li').each(function () {
+                //     alert($(this).text())
+                // })
+            });
+            //.grep方法
+            var arr = [ 1, 9, 3, 8, 6, 1, 5, 9, 4, 7, 3, 8, 6, 9, 1 ];
+            $( ".myd1" ).text( arr.join( ", " ) );
+            arr =$ .grep(arr, function( n, i ) {
+                return ( n !== 5 && i > 4 );
+            });
+            $( ".myp2" ).text( arr.join( ", " ) );
+            arr = jQuery.grep(arr, function( a ) {
+                return a !== 9;
+            });
+            $( ".myspan1" ).text( arr.join( ", " ) );
+
+            //inArray方法
+            var arr=['jerry',2,'hello','11'];
+            var myspan=$('.s1');
+            $('.myp3').text('hello的位置为'+$.inArray("hello",arr))
+
+            //isEmptyObject
+            var s='123';
+            $('.myp4').text($.isEmptyObject(s))
+
+
+        });
+
+
+    </script>
+    <div class="div1" style="width: 100px;height: 100px;border: 1px solid black">
+        <span>你好</span>
+    </div>
+    <button class="b1">点击添加内容</button>
+    <button class="b2">点击获取添加的内容</button>
+    <button class="b3">删除添加的内容</button>
+    <p class="p1">one paragraph</p>
+    <p class="p2">two paragraph</p>
+    <button class="b4">get()方法</button>
+    <p class="p3"></p>
+    <ul>
+        <li>mike</li>
+        <li>jerry</li>
+        <li>nancy</li>
+    </ul>
+    <hr>
+    <button class="b5">点击</button>
+    <p class="myp1"></p>
+    <hr>
+    <div class="div2">
+        <p class="p4">测试after/before</p>
+    </div>
+    <hr>
+    <div class="myd1"></div>
+    <p class="myp2"></p>
+    <span class="myspan1"></span>
+    <hr>
+    <span class="s1"></span>
+    <span class="s1"></span>
+    <p class="myp3"></p>
+    <hr>
+    <p class="myp4">判断值是否为空</p>
+    <hr>
+    <p class="myp5"></p>
+</body>
+</html>

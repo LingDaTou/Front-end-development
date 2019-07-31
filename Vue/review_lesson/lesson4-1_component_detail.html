@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>组件使用中的细节点</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+<!-- 	1. tbody>tr   ul(ol)>li  select>option 使用组件时，使用is属性
+	2. 子组件的data必须是函数，且return对象
+	3. ref引用,获取dom节点 -->
+	<div id="app">
+<!-- 		<table>
+			<tbody>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+				<tr is="row"></tr>
+			</tbody>
+		</table> -->
+
+
+		<div @click="handleClick" ref="hello">hello world</div>
+
+
+		<counter @change="handleChange" ref="one"></counter>
+		<counter @change="handleChange" ref="two"></counter>
+		<div>{{totle}}</div>
+	</div>
+
+	<script>
+		Vue.component('row',{
+			data(){
+				return {
+					content:"this is a row"
+				}
+			},
+			template:`<tr><td>{{content}}</td></tr>`
+		})
+
+		Vue.component('counter',{
+			data(){
+				return {
+					number:0
+				}
+			},
+			template:`<div @click="handleDivClick">{{number}}</div>`,
+			methods:{
+				handleDivClick(){
+					this.number++
+					this.$emit("change")
+				}
+			}
+		})
+
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				totle:0
+			},
+			methods:{
+				handleClick(){
+					console.log(this.$refs.hello.innerText)
+				},
+				handleChange(){
+					this.totle=this.$refs.one.number+this.$refs.two.number
+				}
+			}
+		})
+	</script>
+</body>
+</html>

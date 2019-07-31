@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css显示与可见性</title>
+    <style>
+        .p1{
+            /*visibility: hidden;*/
+            display: block;
+        }
+        ul li{
+            display: inline;
+        }
+        span{
+            display: block;
+            background-color: cornflowerblue;
+        }
+        .p2{
+            display: block;
+        }
+        .collapse{
+            visibility: collapse;
+        }
+    </style>
+</head>
+<body>
+    <p class="p1">这是一个隐藏的段落</p>
+    <ul>
+        <li>display的inline：所有标签水平显示（变为内联元素）</li>
+        <li>html</li>
+        <li>css</li>
+        <li>javascript</li>
+    </ul>
+    <span>Year:2018</span>
+    <p class="p2">display的block：标签换行显示（变为块级元素）</p>
+    <p class="p2">display的block：标签换行显示</p>
+
+    <table border="black solid 1px">
+        <tr>
+            <td>这是表格的折叠</td>
+            <td>这是表格的折叠</td>
+        </tr>
+        <tr class="collapse">
+            <td>这是表格的折叠</td>
+            <td>这是表格的折叠</td>
+        </tr>
+    </table>
+</body>
+</html>

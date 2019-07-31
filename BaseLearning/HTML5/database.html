@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 WebSQL</title>
+</head>
+<body>
+    <p class="p1"></p>
+    <script>
+        var db=openDatabase('test_login','5.7.23','test',2*1024*1024);
+        db.transaction(function (tx) {
+            tx.executeSql('insert into b(name,age) values("myname",30)');
+            // tx.executeSql('select * from b',[],function (tx, results) {
+            //     var len=results.rows.length,i;
+            //     var msg="";
+            //     for(i=0;i<len;i++){
+            //         msg="<p>"+results.rows.item(i).log+"</b>"
+            //         document.querySelector('.p1').innerHTML+=msg;
+            //     }
+            // },null);
+        });
+    </script>
+</body>
+</html>

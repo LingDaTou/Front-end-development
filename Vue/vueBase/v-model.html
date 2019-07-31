@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="d1">
+        <label for="input1">input元素:</label>
+        <input   v-model="message"  id="input1" placeholder="edit">
+        <p>{{message}}</p>
+        <textarea  v-model="message2" cols="30" rows="10"></textarea>
+    </div>
+    <hr>
+    <div id="d2">
+        <input type="checkbox" id="checkBox" v-model="isCheckd">
+        <label for="checkBox">复选框是否被选中：{{isCheckd}}</label><br/>
+        <!--数组-->
+        <input type="checkbox" id="baidu" v-model="checkName" value="Baidu">
+        <label for="baidu">百度</label>
+        <input type="checkbox" id="google" v-model="checkName" value="Google">
+        <label for="google">谷歌</label>
+        <input type="checkbox" id="runoob" v-model="checkName" value="Runoot">
+        <label for="runoob">菜鸟</label>
+        <p>{{checkName}}</p>
+    </div>
+    <hr>
+    <div id="d3">
+        <input type="radio" v-model="picked" id="r1" value="Google">
+        <label for="r1">google</label>
+        <input type="radio" v-model="picked" id="r2" value="Baidu">
+        <label for="r2">baidu</label>
+        <p>被选中的值为：{{picked}}</p>
+    </div>
+    <hr>
+    <div id="d4">
+        <select name="fruit" v-model="selected">
+            <option value="">--请选择--</option>
+            <option value="apple">苹果</option>
+            <option value="peach">桃子</option>
+            <option value="banana">香蕉</option>
+        </select>
+    </div>
+    <script>
+        // input、textarea
+        var vm=new Vue({
+            el:"#d1",
+            data:{
+                message:'hello vue.js',
+                message2:'hi mike'
+            }
+        });
+        // checkbox
+        var vm1=new Vue({
+            el:"#d2",
+            data: {
+                isCheckd:true,
+                checkName:[]
+            }
+        });
+        // radio
+        var vm2=new Vue({
+            el:"#d3",
+            data:{
+                picked:'Google'
+            }
+        });
+        //select列表
+        var vm3=new Vue({
+            el:"#d4",
+            data:{
+                selected:"peach"
+            }
+        })
+
+    </script>
+</body>
+</html>

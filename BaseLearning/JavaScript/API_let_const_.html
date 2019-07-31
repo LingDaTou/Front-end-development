@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js验证API</title>
+</head>
+<body>
+    <input id="input1" type="number" min="100" max="300" required>
+    <input type="button" onclick="myfunc()" value="提交">
+    <p id="p1"></p>
+
+    <input type="number" id="input2" min="100">
+    <button onclick="myfunc2()">提交2</button>
+    <p id="p2"></p>
+
+    <input type="number" id="input3" min="100" max="300" required>
+    <button onclick="myfunc3()">验证</button>
+    <p id="p3"></p>
+
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <script>
+        //验证1
+        function myfunc() {
+            var x = document.getElementById('input1');
+            if(x.checkValidity()==false)
+            {
+                document.getElementById('p1').innerHTML=x.validationMessage;
+            }
+            else
+            {
+                document.getElementById('p1').innerHTML='输入正确';
+            }
+        }
+        // 验证2
+        function myfunc2() {
+            var txt='';
+            var x= document.getElementById('input2');
+            if(x.validity.rangeUnderflow)
+            {
+                txt='输入值过小';
+            }
+            else
+            {
+                txt='输入正确';
+            }
+            document.getElementById('p2').innerHTML=txt;
+        }
+
+        //自定义验证
+        // function myfunc3() {
+        //     var x =document.getElementById('input3');
+        //     x.setCustomValidity('');
+        //     if(x.checkValidity()==false)
+        //     {
+        //         if(x.value=='')
+        //         {
+        //             x.setCustomValidity('不能为空');
+        //         }
+        //         else if (x.value<100 || x.value>300)
+        //         {
+        //             x.setCustomValidity('请重新输入数值在100~300之间');
+        //         }
+        //         else
+        //         {
+        //             document.getElementById('p3').innerHTML=x.validationMessage;
+        //         }
+        //     }
+        //     else
+        //     {
+        //         document.getElementById('p3').innerHTML='输入正确';
+        //     }
+        // }
+
+        function myfunc3() {
+            var inpObj = document.getElementById("input3");
+            inpObj.setCustomValidity(''); // 取消自定义提示的方式
+            if (inpObj.checkValidity() == false) {
+                if(inpObj.value==""){
+                    inpObj.setCustomValidity("不能为空！");
+                }
+                else if(inpObj.value<100 || inpObj.value>300){
+                    inpObj.setCustomValidity("请重新输入数值（100~300之间）!");
+                }
+                document.getElementById("p3").innerHTML = inpObj.validationMessage;
+            }
+            else {
+                document.getElementById("p3").innerHTML = "输入正确";
+            }
+        }
+        //var和const
+        var i=5;
+        for(let i=0;i<11;i++)
+        {
+            var x=10;
+            document.getElementById('p4').innerHTML=i
+        }
+        document.getElementById('p5').innerHTML=i
+
+        const car={type:'flat',model:'500',color:'white'};
+        car.color='red';
+        document.getElementById('p5').innerHTML=car.color;
+
+        //json
+
+    </script>
+
+</body>
+</html>

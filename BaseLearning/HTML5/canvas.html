@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 画图（画布）</title>
+</head>
+<body>
+    <canvas width="200" height="100" style="border: 1px black solid;" id="c1"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c2"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c3"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c4"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c5"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c6"></canvas>
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c7"></canvas>
+    <img src="images/1.jpg" alt="yamn" id="img1">
+    <canvas width="200" height="100" style="border: 1px black solid;display: block" id="c8"></canvas>
+
+    <script>
+        var c=document.getElementById('c1');
+        var ctx=c.getContext('2d');
+        ctx.fillStyle='red';
+        ctx.fillRect(0,0,150,100);
+        //路径 绘制直线
+        var c2=document.getElementById('c2');
+        var ctx2=c2.getContext('2d');
+        ctx2.moveTo(0,0);
+        ctx2.lineTo(200,100);
+        ctx2.stroke();
+        //绘制圆
+        var c3=document.getElementById('c3');
+        var ctx3=c3.getContext('2d');
+        ctx3.beginPath();
+        ctx3.arc(95,50,40,0,2*Math.PI);
+        ctx3.stroke();
+        //文本（实心）
+        var c4=document.getElementById('c4');
+        var ctx4=c4.getContext('2d');
+        ctx4.font="20px Arial";
+        ctx4.fillText('hello world',10,50);
+        //文本（空心）
+        var c5=document.getElementById('c5');
+        var ctx5=c5.getContext('2d');
+        ctx5.font='30px Arial';
+        ctx5.strokeText('hello world',10,50);
+        //渐变（线性）
+        var c6=document.getElementById('c6');
+        var ctx6=c6.getContext('2d');
+        // 创建
+        var grd=ctx6.createLinearGradient(0,0,200,100);
+        grd.addColorStop(0,"red");
+        grd.addColorStop(1,"white");
+        // 填充
+        ctx6.fillStyle=grd;
+        ctx6.fillRect(10,10,150,80);
+        //渐变（径向）
+        var c7=document.getElementById('c7');
+        var ctx7=c7.getContext('2d');
+        // 创建
+        var grd1=ctx7.createRadialGradient(75,50,5,90,60,100);
+        grd1.addColorStop(0,"blue");
+        grd1.addColorStop(1,"pink");
+        // 填充
+        ctx7.fillStyle=grd1;
+        ctx7.fillRect(10,10,100,80);
+        // 放置图片
+        var c8=document.getElementById('c8');
+        var ctx8=c8.getContext('2d');
+        var img=document.getElementById('img1');
+        img.onload=function () {
+            ctx8.drawImage(img,10,10);
+        }
+    </script>
+</body>
+</html>

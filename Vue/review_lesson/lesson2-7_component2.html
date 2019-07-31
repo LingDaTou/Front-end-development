@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>简单的组件间传值</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="valueItem">
+		<button @click="handleBtnClick">提交</button>
+		<ul>
+			<todo-item :content="item" 
+					   v-for="(item,index) in list" :key="index"
+					   :index="index"
+					   @change="handleItemDelete">
+			</todo-item>
+		</ul>
+	</div>
+
+	<script>
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				valueItem:"",
+				list:[],
+			},
+			methods:{
+				handleBtnClick(){
+					this.list.push(this.valueItem)
+					this.valueItem=""
+				},
+				handleItemDelete(index) {
+					this.list.splice(index,1)
+				}
+			},
+			components:{
+				TodoItem:{
+					props:["content","index"],
+					template:`<li @click="handleItemClick">{{content}}</li>`,
+					methods:{
+					handleItemClick() {
+						this.$emit("change",this.index)
+					}
+				}
+			}
+
+		}})
+	</script>
+</body>
+</html>

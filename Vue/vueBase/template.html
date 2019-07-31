@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<style>
+    .p1{
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<body>
+    <div id="d1">
+        <div v-html="message"></div>
+    </div>
+    <hr>
+    <div id="d2">
+        <p>{{msg}}</p>
+        <input type="text" v-model="msg">
+    </div>
+    <hr>
+    <div id="d3">
+        <pre><a :href="url">菜鸟教程</a></pre>
+    </div>
+    <hr>
+    <div id="d4">
+        <label for="in1">判断</label>
+        <input type="checkbox" v-model="judge" id="in1">
+        <p :class="{'p1':judge}">改变颜色</p>
+    </div>
+    <hr>
+    <div id="d5">
+        <p v-if="seen">设置seen=true，所以可见</p>
+        <div v-if="ok">
+            <p>你可看见</p>
+            <p>你可看</p>
+            <p>你可</p>
+            <p>你</p>
+        </div>
+    </div>
+    <hr>
+    <div id="d6">
+        <p>{{msg}}</p>
+        <button @click="reverseFunc">点击按钮</button>
+    </div>
+    <hr>
+    <p id="myp1">{{msg1 | upperCase}}</p>
+    <script>
+        // 在vue中使用HTML标签
+        var vm =new Vue({
+            el:"#d1",
+            data:{
+                message:"<h2>在vue中使用html标签</h2>"
+            }
+        });
+        // v-model双向绑定
+        var vm2=new Vue({
+            el:"#d2",
+            data: {
+                msg:"input双向绑定"
+            }
+        });
+        //v-bind 1
+        var vm3=new Vue({
+            el:"#d3",
+            data:{
+                url:'https://www.baidu.com'
+            }
+        });
+        // v-bind 2+v-model
+        var vm4=new Vue({
+            el:"#d4",
+            data:{
+                judge:false
+            }
+        });
+        //v-if
+        var vm5=new Vue({
+            el:"#d5",
+            data:{
+                seen:true,
+                ok:false
+            }
+        });
+        //v-on
+        var vm6=new Vue({
+            el:"#d6",
+            data:{
+                msg:"更换信息"
+            },
+            methods:{
+                reverseFunc:function () {
+                    this.msg= this.msg.split('').reverse().join('')
+                }
+            }
+        });
+        //filter
+        var vm7=new Vue({
+           el:"#myp1",
+           data:{
+               msg1:"hello"
+           },
+           filters: {
+             upperCase:function (args) {
+                 // args=args.toString();
+                 return args.charAt(0).toUpperCase()+args.slice(1)
+             }
+           }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>样式绑定（外联、内联）</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div :style="[styleObj]" 
+		@click="handleDivClick"
+		>hello world</div>
+	</div>
+
+	<script>
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				styleObj:{
+					color:""
+				}
+			},
+			methods:{
+				handleDivClick() {
+					this.styleObj.color=this.styleObj.color==="red"?"black":"red"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

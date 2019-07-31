@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="d1">
+        {{Reversed}}
+    </div>
+    <div id="d2">
+        {{site}}
+    </div>
+<script>
+    var vm =new Vue({
+        el:"#d1",
+        data:{
+            message:"Hello"
+        },
+        computed:{
+          Reversed:function () {
+              return this.message.split('').reverse().join('')
+          }
+        }
+    });
+    var vm1=new Vue({
+        el:"#d2",
+        data:{
+            name:"mike",
+            age:10
+        },
+        computed: {
+            site:{
+                get:function () {
+                    return this.name+" "+this.age
+                },
+                set:function (newVaule) {
+                    var names=newVaule.split(' ');
+                    this.name=names[0];
+                    this.age=names[names.length-1]
+                }
+            }
+        }
+    });
+    vm1.site="hello 20";
+    document.writeln("name"+vm.name);
+    document.writeln("age"+vm.age)
+</script>
+</body>
+</html>

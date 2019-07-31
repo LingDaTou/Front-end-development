@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css透明度</title>
+    <style>
+        .img1:hover{
+            opacity: 0.4;
+            filter:alpha(opacity:80);
+        }
+
+        .textbox{
+            background: url("images/2.jpg") repeat;
+            border: 2px solid black;
+            width: 400px;
+            height: 300px;
+        }
+        .textcontent{
+            width: 300px;
+            height: 200px;
+            margin: 50px 50px;
+            border: 1px solid red;
+            color: white;
+            overflow: auto;
+            opacity: 0.6;
+            filter:alpha(opacity:60);
+        }
+        p{
+            margin: 20px ;
+        }
+
+        .img2{
+            opacity: 0.4;
+            filter:alpha(opacity:80);
+        }
+        .img2:hover{
+            opacity: 1;
+            filter: alpha(opacity:100);
+        }
+    </style>
+</head>
+<body>
+    <img src="images/1.jpg" alt="yman" class="img1">
+    <hr>
+    <div class="textbox">
+        <div class="textcontent">
+            <p>
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+                This is some text that is placed in the transparent box.
+            </p>
+        </div>
+    </div>
+    <hr>
+    <img src="images/4.jpg" alt="yman4" class="img2">
+</body>
+</html>

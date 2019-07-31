@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>keyframes动画、使用animate.css库</title>
+	<script src="./vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="./animate.css">
+
+		<!-- 使用了animate.css后不使用 -->
+<!-- 	<style type="text/css">
+		@keyframes bounce-in
+		{
+			0%{transform: scale(0);}
+			50%{transform: scale(1.5);}
+			100%{transform: scale(1);}
+
+		}
+
+		.active{
+			transform-origin: left center;
+			animation: bounce-in 1s;
+		}
+		.leave{
+			transform-origin: left center;
+			animation: bounce-in 1s reverse;
+		}
+	</style> -->
+</head>
+<body>
+	<div id="app">
+		<transition 
+		name="fade"
+		enter-active-class="animated tada"
+		leave-active-class="animated wobble"
+		>
+			<div v-show="show">hello world</div>
+		</transition>
+		<button @click="handleClick">toggle</button>
+	</div>
+
+	<script>
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				show:true
+			},
+			methods:{
+				handleClick() {
+					this.show=!this.show
+				}
+			}
+		})
+	</script>
+</body>
+</html>
+

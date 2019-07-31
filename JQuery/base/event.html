@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQery event方法</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <div class="d1" style="background-color: yellow;">
+        <p class="p1">this is paragraph</p>
+        <h1 class="h11">title</h1>
+    </div>
+    <hr>
+    <div class="d2">
+        <p class="p2">target this</p>
+    </div>
+    <hr>
+    <div class="d3" style="width: 200px;height: 100px;border:1px solid black;">
+        <button class="b1">点击改变背景颜色</button>
+    </div>
+    <hr>
+    <a href="http://www.baidu.com" class="a1">点开链接</a>
+    <hr>
+    <div class="d4" style="width: 100px;height: 100px; border:1px solid black;">
+    </div>
+    <hr>
+    <textarea rows="10" cols="10">这是一段文字</textarea>
+    <button class="b2">trigger</button>
+    <hr>
+    <div class="d5" style="width: 100px;height:100px;border: 1px solid black">
+        <p class="myp1">The first paragraph</p>
+        <button class="b3">off移除</button>
+    </div>
+    <hr>
+    <div class="d6" style="width: 100px;height: 100px;border: 1px solid black">
+        <span id="myspan1"></span>
+    </div>
+    <div class="d7" style="height: 180px;width: 300px;border: 1px solid black">
+        <p class="myp2">this is new paragraph</p>
+    </div>
+    <span class="myspan2"></span>
+    <hr>
+    <button class="myb1">点击显示event.result</button>
+    <p class="myp3">此处显示</p>
+    <hr>
+    <div class="mydiv1">
+        <p class="myp4">this is my paragraph</p>
+        <h1 class="myh1">this is h2 title</h1>
+    </div>
+        <span class="myspan3"></span>
+    <hr>
+    <button class="myb2">点击事件</button>
+    <p class="myp5"></p>
+    <hr>
+    <p class="mypp1">click,mouseover,dblclick,mouseout</p>
+    <p class="mypp2">此出显示触发的事件类型</p>
+    <hr>
+    <input type="text" class="myinput">
+    <p class="mypp3">此处显示which的值</p>
+    <script>
+        $(document).ready(function () {
+            //delegate:处理子元素事件
+            $('.d1').delegate('p','click',function () {
+                $(".h11").css('background-color','pink');
+            });
+            //event.currentTarget相当于this（处理.p2元素）
+            $('.p2').click(function (event) {
+                alert(event.currentTarget===this);
+                $(event.currentTarget).css('color','blue')
+            });
+            //event.delegateTarget：处理on事件中委托的父元素
+            $('.d3').on('click',".b1",function (event) {
+                $(event.delegateTarget).css('background-color','pink')
+            });
+            //preventDefault+isDefaultPrevented：阻止默认事件并检查
+            $('.a1').click(function (event) {
+                event.preventDefault();
+                alert(event.isDefaultPrevented());
+            });
+            //stopImmediatePropagation+isImmediatePropagationStopped：阻止其下的事件被执行或调用
+            $('.d4').click(function (event) {
+                alert('行为1被调用');
+                event.stopImmediatePropagation();
+                alert(event.isImmediatePropagationStopped())
+            });
+            //这一个行为将不被调用
+            $('.d4').click(function (event) {
+                alert('行为2被调用');
+            });
+            //select:textarea或input的文本
+            $('textarea').select(function () {
+                alert('文字被选中')
+                // $('textarea').after('文字被选中')
+            });
+            //trigger：绑定event事件
+            $('.b2').click(function () {
+                $('textarea').trigger("select")
+            });
+            //off：移除on添加的事件
+            $('.myp1').on('click',function () {
+                $(this).css('color','red')
+            });
+            $('.b3').click(function () {
+                $('.myp1').off('click')
+            });
+            //pageX/pageY：返回鼠标的实时位置
+            $('.d6').mousemove(function (event) {
+                $('#myspan1').html('X:'+event.pageX+" "+"Y:"+event.pageY)
+            });
+            //relatedTarget：返回鼠标移动时哪个元素进入或退出
+            $('.d7,.myp2').mouseenter(function (event) {
+                $('.myspan2').html(event.relatedTarget.nodeName)
+            });
+            //event.result：
+            $('.myb1').click(function () {
+                return "hello"
+            });
+            $('.myb1').click(function (event) {
+                $('.myp3').html(event.result)
+            });
+            //event.target
+            $(".mydiv1,.myp3,.myh1").click(function (event) {
+                $('.myspan3').html(event.target.nodeName+'被触发')
+            });
+            //timeStamp
+            $('.myb2').click(function (event) {
+                $('.myp5').html(event.timeStamp)
+            });
+            //type
+            $('.mypp1').on('click dblclick mouseover mouseout',function (event) {
+                $('.mypp2').html('触发的类型是:'+event.type)
+            });
+            //which
+            $('.myinput').keypress(function (event) {
+                $('.mypp3').html('被按下的键为:'+event.which)
+            })
+        })
+    </script>
+</body>
+</html>

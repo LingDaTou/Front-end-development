@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM 节点</title>
+</head>
+<body>
+    <div id="div1">
+        <p>索引到此元素</p>
+        <p>这是一个段落</p>
+    </div>
+    <hr>
+    <div id="div2">
+        <p id="p1">新的段落</p>
+    </div>
+    <hr>
+    <div id="div3">
+        <p id="p2">删除的段落</p>
+        <p>删除的段落2</p>
+    </div>
+    <hr>
+    <div id="div4">
+        <p id="p3">这是一个段落</p>
+        <p>替换的段落</p>
+    </div>
+    <hr>
+        <h1 id="h1"></h1>
+        <h1 id="h2"></h1>
+        <h1 id="h3"></h1>
+        <h1 id="h4"></h1>
+    <script>
+        // appendChild方法
+        var pnode=document.createElement('p');
+        var pcontent=document.createTextNode('这是插入的段落，添加至尾部');
+        pnode.appendChild(pcontent);
+        document.getElementById('div1').appendChild(pnode);
+        //insertBefore方法
+        var hnode=document.createElement('h1');
+        var hcontent=document.createTextNode('添加到开始位置');
+        hnode.appendChild(hcontent);
+
+        var element=document.getElementById('div2');
+        var child=document.getElementById('p1');
+        element.insertBefore(hnode,child);
+        // removeChild方法:删除元素
+        var parent=document.getElementById('div3');
+        var child1=document.getElementById('p2');
+        parent.removeChild(child1);
+        // replaceChild替换元素
+        var newtip=document.createElement('p');
+        var newcontent=document.createTextNode('这是替换的段落');
+        newtip.appendChild(newcontent);
+
+        var element1=document.getElementById('div4');
+        var child2=document.getElementById('p3');
+        element1.replaceChild(newtip,child2);
+        // HTMLCollection对象,getElementsByTagName
+        var collect = document.getElementsByTagName('p');
+        document.getElementById('h1').innerHTML=collect[0].innerHTML;
+        document.getElementById('h2').innerHTML=collect.length;
+        for(var i=0;i<collect.length;i++)
+        {
+            collect[i].style.color='blue';
+        }
+        var nodelist=document.querySelectorAll('p');
+        document.getElementById('h3').innerHTML=nodelist[0].innerHTML;
+        document.getElementById('h4').innerHTML=nodelist.length;
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 边框</title>
+    <style>
+        #div1{
+            border: 1px solid black;
+            border-radius: 25px;
+            width: 150px;
+            padding: 10px 40px;
+            background: cadetblue;
+        }
+        .div2{
+            width: 300px;
+            height: 200px;
+            background-color: #4CAF50;
+            box-shadow: 10px 10px 10px gray;
+        }
+        .round{
+            border:15px solid transparent;
+            width: 250px;
+            padding:10px 20px;
+            border-image: url("images/border.png") 30 30 round;
+        }
+        .stretch{
+            border:15px solid transparent;
+            width: 250px;
+            padding:10px 20px;
+            border-image: url("images/border.png") 30 30 stretch;
+        }
+        .corner{
+            border: 1px black solid;
+            /*border-radius: 25px;*/
+            /*圆柱*/
+            /*border-radius: 50px/15px;*/
+            /*border-radius: 15px/50px;*/
+            /*椭圆*/
+            border-radius: 50%;
+            width: 120px;
+            height: 100px;
+            background: url("images/border.png") no-repeat;
+            background-position: right bottom;
+
+        }
+        .newborder{
+            width: 120px;
+            height: 100px;
+            background-color: cadetblue;
+            border-top-left-radius: 30px;
+            padding: 20px 15px;
+        }
+        .img{
+            border: 1px solid black;
+            width: 120px;
+            height: 100px;
+            background: url("images/border.png") no-repeat right bottom;
+            background-size: 50px 50px;
+        }
+        .div3{
+            border: 1px solid black;
+            width:200px;
+            height: 150px;
+            overflow: auto;
+            padding: 20px;
+            background: url("images/icon.jpg") left no-repeat;
+            background-origin: border-box;
+        }
+        .div4{
+            width: 200px;
+            height: 120px;
+            background-color: yellow;
+            border: 10px black dotted;
+            padding: 20px;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">border-radius 添加圆角边框</div>
+    <hr>
+    <div class="div2">添加了阴影</div>
+    <hr>
+    <div class="round">图像平铺来填充该区域</div>
+    <hr>
+    <div class="stretch">图像拉伸填充</div>
+    <hr>
+    <div class="corner">添加了圆角样式</div>
+    <hr>
+    <div class="newborder">单独定义四个角</div>
+    <hr>
+    <div class="img"></div>
+    <hr>
+    <div class="div3">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod,sed diam nonummy nibh euismod
+    </div>
+    <hr>
+    <div class="div4"></div>
+</body>
+</html>

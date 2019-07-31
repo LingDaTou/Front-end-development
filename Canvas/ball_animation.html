@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>炫彩小球</title>
+    <style>
+        canvas{
+            display: block;
+            margin: 0 auto;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400"></canvas>
+    <script>
+        let oCanvas = document.querySelector("canvas");
+        let ctx = oCanvas.getContext("2d");
+
+        class Ball{
+            constructor(canvas, x,y){
+                this.canvas = canvas;
+                this.ctx = canvas.getContext("2d");
+                this.color = this._randomColor();
+                this.x= x;
+                this.y = y;
+                this.r =30;
+                this.canvasWidth = this.ctx.canvas.width;
+                this.canvasHeight = this.ctx.canvas.height;
+
+                // 随机移动的位置
+                this.dx = this._getRandomArbitrary(-5,6);
+                this.dy = this._getRandomArbitrary(-5,6);
+                this.dr = this._getRandomArbitrary(0.5,1);
+            }
+            render(){
+                // this.ctx.clearRect(0,0, this.canvasWidth,this.canvasHeight);
+                this.ctx.beginPath();
+                this.ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+                this.ctx.fillStyle = this.color;
+                this.ctx.fill();
+            }
+            update(){
+                this.x += this.dx;
+                this.y += this.dy;
+                this.r -= this.dr;
+                if(this.r < 0 || this.x <0 || this.y < 0 || this.x > this.canvasWidth || this.y > this.canvasHeight){
+                    return false
+                }
+                return true;
+            }
+            // 随机颜色
+            _randomColor(){
+                let r = Math.floor(this._getRandomArbitrary(0,256));
+                let g = Math.floor(this._getRandomArbitrary(0,256));
+                let b = Math.floor(this._getRandomArbitrary(0,256));
+                return `rgb(${r},${g},${b})`
+            }
+            // 随机数
+            _getRandomArbitrary(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+        }
+
+        let list=[];
+        oCanvas.onmousemove = function (event) {
+            let moveX = event.offsetX;
+            let moveY = event.offsetY;
+            let b =new Ball(oCanvas,moveX,moveY);
+            b.render();
+            list.push(b);
+        };
+
+        setInterval(function () {
+            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+            for(let i=0; i<list.length;i++){
+                let ball = list[i];
+                let res = ball_animation.update();
+                if(res){
+                    ball_animation.render();
+                }
+                else{
+                    list.splice(i,1);
+                }
+            }
+        },50)
+    </script>
+</body>
+</html>

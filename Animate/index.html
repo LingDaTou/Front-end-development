@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.css">
+    <script src="wow.js"></script>
+    <style>
+        .box{
+            width: 400px;
+            height: 600px;
+            overflow: auto;
+            margin: 0 auto;
+        }
+        .box>div{
+            width: 100px;
+            height: 100px;
+            background: pink;
+            margin: 0 auto;
+        }
+        .box>div:nth-child(2){
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div  class="wow swing"></div>
+        <div  class="wow  zoomln" data-wow-offset="600"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script>
+       let wow=  new WOW({
+           scrollContainer: ".box",
+        });
+       wow.init();
+    </script>
+</body>
+</html>

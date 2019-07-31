@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery基础</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('.button1').click(function () {
+                $('p').hide();
+            });
+        });
+        // 事件
+        $(document).ready(function () {
+            $('input').blur(function () {
+                $(this).css('background-color','yellow')
+            })
+        })
+    </script>
+    <p>这是段落1</p>
+    <p>这是段落2</p>
+    <button class="button1">点击</button>
+    <input type="text" name="username">
+    <input type="text" name="password">
+</body>
+</html>

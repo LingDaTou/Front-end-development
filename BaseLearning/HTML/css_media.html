@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css媒体类型</title>
+    <style>
+       @media screen {
+           P{
+               font-family: "Andale Mono";
+               font-size: 50px;
+
+           }
+       }
+        @media print {
+            p{
+                font-family: "American Typewriter";
+                font-size: 20px;
+            }
+        }
+        @media print,screen {
+            p{
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>在屏幕、页面显示上不同</p>
+</body>
+</html>

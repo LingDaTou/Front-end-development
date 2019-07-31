@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制表格</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            background: royalblue;
+            margin-left: 400px;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="500" height="500"></canvas>
+    <script>
+        let oCanvas = document.querySelector("canvas");
+        let ctx = oCanvas.getContext("2d");
+        let canvasWidth = ctx.canvas.width;
+        var canvasHeight = ctx.canvas.height;
+        var gridSize = 50;
+        var rols = Math.floor(canvasHeight / gridSize);
+        var cols = Math.floor(canvasWidth / gridSize);
+
+        // 绘制网格
+        for(let i=0; i<rols;i++){
+            ctx.beginPath();
+            ctx.moveTo(0,i*gridSize-0.5);
+            ctx.lineTo(canvasWidth,i*gridSize-0.5);
+            ctx.strokeStyle = '#fff';
+            ctx.stroke();
+        }
+
+        for(let i=0; i < cols ; i++){
+            ctx.beginPath();
+            ctx.moveTo(i*gridSize-0.5,0);
+            ctx.lineTo(i*gridSize-0.5,canvasHeight);
+            ctx.strokeStyle = '#fff';
+            ctx.stroke();
+        }
+
+        // 绘制x轴
+        let originX = gridSize-0.5;
+        let originY = canvasHeight - gridSize-0.5;
+        let endX = canvasWidth - gridSize - 0.5;
+        ctx.beginPath();
+        ctx.moveTo(originX,originY);
+        ctx.lineTo(endX,originY);
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+        // 绘制坐标箭头
+        ctx.moveTo(endX - 10,originY + 5);
+        ctx.lineTo(endX -10 , originY -5);
+        ctx.lineTo(endX,originY);
+        ctx.closePath();
+        ctx.fill();
+
+        // 绘制y轴
+        let endY = gridSize + 0.5;
+        ctx.beginPath();
+        ctx.moveTo(originX,originY);
+        ctx.lineTo(originX,endY);
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+        ctx.moveTo(originX,endY);
+        ctx.lineTo(originX-5,endY+10);
+        ctx.lineTo(originX+5,endY+10);
+        ctx.fill();
+
+        // 绘制点
+        // 记录位置
+        let list = [
+            {
+                x: 100,
+                y: 300
+            },
+            {
+                x: 200,
+                y: 200
+            },
+            {
+                x: 300,
+                y: 250
+            },
+            {
+                x: 400,
+                y: 100
+            },
+        ];
+
+        let dotSize = 20;
+        let middleSize = dotSize/2;
+        for(let i=0;i<list.length;i++){
+            ctx.beginPath();
+            ctx.moveTo(list[i].x-middleSize,list[i].y-middleSize);
+            ctx.lineTo(list[i].x +dotSize-middleSize,list[i].y-middleSize);
+            ctx.lineTo(list[i].x+dotSize-middleSize,list[i].y+dotSize-middleSize);
+            ctx.lineTo(list[i].x-middleSize,list[i].y+dotSize-middleSize);
+            ctx.strokeStyle ="#000";
+            ctx.fill();
+        }
+
+        // 连接所有点
+        ctx.beginPath();
+        for(let i = 0;i<list.length;i++){
+            if(i===0){
+                ctx.moveTo(list[i].x,list[i].y);
+            }
+            else{
+                ctx.lineTo(list[i].x,list[i].y);
+            }
+        }
+        ctx.stroke();
+
+
+        let list1 = [
+            {
+                x: 100,
+                y: 300
+            },
+            {
+                x: 200,
+                y: 200
+            },
+            {
+                x: 300,
+                y: 250
+            },
+        ];
+
+        for(let i=0;i<list1.length;i++){
+            let rectHeight = originY - list1[i].y;
+            ctx.fillRect(list1[i].x,list1[i].y,gridSize,rectHeight);
+        }
+    </script>
+</body>
+</html>

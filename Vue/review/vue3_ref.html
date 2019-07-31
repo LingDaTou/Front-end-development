@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ref的使用</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--<div ref="one">显示的内容</div>-->
+        <child ref="childOne" :msg1="msg" @click.native="handBtnClick">
+            <h1 slot="a"> aaa</h1>
+            <h1 slot="b"> bbb</h1>
+            <template slot-scope="props">
+                <p>{{props.items}}</p>
+            </template>
+        </child>
+        <button @click="handClick">点击显示</button>
+    </div>
+
+    <script>
+
+
+        var vm = new  Vue({
+            el:"#app",
+            data:{
+                msg:"显示的内容"
+            },
+            methods:{
+                handClick(){
+                    console.log(this.$refs.childOne.msg1);
+                },
+                handBtnClick(){
+                    console.log("这是本地的点击事件")
+                }
+            },
+            components:{
+
+                child:{
+                    props:["msg1"],
+                    data(){
+                        return {
+                            content1: "这是子组件的值",
+                            list:[1,2,3,4,5,6]
+                        }
+                    },
+                        template:`<div>
+                                    <p>{{msg1}}</p>
+                                    <slot name="a"></slot>
+                                    <slot name="b"></slot>
+                                    <slot v-for="item of list" :items="item"></slot>
+                                 </div>
+                            `,
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

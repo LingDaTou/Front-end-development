@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery 效果</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            // 向下滑动
+            $('.div1').click(function () {
+                $('.div2').slideDown(5000);
+            });
+            // 停止（暂停）
+            $('.stop').click(function () {
+                $('.div2').stop();
+            });
+            // 向上滑动
+            $('.div3').click(function () {
+                $('.div4').slideUp(500);
+            });
+            // 向下/向上滑动
+            $('.div5').click(function () {
+                $('.div6').slideToggle(500);
+            });
+            // 动画
+            $('.button1').click(function () {
+                var child=$('.child');
+                child.animate({
+                    left:'100px',
+                    width:'+=120px',
+                    // height:'+=100px',
+                    opacity:'0.5',
+                    // 预定义的值
+                    // height:'hide'
+                },1000);
+                child.animate({
+                    fontSize:'3em'
+                },'fast');
+                child.animate({
+                    color:'blue'
+                },'show')
+            });
+            //JQuery链
+            $('.button2').click(function () {
+                $('.p1').css('background-color','pink').slideUp(2000).slideDown(2000);
+            });
+
+        });
+    </script>
+
+    <div class="div1" style="width: 200px;background-color: #cae8ca">点击向下滑动板块</div>
+    <div class="div2" style="width: 200px;height:100px;background-color: #cae8ca;display: none">显示的内容</div>
+    <button class="stop">停止</button>
+    <hr>
+    <div class="div3" style="width: 200px;background-color: #cae8ca">点击向上滑动板块</div>
+    <div class="div4" style="width: 200px;background-color: #cae8ca;margin-top:1px">显示的内容</div>
+    <hr>
+    <div class="div5" style="width: 200px;background-color: #cae8ca">点击滑动板块</div>
+    <div class="div6" style="width: 200px;background-color: #cae8ca;margin-top:1px">显示的内容</div>
+    <hr>
+    <div class="container" style="width: 400px;height: 200px;border: 1px solid red;position: relative">
+        <button class="button1">显示动画效果</button>
+        <div class="child" style="width: 100px;height: 80px;background-color: cornflowerblue;margin:20px;position: absolute">文本</div>
+    </div>
+    <button class="button2">按下按钮</button>
+    <p class="p1">显示/隐藏段落</p>
+</body>
+</html>

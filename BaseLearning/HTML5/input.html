@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 新input类型</title>
+</head>
+<body>
+    <!--datalist标签-->
+    <form action="">
+        <input list="browers">
+        <datalist id="browers">
+            <option value="IE"></option>
+            <option value="chrome"></option>
+            <option value="opera"></option>
+            <option value="safari"></option>
+        </datalist>
+    </form>
+    <!--keygen标签-->
+    <form action="" method="get">
+        加密: <keygen name="security">
+    </form>
+    <!--output标签-->
+    <form action="" oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+        0<input type="range" id="a" value="50">50
+        +<input type="number" id="b" value="50">
+        =<output name="x" for="a b"></output>
+    </form>
+    <!--表单属性-->
+    <form action="">
+        <input type="text" name="fname">
+        <input type="text" name="lname">
+        <input type="email" name="email" autofocus>
+        <input type="submit">
+    </form>
+</body>
+</html>

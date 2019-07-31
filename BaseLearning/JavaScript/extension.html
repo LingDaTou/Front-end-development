@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js扩展部分</title>
+</head>
+<body>
+    <button onclick="myfunc()">点击</button>
+    <p id="p1"></p>
+
+    <button onclick="myfunc2()">点击2</button>
+    <p id="p2">Visit Jerry</p>
+
+    <button onclick="myfunc3()">点击3</button>
+    <p id="p3"></p>
+
+    <button onclick="myfunc4()">点击4</button>
+    <p id="p4"></p>
+
+    <input type="button" value="点击按钮" onclick="message()">
+
+    <p>请输出一个5-10的数字</p>
+    <input type="text" id="input1">
+    <input type="button" value="判断数字" onclick="myfunction()">
+    <p id="p5"></p>
+
+    <p id="p6"></p>
+    <script>
+        //正则表达式/search方法
+        function myfunc() {
+            var str1='hello world';
+            var pattern=/world/i;
+            var result =str1.search(pattern);
+            // var n=str1.search('world');
+            document.getElementById('p1').innerHTML=result;
+        }
+        //正则表达式/replace方法
+        function myfunc2() {
+            var str=document.getElementById('p2').innerHTML;
+            var pattern = str.replace(/jerry/i,'mike');
+            document.getElementById('p2').innerHTML=pattern;
+        }
+
+        //正则表达式/test方法
+        function myfunc3() {
+            var pattern = new RegExp('hell');
+            document.getElementById('p3').innerHTML=pattern.test('hello this is regex world');
+        }
+        //正则表达式/exec方法
+        function myfunc4() {
+            var pattern = new RegExp('hel')
+            document.getElementById('p4').innerHTML=pattern.exec('hello world')
+        }
+
+        //判断是否为数字、字母、下划线
+        var str2='123abc_'
+        var pattern =/^\w+$/.test(str2)
+        document.writeln(pattern)
+
+        //try/catch
+        function message() {
+            try {
+                addl('welcome');
+            }
+            catch (e) {
+                txt='错误：'+e.message;
+                alert(txt)
+            }
+        }
+
+        //try/throw/catch
+        function myfunction() {
+            var message=document.getElementById('p5');
+            message.innerHTML='';
+            var x =document.getElementById('input1').value;
+            try {
+                if(x=='') throw '值不能为空';
+                if(isNaN(x)) throw '不是数字';
+                x=Number(x);
+                if(x<5) throw '数字太小';
+                if(x>10) throw '数字太大';
+            }
+            catch (e) {
+                message.innerHTML='错误类型:'+e;
+            }
+        }
+
+        var x=15;
+        debugger;
+        document.getElementById('p6').innerHTML=x;
+    </script>
+</body>
+</html>

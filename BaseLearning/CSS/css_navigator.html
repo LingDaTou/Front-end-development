@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css导航栏</title>
+    <style>
+        .u1{
+            border:1px solid black;
+            background-color: gainsboro;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100px;
+            height: 100%;
+        }
+        .u1 li a{
+            display: block;
+            color: black;
+            text-decoration: none;
+            padding: 2px 3px;
+        }
+        .u1 li{
+            text-align: center;
+            border-bottom: 1px solid black;
+        }
+        .u1 li:last-child{
+            border-bottom: none;
+        }
+        .a1{
+            background-color: #4CAF50;
+            color: white;
+        }
+        .u1 li a:hover:not(.a1){
+            background-color: darkgray;
+            color: white;
+        }
+        .u2{
+            margin: 0;
+            padding: 0;
+            background-color: dimgray;
+        }
+        .u2 li{
+            list-style: none;
+            display: inline;
+
+        }
+        .u2 li a{
+            text-decoration: none;
+            color: white;
+        }
+        .u2 li a:hover{
+            background-color: burlywood;
+        }
+        .u3{
+            background-color: cadetblue;
+            list-style: none;
+            overflow: hidden;
+        }
+        .u3 li{
+            float: left;
+        }
+        .u3 li a{
+            display: block;
+            width: 50px;
+            text-decoration: none;
+            color: white;
+        }
+        .u3 li a:hover{
+            background-color: burlywood;
+        }
+
+        .u4{
+            background-color: dimgray;
+            list-style: none;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .u4 li{
+            float: left;
+            border-right: 1px solid black;
+        }
+        .u4 li:last-child{
+            border-right: none;
+        }
+        .u4 li a{
+            display: block;
+            width: 50px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+        .u4 li a:hover{
+            background-color: black;
+        }
+
+        .u5{
+            /*top:0;*/
+            /*bottom: 0;*/
+            padding: 0;
+            margin: 0;
+            background-color: darkolivegreen;
+            overflow: hidden;
+            list-style: none;
+            width: 100%;
+            position: fixed;
+        }
+        .u5 li{
+            float: left;
+        }
+        .u5 li a{
+            display: block;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            padding:14px 16px ;
+        }
+        .u5 li a:hover:not(.active){
+            background-color: black;
+        }
+        .active{
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <ul class="u1">
+        <li><a href="" class="a1">导航1</a></li>
+        <li><a href="">导航2</a></li>
+        <li><a href="">导航3</a></li>
+        <li><a href="">导航3</a></li>
+        <li><a href="">导航3</a></li>
+    </ul>
+    <hr>
+    <ul class="u2">
+        <li><a href="">首页</a></li>
+        <li><a href="">返回</a></li>
+    </ul>
+    <hr>
+    <ul class="u3">
+        <li><a href="">首页</a></li>
+        <li><a href="">链接</a></li>
+    </ul>
+    <hr>
+    <ul class="u4">
+        <li><a href="">主页</a></li>
+        <li><a href="">新闻</a></li>
+        <li><a href="">联系</a></li>
+        <li><a href="">关于</a></li>
+    </ul>
+    <hr>
+    <ul class="u5">
+        <li><a href="" class="active">主页</a></li>
+        <li><a href="">新闻</a></li>
+        <li><a href="">联系</a></li>
+        <li><a href="">关于</a></li>
+    </ul>
+
+</body>
+</html>

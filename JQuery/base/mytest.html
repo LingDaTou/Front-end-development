@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js测试</title>
+</head>
+<body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <button id="b1" onclick="myfunc()">按下</button>
+    <script>
+        function functionFunction(str) {
+            var f=function (s) {
+                return str+","+s;
+            };
+            return f;
+        }
+        document.getElementById('p1').innerHTML=functionFunction('Hello')('world');
+
+        function myfunc() {
+            var s='12';
+            var str=s.toString(2);
+            document.getElementById('p2').innerHTML=str;
+        }
+    </script>
+</body>
+</html>

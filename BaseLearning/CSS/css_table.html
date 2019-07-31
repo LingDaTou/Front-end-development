@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css表格</title>
+    <style>
+        .table caption{caption-side: bottom}
+        .table{border-collapse: collapse;width: 100%}
+        .table td,th{text-align: center}
+        .table th{height: 50%;padding-top: 20px;background-color: aquamarine;}
+
+        .table1{
+            border-collapse: collapse;
+
+        }
+        .table1 th {
+            background-color: rgb(151,194,51);
+            border: #4CAF50 solid 1px;
+            color: white;
+
+        }
+        .table1 tr td{
+            border: #4CAF50 solid 1px;
+        }
+        .t1{
+            background-color: rgb(230,240,201);
+        }
+    </style>
+</head>
+<body>
+    <table class="table">
+        <caption>标题的位置设置在表格下方</caption>
+        <tr>
+            <th>表头</th>
+            <th>表头</th>
+            <th>表头</th>
+        </tr>
+        <tr>
+            <td>列</td>
+            <td>列</td>
+            <td>列</td>
+        </tr>
+        <tr>
+            <td>列</td>
+            <td>列</td>
+            <td>列</td>
+        </tr>
+    </table>
+    <hr>
+    <table class="table1">
+        <tr>
+            <th>company</th>
+            <th>contract</th>
+            <th>country</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+        </tr>
+        <tr class="t1">
+            <td>2</td>
+            <td>2</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+        <tr class="t1">
+            <td>4</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+    </table>
+</body>
+</html>

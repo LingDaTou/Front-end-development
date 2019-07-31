@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 分页</title>
+    <style>
+        ul{
+            list-style-type: none;
+        }
+        li{
+            display: inline-block;
+            float: left;
+        }
+        a{
+            color: black;
+            display: block;
+            margin-left: 4px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 2px 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 1.5em;
+        }
+        .active{
+            background-color: #4CAF50;
+            color: white;
+        }
+        a:hover:not(.active){
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#"><<</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#" class="active">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li><a href="#">7</a></li>
+        <li><a href="#">>></a></li>
+    </ul>
+</body>
+</html>

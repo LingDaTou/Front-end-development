@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css定位</title>
+    <style>
+        div.d1{
+            position: static;
+            border: red solid 1px;
+        }
+        div.d2{
+            overflow: auto;
+            width: 100px;
+            height: 80px;
+        }
+        p.p2{
+            position: fixed;
+        }
+        .h1{
+            position: relative;
+            left: -20px;
+        }
+        .h2{
+            position: relative;
+            left: 20px;
+        }
+        .h3{
+            position: absolute;
+            top:100px;
+            left: 50px;
+        }
+        p.p1{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            padding: 5px;
+            background-color: #cae8ca;
+            border: 2px solid #4CAF50;
+            font-family: "Apple Braille";
+        }
+        span{
+            cursor: col-resize;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">使用 position: static; 定位的元素，无特殊定位，遵循正常的文档流对象</div>
+    <p class="p2">position：fixed不随着窗口的滚动而滚动</p>
+    <h1>这是正常的位置</h1>
+    <h1 class="h1">这是相对定位：相对于正常位置，向左偏移20px</h1>
+    <h1 class="h2">这是相对定位：这是相对于正常位置，向右偏移20px</h1>
+    <h1 class="h3">这是绝对定位，相对于父元素，如没有，则对于整个html</h1>
+    <p class="p1">在静止和窗口滚动之间</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <p>滚动</p>
+    <div class="d2">使用滚动条来显示元素内溢出的内容。使用滚动条来显示元素内溢出的内容。使用滚动条来显示元素内溢出的内容。使用滚动条来显示元素内溢出的内容。使用滚动条来显示元素内溢出的内容。</div>
+    <span>指针的变化</span>
+</body>
+</html>

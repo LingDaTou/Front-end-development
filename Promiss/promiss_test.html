@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promiss练习</title>
+</head>
+<body>
+    <script>
+        let arr = [
+            "http://www.it666.com/files/system/block_picture_1555415767.png",
+            "http://www.it666.com/files/system/block_picture_1555422597.jpg",
+            "http://www.it666.com/files/system/block_picture_1555419713.jpg"
+        ];
+        function loadImage(url) {
+            return new Promise(function (resolve, reject) {
+                let oImg = new Image();
+                oImg.src = url;
+                oImg.onload = function () {
+                    console.log("加载成功");
+                    resolve(oImg);
+                };
+                oImg.onerror = function () {
+                    console.log("加载失败");
+                    reject(oImg);
+                }
+            })
+        }
+
+        // loadImage(arr[0]).then(function (oImg) {
+        //     document.body.appendChild(oImg);
+        //     return loadImage(arr[1]);
+        // }).then(function (oImg) {
+        //     document.body.appendChild(oImg);
+        //     return loadImage(arr[2]);
+        // }).then(function (oImg) {
+        //     document.body.appendChild(oImg);
+        // }).catch(function (e) {
+        //     console.log(e);
+        // })
+
+        Promise.all([loadImage(arr[0]),loadImage(arr[1]),loadImage(arr[2])]).then(function (succList) {
+                succList.forEach(oImg=>{
+                    document.body.appendChild(oImg);
+                })
+        },function (err) {
+            console.log(err);
+        })
+    </script>
+</body>
+</html>

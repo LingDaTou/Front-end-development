@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>swiper</title>
+    <link rel="stylesheet" href="swiper.css">
+    <script src="swiper.js"></script>
+    <style>
+        .swiper-container{
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+
+    <script>
+        var mySwiper = new Swiper ('.swiper-container',{
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            // 如果需要前进后退按钮
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            loop: true, // 循环模式选项
+            autoplay: {
+                delay: 1000,//1秒切换一次
+            },
+            speed: 500
+        });
+    </script>
+</body>
+</html>

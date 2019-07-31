@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css 属性选择</title>
+    <style>
+        [title=hello]{
+            color: red;
+        }
+        [title~=tag]{
+            background-color: #4CAF50;
+            color: white;
+        }
+        [lang|=as]{
+            color: cornflowerblue;
+        }
+
+        input[type=text]:hover{
+            background-color: cornflowerblue;
+        }
+        input[type=password]{
+            background-color: #cae8ca;
+        }
+        input[type=submit]{
+            display: block;
+        }
+        .form_input{
+            color: black;
+        }
+        [lang^=option]{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <p title="hello">这是一段话</p>
+    <h2 title="hello">这是一个标题</h2>
+
+    <p title="tag">This is p tag</p>
+    <p title="tag test">This is p2</p>
+
+    <p lang="as">hello</p>
+    <p lang="as-ki">hello,mike</p>
+    <p lang="no">hello world</p>
+
+    <form action="" class="form_input">
+        用户名：<input type="text" name="username"><br>
+        密码： <input type="password" name="password">
+        <input type="submit" value="确定">
+    </form>
+    <h2 lang="option">一段话1</h2>
+    <h2 lang="optio-hi">一段话2</h2>
+
+</body>
+</html>

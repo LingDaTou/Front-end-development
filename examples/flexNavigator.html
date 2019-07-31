@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性导航</title>
+    <script src="js/imageAnimation.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            margin: 100px auto;
+            width: 800px;
+            height: 60px;
+            border: 1px solid #000;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            text-align: center;
+            position: relative;
+            z-index: 999;
+        }
+        ul>li{
+            line-height: 60px;
+            width: 88px;
+            float: left;
+        }
+        span{
+            display: inline-block;
+            width: 88px;
+            height: 100%;
+            background: url("images/doubleOne.png") no-repeat left center;
+        }
+        .moveImg{
+            width: 88px;
+            height: 60px;
+            background: url("images/tMall.png") no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>服装会场1</li>
+            <li>服装会场2</li>
+            <li>服装会场3</li>
+            <li>服装会场4</li>
+            <li>服装会场5</li>
+            <li>服装会场6</li>
+            <li>服装会场7</li>
+            <li>服装会场8</li>
+        </ul>
+        <span></span>
+        <div class="moveImg"></div>
+    </div>
+    
+
+    <script>
+        // let oItems = document.querySelectorAll("li");
+        let oDiv = document.querySelector(".moveImg");
+        // for(let i =0 ;i < oItems.length ; i++){
+        //     let item = oItems[i];
+        //     item.onclick = function () {
+        //         let left = this.offsetLeft;
+        //         easeAnimation(oDiv,{left:left});
+        //     }
+        // }
+
+
+        let oUl =document.querySelector("ul");
+        oUl.onclick = function (event) {
+            event =event || window.event;
+            let item = event.target;
+            let left = item.offsetLeft;
+            easeAnimation(oDiv,{left:left});
+        }
+    </script>
+</body>
+</html>

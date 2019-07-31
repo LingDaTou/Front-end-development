@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promiss_测试</title>
+    <script>
+        let p = new Promise(function (resolve, reject) {
+            resolve("传递的数据");
+        });
+
+        let p2 = new  Promise(function (resolve, reject) {
+            resolve("传递的数据2");
+        });
+
+        p.then(function (data) {
+            console.log(data);
+            return "zhu";
+        }).then(function (data) {
+            console.log(data);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

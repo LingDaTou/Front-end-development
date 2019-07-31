@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>楼层效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        ul{
+            width: 100%;
+            height: 100%;
+        }
+        ul>li{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        ol{
+            width: 100px;
+            height: 50px;
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            list-style: none;
+        }
+        ol>li{
+            text-align: center;
+            color: #fff;
+            width: 100%;
+            line-height: 50px;
+            border: 1px solid #000;
+        }
+        .selected{
+            background: red;
+        }
+    </style>
+    <script src="js/tools.js"></script>
+</head>
+<body>
+<ul>
+    <li>第一层</li>
+    <li>第二层</li>
+    <li>第三层</li>
+    <li>第四层</li>
+    <li>第五层</li>
+</ul>
+<ol>
+    <li class="selected">第一层</li>
+    <li>第二层</li>
+    <li>第三层</li>
+    <li>第四层</li>
+    <li>第五层</li>
+</ol>
+    <script>
+        let colors=["green","blue",'orange','pink','yellow'];
+        let oItems = document.querySelectorAll("ol>li");
+        let oUlitems =document.querySelectorAll("ul>li");
+        let currentItem = oItems[0];
+        let scrollTopHeight = getWidth_Height().height;
+        let timer = null;
+
+        for(let i = 0;i<oItems.length; i++){
+            let olItem = oUlitems[i];
+            olItem.style.background=colors[i];
+            let item = oItems[i];
+            item.onclick =function () {
+                currentItem.className ="";
+                this.className="selected";
+                currentItem = this;
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    let begin = document.documentElement.scrollTop;
+                    let end = i*scrollTopHeight;
+                    let step = (end - begin) * 0.3;
+                    begin+=step;
+                    if(Math.abs(Math.floor(step)) <= 1){
+                        clearInterval(timer);
+                        document.documentElement.scrollTop = i*scrollTopHeight;
+                        return;
+                    }
+                    document.documentElement.scrollTop = begin;
+                },50);
+            }
+        }
+    </script>
+</body>
+</html>

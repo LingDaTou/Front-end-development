@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQery HTML css方法</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <style>
+        .newClassName{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            //增加、删除新的类 addClass、removeClass、toggleClass
+            $('.button1').click(function () {
+                $('p,h3').addClass('newClassName');
+            });
+            //设置尺寸大小
+            $('.button2').click(function () {
+                $('.div').width('300px');
+                var txt='';
+                txt='宽：'+$('.div1').width()+'<br>'+'高:'+$('.div1').height();
+                $('.div1').html(txt);
+            })
+        })
+    </script>
+
+    <p>第一段文字</p>
+    <h3>标题</h3>
+    <button class="button1">改变样式</button>
+    <hr>
+    <div class="div1" style="width:200px;height: 120px;background-color: cornflowerblue">
+    </div>
+    <button class="button2">显示宽高</button>
+</body>
+</html>

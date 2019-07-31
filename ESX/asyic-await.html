@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>asyic-await</title>
+    <script>
+        function request() {
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    resolve("请求数据成功");
+                },1000)
+            })
+        }
+
+
+        // Generator
+        function* gen1(){
+            console.log("第一个数据");
+            yield request();
+            console.log("第二个数据");
+            yield  request();
+        }
+
+        let g = gen1();
+        g.next().value.then(function (data) {
+            console.log(data);
+            return g.next().value;
+        }).then(function (data) {
+            console.log(data);
+        })
+
+        // async function gen() {
+        //     let res1 = await request();
+        //     console.log(res1,1);
+        //     let res2 = await request();
+        //     console.log(res2, 2);
+        // }
+        // gen();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

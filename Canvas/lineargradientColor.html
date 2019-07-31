@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>颜色渐变</title>
+    <style>
+        canvas{
+            background: #ccc;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="400" height="400"></canvas>
+    <script>
+        let ocanvas = document.querySelector("canvas");
+        let ctx = ocanvas.getContext("2d");
+
+
+        let linearGradient = ctx.createLinearGradient(100,100,300,300);
+        linearGradient.addColorStop(0.2,"blue");
+        linearGradient.addColorStop(0.5,'red');
+        linearGradient.addColorStop(1,"yellow");
+
+        ctx.fillStyle = linearGradient;
+        ctx.fillRect(100,100,200,200);
+    </script>
+</body>
+</html>

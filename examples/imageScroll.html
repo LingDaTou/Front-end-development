@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跟随广告</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        p{
+            line-height: 30px;
+            text-align: center;
+        }
+    </style>
+    <script src="js/imageAnimation.js"></script>
+</head>
+<body>
+    <img src="images/left_ad.png" alt="">
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+    <p>我是文字</p>
+</body>
+<script src="js/tools.js"></script>
+
+<script>
+    let oImg = document.querySelector("img");
+    let ScreenHeight = getWidth_Height().height;
+    let imgHeight = oImg.offsetHeight;
+
+    let offsetY = (ScreenHeight - imgHeight) /2 ;
+    easeAnimation(oImg,{left : offsetY});
+    window.onscroll = function () {
+        let scrollY =getPageScroll().y;
+        // oImg.style.top = offsetY + scrollY +"px";
+        easeAnimation(oImg,{top : offsetY+scrollY})
+    }
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js输出</title>
+</head>
+<body>
+    <p id="p1">段落1</p>
+    <p id="p2">段落2</p>
+    <p id="p3">对象方法:加了括号</p>
+    <p id="p4">对象方法:不加括号</p>
+    <script>
+        window.alert(1+2);
+        document.getElementById('p1').innerHTML='段落已修改';
+        document.write(Date());
+        a=5;
+        b=6;
+        c=a+b;
+        console.log(c);
+
+        var length=100000;
+        document.write(length+'<br>');
+
+        var str='改变文字了';
+        document.getElementById('p2').innerHTML=str;
+
+        // var name=['mike','nancy','jerry']
+        var name=new Array('mike','nancy','jerry'+'<br>');
+        document.write(name);
+
+        var person={
+            name:'mike',
+            age:20,
+            score:90
+        };
+        document.write(person.name+'<br>');
+        document.write(person['age']+'<br>');
+
+        // 对象方法
+        var book={
+          bookname:'liux',
+          year:2018,
+          author:'jerry' ,
+          all_info:function () {
+              return this.bookname+" "+this.author;
+          }
+        };
+        document.write(book.all_info()+'<br>')
+        // document.getElementById('p3').innerHTML='加括号的输出是值：'+book.all_info();
+        document.getElementById('p4').innerHTML='不加括号输出的是后面的函数:'+book.all_info;
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 用户界面</title>
+    <style>
+        .div1{
+            border: 1px solid red;
+            resize: both;
+            overflow: auto;
+        }
+        .container{
+            width: 30em;
+            border: 1em solid;
+            overflow: auto;
+        }
+        .box{
+            box-sizing: border-box;
+            width: 50%;
+            float: left;
+            border: 1px solid red;
+        }
+        .div2{
+            border: 1px solid black;
+            width: 150px;
+            margin:20px;
+            outline: 2px solid red;
+            outline-offset: 15px;
+        }
+        .div3{
+            -webkit-appearance: button;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">调整属性指定一个元素是否由用户可调整大小的。</div>
+    <hr>
+    <div class="container">
+        <div class="box">占据左边</div>
+        <div class="box">占据左边</div>
+    </div>
+    <hr>
+    <div class="div2">
+        有一个15px的边境外的边缘
+    </div>
+    <div class="div3">appearance属性</div>
+</body>
+</html>

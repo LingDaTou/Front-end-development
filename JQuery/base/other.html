@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 其他</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+
+</head>
+<body>
+    <script>
+        //利用jQery
+        // $.noConflict();
+        // jQuery(document).ready(function () {
+        //     jQuery('.b1').click(function () {
+        //         jQuery('.p1').css('color','blue')
+        //     })
+        // });
+        //利用变量
+        // var jq = $.noConflict();
+        // jq(document).ready(function(){
+        //     jq(".b2").click(function(){
+        //         jq(".p2").html("<h1>jQuery 仍然在工作!</h1>");
+        //     });
+        // });
+        //getJSON
+        $.getJSON("http://www.runoob.com/try/ajax/jsonp.php?jsoncallback=?", function(data) {
+
+            var html = '<ul>';
+            for(var i = 0; i < data.length; i++)
+            {
+                html += '<li>' + data[i] + '</li>';
+            }
+            html += '</ul>';
+
+            $('.div1').html(html);
+        });
+
+    </script>
+    <button class="b1">点击</button>
+    <p class="p1">一段简短的话</p>
+    <hr>
+    <button class="b2">点击</button>
+    <p class="p2">一段简短的话</p>
+    <hr>
+    <div class="div1"></div>
+
+</body>
+</html>

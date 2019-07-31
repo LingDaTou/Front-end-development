@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js json</title>
+</head>
+<body>
+
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <p id="p4"></p>
+    <p id="p5"></p>
+    <p id="p6"></p>
+    <p id="p7"></p>
+    <p id="p8"></p>
+    <p id="p9"></p>
+    <p id="p10"></p>
+    <p id="p11"></p>
+    网站名：<p id="p12"></p>
+    网址：<p id="p13"></p>
+    <a href="javascript:void(0)">单击此处什么也不会发生</a>
+
+    <script>
+        var x={
+            'name':'教程',
+            'url':'www.dfhue.com',
+            'solgan':'学习js'
+        };
+        document.getElementById('p1').innerHTML=x.name
+
+        var obj=[
+            {'name':'rubbot','url':'www.bb.com'},
+            {'name':'google','url':'www.google.com'},
+            {'name':'baidu','url':'www.baidu.com'}
+        ];
+        document.getElementById('p2').innerHTML=obj[1].url;
+        document.getElementById('p3').innerHTML=obj[2]['name'];
+
+
+        var obj2={'name':'mike','age':70,'sex':'male'}
+        //用delete删除
+        delete obj2.name;
+        //使用for-in循环对象
+        for (x in obj2)
+        {
+            document.getElementById('p4').innerHTML+=x+'<br>';
+        }
+        //使用for-in循环属性
+        for (x in obj2)
+        {
+            document.getElementById('p5').innerHTML+=obj2[x]+'<br>';
+        }
+
+        //数组
+        var myObj = {
+            "name":"网站",
+            "num":3,
+            "sites":[ "Google", "Runoob", "Taobao" ]
+        };
+        //for循环
+        for(var i=0;i<myObj.sites.length;i++)
+        {
+            document.getElementById('p6').innerHTML+=myObj.sites[i]+'<br>';
+        }
+
+        // 嵌套json对象中的数组
+        var i,j,x='';
+        var myObj1 = {
+            "name":"网站",
+            "num":3,
+            "sites": [
+                { "name":"Google", "info":[ "Android", "Google 搜索", "Google 翻译" ] },
+                { "name":"Runoob", "info":[ "菜鸟教程", "菜鸟工具", "菜鸟微信" ] },
+                { "name":"Taobao", "info":[ "淘宝", "网购" ] }
+            ]
+        };
+        for (i in myObj1.sites)
+        {
+            x+='<h1>'+myObj1.sites[i].name+'</h1>'+'<br>';
+            // document.getElementById('p7').innerHTML+=myObj1.sites[i].name+'<br>';
+            for (j in myObj1.sites[i].info)
+            {
+                x+=myObj1.sites[i].info[j]+'<br>';
+                // document.getElementById('p8').innerHTML+=myObj1.sites[i].info[j];
+            }
+        }
+        document.getElementById('p7').innerHTML=x;
+
+        //json数据（字符串）转换成js对象
+        var str='{"name":"jerry","age":20,"sex":"male"}'
+        var obj3=JSON.parse(str);
+        document.getElementById('p8').innerHTML=obj3.name;
+
+        //js对象转换成字符串
+        var obj4={"name":"runoob", "alexa":10000, "site":"www.runoob.com"};
+        var myjson=JSON.stringify(obj4);
+        document.getElementById('p9').innerHTML=myjson;
+
+        var txt = '{ "sites" : [' +
+            '{ "name":"菜鸟教程" , "url":"www.runoob.com" },' +
+            '{ "name":"google" , "url":"www.google.com" },' +
+            '{ "name":"微博" , "url":"www.weibo.com" } ]}';
+
+        var obj5 = eval ("(" + txt + ")");
+
+        document.getElementById("p12").innerHTML=obj5.sites[0].name
+        document.getElementById("p13").innerHTML=obj5.sites[0].url
+    </script>
+
+</body>
+</html>

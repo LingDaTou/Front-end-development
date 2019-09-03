@@ -25,7 +25,7 @@ export const Nav = styled.div`
     height:56px;
     line-height: 56px;
 `
-export const NavItem = styled.a`
+export const NavItem = styled.div`
     margin : 0 15px;
     color:#333;
     cursor:pointer;

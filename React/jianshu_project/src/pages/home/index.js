@@ -40,6 +40,9 @@ class Home extends PureComponent{
     bindEvent(){
         window.addEventListener("scroll",this.props.showToggle)
     }
+    componentWillUnmount(){
+        window.removeEventListener("scroll",this.props.showToggle)
+    }
 }
 
 const mapStateToProps =(state)=>({

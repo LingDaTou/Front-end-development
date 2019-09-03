@@ -8,9 +8,9 @@ const getDetailAjax=(title,content)=>({
     content
 })
 
-export const getDetail =()=>{
+export const getDetail =(id)=>{
     return (dispatch)=>{
-        axios.get("/api/detail.json").then((data)=>{
+        axios.get("/api/detail.json?id="+id).then((data)=>{
             let res =data.data.data;
             dispatch(getDetailAjax(res.title,res.content))
         })

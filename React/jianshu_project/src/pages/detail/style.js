@@ -2,7 +2,7 @@ import  styled from 'styled-components'
 
 export const DetailWrapper = styled.div`
     padding-top:20px;
-    width: 680px;
+    width: 625px;
     overflow: hidden;
     margin : 0 auto;    
 `

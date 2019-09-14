@@ -1,0 +1,134 @@
+基本语法：
+	* 大小写敏感，必须区分
+	* 类名：首字母要大写
+	* 方法名：首字母小写
+	* 源文件名必须和类型相同
+	* 主方法入口：从public static void main(String []args)开始执行
+
+实例基础：
+	public classname(定义参数){
+		此处为构造函数
+	}
+	在main中，使用实例，classname newname=new classname(参数)
+
+对象和类：
+	构造方法：必须与类同名
+		public classname(定义参数){}
+	创建对象：
+		在main中，classname 实例名=new classname(构造函数中所需参数)
+
+
+数据类型：
+	1. 内置数据类型
+		整数
+			* byte:-128~127
+			* short:pow(-2,15)~pow(2,15)-1
+			* int:pow(-2,31)~pow(2,31)-1
+			* long:pow(-2,63)~pow(2,63)-1
+		浮点数
+			* float
+			* double
+		布尔值：
+			* boolean
+		字符：
+			* char
+	2. 引用数据类型
+		对象、数组
+
+	3. 常量
+		final关键词修饰，final double PI=3.1415927
+	4. 自动类型转换
+		只能从低级到高级：
+		byte/short/char -> int -> long -> float -> double
+		* boolean类型的数据不能转换
+		* 若高级到低级，则会损失精度
+
+变量类型
+	1. 类变量（静态变量）：static/final修饰，被声明为public static final类型，大写
+	2. 实例变量：至少被一个方法、构造方法或者语句块引用,不必要初始化
+	3. 局部变量：类的方法中的变量，必须初始化
+	注：变量声明时加上public表示对所有类可见，加private表示仅对该类可见
+
+
+修饰符
+	1. 访问控制修饰符
+		* default：同一包内，对象、类、接口、变量、方法
+		* private：同一类内，变量、方法
+		* public：所有类，类、接口、变量、方法
+		* protected：同一包内和所有子类，变量、方法
+	2. 非访问修饰符
+		* static：方法、变量
+		* final：不能被继承和修改，类、方法、变量
+		* abstract：创建类和抽象方法
+		* synchronized和volatile：线程的编程
+
+运算符
+	instanceof 数据类型：返回false或true
+
+Number & Math
+	* number.xxxValue():将Number对象转换成xxx类型的数据
+	* number.compareTo（num）：两个数比较
+		-1：number<num
+		0：number=num
+		1：number>num
+	* number.equals(num)：返回false和true
+	* number.toString() / Number.toString(number)
+	* Integer.parseInt(str):字符串转换为数字
+
+	* Math.abs():绝对值
+	* Math.ceil()：向上取整
+	* Math.floor()：向下取整
+	* Math.rint():最接近的double，0.5向下取
+	* Math.round():+0.5后，向下取整
+	* Math.max/min(num1,num2）：两个参数中最大/小值
+	* Math.pow(num1,num2)：num1的num2的平方
+	* Math.random():返回0~1随机数
+
+Character
+	* Character.isLetter()：是否是一个字母
+	* Character.isDigit():是否是一个数字字符
+	* Character.isWhitespace（）：是否是一个空白字符
+	* Character.isUpperCase/isLowerCase（）：是否是大/小写字母
+	* Character.toUpperCase()/toLowerCase():变为大/小写
+	* Character.toString():转为String对象
+
+数组
+	声明：datetype[] array
+	创建：1. int[] array=new int[size]  	
+		 2. int[] array={v1,v2,v3...}    (String[] arr={arr1,arr2,arr3...})
+	foreach循环：不使用下标即可遍历数组
+		for(数据类型 i;数组名)
+	* 作为函数的参数：
+		public void Array(int[] myArray){
+			for循环遍历
+		}
+		调用此方法时：Array(new int[]{v1,v2,v3...})
+	* 作为函数的返回值
+	* 多维数组：int a[][]=new int[size1][size2]
+	* Arrays类
+
+
+
+方法：
+ 1. 一般方法：
+ 	在主方法外: public static int functionName(int para1,int para2)
+ 		必须有返回值
+ 2.void:public static void functionName(String paras)
+ 		无返回值，可以用来输出
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

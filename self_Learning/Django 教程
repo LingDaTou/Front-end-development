@@ -1,0 +1,132 @@
+Django框架
+
+1. 虚拟环境
+	vritualenv
+	* virtualenv env-name：创建
+	* source 路径/bin/activate
+	* deactivate ：退出
+
+	virtualenvwrapper
+	* mkvirtualenv env-name:创建，默认在/Users/lx/Envs
+	* workon env-name
+	* cdvirtualenv ：路径
+	* lsvirtualenv:查看所有环境
+	* lssitepackages:查看环境的安装包
+	* deactivate：退出
+	* rmvirtualenv：删除
+
+2. 创建项目
+	终端：
+		* 在装有Django的虚拟环境中：
+		* cd到要保存的文件夹->django-admin startproject first_project
+		* cd first_project后运行：python manage.py runserver 9000(更改端口)
+		* 允许其他机器访问使用:python manage.py runserver 0.0.0.0:9000
+	pycharm：
+		* 选择所在的虚拟环境python解释器
+		* 让同局域网中的电脑，允许访问：
+			(1)设置host为：0.0.0.0
+			(2)ALLOWED_HOSTS = [‘ip地址’]
+
+3. 项目结构
+	manage.py:
+		* 查看子命令：python manage.py help
+	settings.py:保存项目所有的配置信息
+	url.py：做url与视图函数映射
+	wsgi.py：作部署，不需要修改
+
+
+视图函数
+	第一个参数必须是request
+	返回值必须是'django.http.response.HttpResponseBase'的子类的对象
+	* 在views.py中创建
+		（1）views.py来自于：在终端的同一虚拟环境下运行 python manage.py startapp app_name
+		（2）在urls.py中的path('login/',view.funcution)添加视图函数，添加的函数不能有括号
+
+		传递参数：
+		（1）urls.py中，在path的第一参数中，使用<参数>，在views的参数中必须写相同的名称，可以传递多个参数
+		（2）查询字符串
+			request.GET.get('id')
+			使用时：127.0.0.1:8000/?id=1
+
+		命名与反转url：
+		from django.shortcuts import redirect,reverse
+		（1）redirect:重定向，redirect('/signin/')
+		（2）reverse:反转 
+		使用：在path中，增加路径的name='login'，在redirect(reverse('login'))，取name
+
+		命名空间：防止多个app使用相同的名字
+			在urls.py中的反转函数中修改：reverse('front:login')
+
+
+模板
+	DTL：django模板语言
+	渲染模板：
+	（1）from django.template.loader import render_to_string
+		* 先把网页转成字符串:html=render_to_string('.html')
+		* 再返回return HttpResponse(html)
+
+	（2）django.shortcuts import render：不用转成字符串，直接render
+		render(request,'.html')
+
+	（3）查找路径的配置：
+		* settings.py文件中，'DIRS'可以修改.html存放路径
+		* 如果DIRS中没有路径，'APP_DIRS'=True,且INSTALLED_APPS需要添加app，如'front'，就会自动寻找app文件夹下的templates目录
+		* DIRS优先于app中的templates，若无，按照安装app的顺序
+
+	（4）模板变量
+		* render(request,'.html',content=content)
+			注：区别于flask中的传递参数
+		* 利用对象.属性名获取值，类和字典的方式相同,列表为.0(不能通过[]方式)
+
+	（5）模板标签
+		* {% if %} {% endif %} 
+		* {% for in %} {% endfor %} reversed:反向遍历
+			遍历字典时，利用keys/values/items，区别于python
+			# forloop.counter:获得序号从1开始;counter0：从0开始
+			# forloop.revcunter/revcounter0：反向
+			# forloop.first/last：第一行/最后一行
+
+	(6) url标签
+			* 在urls中取name，利用url 'name'获取跳转
+			* 传递参数：url paras=''，空一格即可
+			* 获取参数：在views中GET.get('para')，在.html中，必须手动添加，
+				即herf="{% url 参数=''%}?para="
+
+	（7）过滤器：（相当于函数）
+		* add：{{value|add:'2'}},即value+2，先转换为int类型，如不能转换，则转换为字符串类型；列表为拼接,最多只能有两个参数
+		* cut：不需要的部分剪去
+		* date：格式化日期,params|date:'Y/m/d'
+
+	（8）继承（类似flask）
+		* 在base中设置基础页面，即父页面，设置{% block name %}{% endblock %}
+		* 在各子页面中：必须在第一行设置{% extends 'base.html' %};添加内容：使用
+			{% block name %}
+				content
+			{% endblock %}
+		* 如果父页面的block中的内容不被覆盖，则需在子页面中的block添加{{ block.super }}，放置的位置决定在页面中的位置
+
+	(9) 加载静态文件
+		1.settings里：installed_apps是否存在django.contrib.staticfiles，static_url的路径，installed_apps添加app
+		2.static标签加载，在.html开头添加{% load static %}
+			* 例如图片:<img src="{% static 'name.jpg'%}">
+			* 若有app中的static有同名的静态文件，每个app中的static目录再增加app名字，此时src="{% static 'cms/name.jpg'%}"
+		3.如果static不和任何app挂钩，在settings中增加STATICFILE_DIRS=[os.path.join(BASE_DIR,'static')]，类似于’templates‘
+		4.如果不想使用load static，可以在settings中的templates/option中添加'builtins:['django.templatetags.static']',此时可以当做内置标签使用
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

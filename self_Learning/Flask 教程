@@ -1,0 +1,222 @@
+Flask 教程
+
+jinja2模板
+1. flask的参数：在url中添加，视图函数保持同名参数
+	* @app.route('/login/<id>')
+	  def login(id)
+
+2. url_for：url的反转,url_for('视图函数名'),返回路径
+	* 返回的视图函数，如果有参数，变为:url_for('函数名',params=1)
+	
+3. redirect:重定向，搭配url_for使用，重定向到其他页面
+	* 格式：redirect(url_for('函数名'))
+
+4. 渲染模板：
+	* render_template(‘index.html’,username='ling')
+	* html文件中传参：{{username}}
+	* 若传参数量过多时，利用dict装入（关键字参数）
+
+5. 访问模型中的类的属性或者字典,在html中
+	{{params['property']}}或者{{params.property}}
+
+6. if判断：
+	{% if user%}
+	{%else%%}
+	{%endif%
+
+7. for循环：
+	* 字典的遍历：和python一样
+		{%for k,v in user.items()%}
+		{%endfor%}
+	* 列表的遍历：
+		在前端页面中实现table的例子
+
+8. 过滤器：
+	* default：如果在render_template中没有设置参数params，则使用default中的地址
+		在html页面中：{{params|default('地址')}}
+	* length:在html中获得列表长度
+		{{params|length}}
+
+9. 继承和block接口：
+	* 继承：在子类的html中：{% extends 'base.html' %}
+
+	* block接口：
+		父类中：{% block main%} {% endblock %}
+		子类中：{% block main%} 添加的内容 {% endblock %
+
+10. url链接：
+	* 在a标签中，href使用url_for(‘视图函数名’)跳转，类似于2
+
+11. 加载静态文件：
+	static文件夹中：url_for('static',filename='路径'),路径中不需加static
+	* css文件:
+		<link rel="stylesheet" href="{{url_for('static',filename='.css')}}">
+	* img文件：
+		<img src="{{url_for('static',filename='.jpg')}}">
+	* js文件：
+		<scirpt src="{{url_for('static',filename='.js')"></scirpt>
+
+
+SQLAlchemy数据库
+1. flask_sqlalchemy模块：导入SQLAlchemy类
+	db=SQLAlchemy(app)
+
+2. 配置：config模块中
+	dialect+driver://username:password@host:port/database
+
+3. 将配置放入app中
+	app.config.from_object(config)
+	测试是否成功:db.create_all()
+
+4.创建表：
+	(1) 模型需要继承db.Model，映射到表中，必须写成db.Column的数据类型
+	(2) 数据类型：
+				db.Integer：整型
+				db.String：varchar，需要制定长度
+				db.Test：text
+	(3) 其他参数：
+				primary_key：设置字段为主键
+				autoincreament：这个主键自增长	
+				nullable：字段是否可以为空，（默认可以为空）
+	(4) 调用db.create_all()将模型创建到数据库中
+
+
+5. 表的增删改查：
+	(1) 增:
+			stu=Student(字段1='',字段2='')
+			db.session.add(stu)
+			db.session.commit()
+	(2) 查:
+			result=Student.query.filter(Student.name=='mike').first()
+			result.name
+	(3) 改:
+			stu=Student.query.filter(Student.name=='mike').first()
+			stu.content='play'
+			db.session.commit()
+	(4) 删:
+			stu=Studen.query.filter(Student.name=='mike').first()
+			db.session.delete(stu)
+			db.session.commit()
+
+6. 外键约束:
+	外键：
+		author_id=db.Column(db.Integer,db.ForeignKey('表名.字段'))
+		author=db.relationship('User',backref=db.backref('articles'))
+		解释：
+			给Article模型添加一个author，可以访问作者数据
+			backref：定义反向引用
+		在视图函数中的使用：
+		* 正向获取：（返回list）
+			user1=User.query.filter(User.name==' ').first()  //查找
+			for x in user1.articles:
+				x.id  		// 获取值
+		* 反向获取：（可返回特定值）
+			article1=Article.query.filter(Article.content==' ').first()
+			article1.author.name
+
+
+7. 多对多关系:
+	通过中间表进行关联
+	* 中间表的建立:
+		article_tag('表名',
+			db.Column('字段名',db.Integer,db.ForeignKey('表1.id'),primary_key=True)
+			db.Column('字段名',db.String(100),db.ForeignKey('表2.id'),primary_key=True)
+		)
+	* 在其中一个主表中添加：
+		tags=db.relationship('主表2',secondary=中间表,backref=db.backref('articles'))
+
+	* 添加至数据库:
+		article1.tags.append(tag1)
+		article1.tags.append(tag2)
+
+8. flask_script插件:
+	* 创建manager.py
+		manager=Manager(app),此时的manager作为装饰器
+		@manager.command
+		函数
+		* 如果在manage.py中，直接在终端执行python3 manage.py 函数名
+		* 如果在另外的py中（如取名为DBmanager），则需在manage.py中添加manage.add_command('子命令',DBmanager)
+
+9. 分开Models及解决循环引用
+	(1) 将models单独放置:方便代码管理
+	(2) 解决循环引用：将db放入单独的文件中
+		* exte.py:
+			from flask_SQLAlchemy import SQLAlchemy
+			db = SQLAlchemy() 
+		* models.py：import db,放入class 模型名
+		* 主函数.py: import db,db.init_app(app)
+	(3) 将app推入栈顶：
+		with app.app.context():
+			db.create_all()
+
+10. flask_migrate数据迁移:
+		* db.create_all()在后期修改字段的时候，不会自动映射到数据库中，flask_migrate即可解决
+		* 必须要借助flask_script的manager.py
+		* 在终端的运行命令：
+			python manager.py db init   初始化迁移脚本的环境 (仅使用一次)
+			python manager.py db migrate   迁移文件
+			python manager.py db upgrade   更新(映射到表)
+
+注：建议不使用create_all()，使用8-10的内容
+
+
+session和cookie操作
+1. cookie保存在浏览器，session保存在服务器
+
+2. 机制：把敏感数据经过加密后放入'session'中，将'session'存放到'cookie'，下次请求的时候，再从浏览器发送过来的'cookie'中读取'session'，读取敏感数据并解密，获取用户数据；flask的'session'机制，可以节省服务器开销，因为把所有信息都存放到了客户端(浏览器)
+
+3. session:
+	* 操作类似于字典
+	* 设置SECRET_KEY='24位的字符串'，加密；如果每次重启服务器都变化，之前的session就不能通过此SECRET_KEY解密
+	* 操作：
+		(1) 获取
+			session.get('username')
+		(2) 删除
+			session.pop('username'):删除部分
+			session.clear():清除全部session
+		(3) 过期时间：
+			session.permanent=True:默认过期时间为31天
+			如果指定过期时间，另外再添加：
+				from datatime import timedelta
+				app.config['PERMANENT_SESSION_LIFETIME']=timedelta(days=7)
+
+
+get请求和post请求
+1. get请求：只对服务器获取数据，对服务器不产生任何影响
+	* 传参：放在url中，并通过'?'的形式指定key和value
+	* 获得参数：flask.request.args.get('p')/args['q']
+
+2. post请求：对服务器产生影响
+	* 传参：通过'form data'的形式发送给服务器
+	* 获得参数：flask.request.form.get('username')/form['username']
+	注：get时，在form表单中，input的name需要填写名称
+
+	获得请求类型：request.method
+
+3.线程隔离的g对象
+	* 保存用户数据
+	* g对象在一次请求中，都是可以使用的(刷新页面则无效) 
+
+4. 钩子函数
+	(1)before_request:
+		* 只是装饰器，在视图函数执行之前执行,常用于session/SQL操作
+		  @app.before_request
+	(2)context_processor:
+		* 上下文处理器，在所有页面可以使用
+		* 返回一个字典，'key'会被模板当做变量渲染，即render_template('index.html',username='ling')中的username='ling'可以省略
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
